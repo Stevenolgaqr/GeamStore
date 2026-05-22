@@ -1,0 +1,210 @@
+/* ════════════════════════════════════════════
+   OCFooter — Nova Store Pro Max
+   ════════════════════════════════════════════ */
+
+.footer {
+  background: linear-gradient(180deg, rgba(11, 12, 16, 0) 0%, #0a0b0e 4%);
+  border-top: 1px solid rgba(230, 0, 0, 0.08);
+  padding: 5rem 2rem 0;
+  margin-top: 0;
+  position: relative;
+}
+
+/* Red glow line at top */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(230, 0, 0, 0.5) 50%, transparent 100%);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+/* ── Brand ── */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--transition-fast);
+}
+
+.logo span {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.desc {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+/* ── Discord Badge ── */
+.discordBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(114, 137, 218, 0.1);
+  border: 1px solid rgba(114, 137, 218, 0.2);
+  border-radius: var(--border-radius-sm);
+  color: #7289da;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  width: fit-content;
+}
+
+.discordBadge:hover {
+  background: rgba(114, 137, 218, 0.18);
+  border-color: rgba(114, 137, 218, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(114, 137, 218, 0.15);
+}
+
+/* ── Columns ── */
+.colTitle {
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.colTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.link {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.link:hover {
+  color: var(--primary-light);
+}
+
+.link:hover::before {
+  width: 12px;
+}
+
+/* ── Bottom Bar ── */
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-dim);
+  font-size: 12.5px;
+}
+
+.payments {
+  display: flex;
+  gap: 8px;
+}
+
+.paymentIcon {
+  min-width: 44px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0 6px;
+  transition: var(--transition-fast);
+}
+
+.paymentIcon:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-main);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .footer { padding: 3.5rem 1.5rem 0; }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .footer { padding: 3rem 1.25rem 0; }
+}

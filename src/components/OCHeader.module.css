@@ -1,0 +1,269 @@
+/* ════════════════════════════════════════════
+   OCHeader — Nova Store Pro Max
+   ════════════════════════════════════════════ */
+
+.headerContainer {
+  width: 100%;
+  background: rgba(11, 12, 16, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(230, 0, 0, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03),
+    0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease;
+}
+
+/* ── Top Bar ── */
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 28px;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  user-select: none;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.logoText {
+  background: linear-gradient(135deg, #fff 0%, #d1d5db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logoText span {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logoIcon {
+  width: 34px;
+  height: 34px;
+  background: var(--primary-gradient);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(230, 0, 0, 0.45);
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.logo:hover .logoIcon {
+  box-shadow: 0 6px 20px rgba(230, 0, 0, 0.65);
+  transform: scale(1.05);
+}
+
+/* ── Top Bar Actions ── */
+.topBarActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.langToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Tajawal', var(--font-ar);
+  backdrop-filter: blur(8px);
+}
+
+.langToggle:hover {
+  background: rgba(230, 0, 0, 0.1);
+  border-color: rgba(230, 0, 0, 0.4);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(230, 0, 0, 0.15);
+}
+
+.langToggle:active {
+  transform: translateY(0);
+}
+
+.signInText {
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+.signInLink {
+  color: var(--primary-light);
+  font-weight: 600;
+  margin-left: 0.3rem;
+  transition: var(--transition-fast);
+}
+
+.signInLink:hover {
+  color: #ff6666;
+}
+
+.signUpBtn {
+  background: var(--primary-gradient);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 1.2rem;
+  border-radius: var(--border-radius-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.signUpBtn:hover {
+  box-shadow: 0 6px 24px rgba(230, 0, 0, 0.55);
+  transform: translateY(-1px);
+}
+
+.signUpBtn:active {
+  transform: translateY(0);
+}
+
+/* ── Nav Bar ── */
+.navBar {
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.025);
+}
+
+.navInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  gap: 4px;
+}
+
+.navLink {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 0 18px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: var(--transition-fast);
+  position: relative;
+  text-decoration: none;
+  border-radius: 4px;
+  letter-spacing: 0.2px;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--primary-gradient);
+  border-radius: 2px 2px 0 0;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.navLink:hover::after {
+  width: 60%;
+}
+
+/* ── Active Nav Link ── */
+.navLinkActive {
+  color: #fff !important;
+  background: rgba(230, 0, 0, 0.08) !important;
+}
+
+.navLinkActive::after {
+  width: 70% !important;
+  box-shadow: 0 0 8px rgba(230, 0, 0, 0.6);
+}
+
+/* ── Discord CTA in Nav ── */
+.navLinkDiscord {
+  margin-left: auto;
+  color: #7289da !important;
+  border: 1px solid rgba(114, 137, 218, 0.2);
+  border-radius: var(--border-radius-sm);
+  padding: 0 16px !important;
+  height: 32px !important;
+  font-size: 13px !important;
+  gap: 6px;
+  margin-right: 4px;
+  transition: var(--transition-smooth);
+}
+
+.navLinkDiscord:hover {
+  background: rgba(114, 137, 218, 0.1) !important;
+  border-color: rgba(114, 137, 218, 0.4) !important;
+  color: #9aa8e8 !important;
+}
+
+.navLinkDiscord::after {
+  display: none;
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .topBar {
+    padding: 12px 16px;
+  }
+  .navInner {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 12px;
+  }
+  .navInner::-webkit-scrollbar {
+    display: none;
+  }
+  .signInText {
+    display: none;
+  }
+  .logo {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navLinkDiscord {
+    display: none;
+  }
+}

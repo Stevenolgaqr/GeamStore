@@ -1,0 +1,423 @@
+/* ════════════════════════════════════════════
+   Product Detail — Nova Store Pro Max
+   ════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+.page {
+  padding-top: 72px;
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+/* ── Product Hero ── */
+.productHero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  align-items: start;
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Image Side ── */
+.imageCol {
+  position: relative;
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  border: 1px solid rgba(230, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f1017 0%, #1a1520 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+}
+
+.imagePlaceholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(230, 0, 0, 0.1) 0%, transparent 70%);
+}
+
+.placeholderIcon {
+  font-size: 5rem;
+  filter: drop-shadow(0 0 15px rgba(230, 0, 0, 0.3));
+  animation: float 3.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 12, 16, 0.5) 0%, transparent 50%);
+}
+
+.statusFloating {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  z-index: 5;
+}
+
+.statusUndetected {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.statusUpdating {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulseStatus 2s infinite;
+}
+
+.statusUndetected .statusDot {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.statusUpdating .statusDot {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+@keyframes pulseStatus {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Info Side ── */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-family: 'Tajawal', var(--font-ar);
+}
+
+.breadcrumb a {
+  color: var(--primary-light);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: #fff;
+}
+
+.gameLabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.productTitle {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.2;
+  font-family: 'Tajawal', var(--font-ar);
+  margin: 0;
+}
+
+.productDesc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-family: 'Tajawal', var(--font-ar);
+}
+
+/* ── Rating ── */
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-family: 'Tajawal', var(--font-ar);
+}
+
+.stars { color: #f59e0b; font-size: 1rem; }
+.ratingNum { color: var(--text-main); font-weight: 700; }
+.reviewCount { color: var(--text-muted); }
+
+/* ── Plans ── */
+.plansTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: 'Tajawal', var(--font-ar);
+  margin: 0.5rem 0 0;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.planCard {
+  background: rgba(17, 18, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.planCard:hover,
+.planCardActive {
+  border-color: var(--primary);
+  box-shadow: 0 0 30px rgba(230, 0, 0, 0.15);
+}
+
+.planCardActive {
+  background: var(--primary-dim);
+}
+
+.planDuration {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-family: 'Tajawal', var(--font-ar);
+  margin-bottom: 0.75rem;
+}
+
+.planPrice {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1;
+}
+
+.planCurrency {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+}
+
+.planBadge {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-gradient);
+  color: #fff;
+  padding: 0.2rem 0.75rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  font-family: 'Tajawal', var(--font-ar);
+  box-shadow: 0 4px 12px rgba(230, 0, 0, 0.35);
+  white-space: nowrap;
+}
+
+/* ── Buy Buttons ── */
+.buyActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.buyNow {
+  flex: 1;
+  padding: 1rem;
+  background: var(--primary-gradient);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: 'Tajawal', var(--font-ar);
+  box-shadow: 0 8px 32px rgba(230, 0, 0, 0.3);
+}
+
+.buyNow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(230, 0, 0, 0.5);
+}
+
+.buyNowUnavailable {
+  background: linear-gradient(135deg, #374151, #1f2937) !important;
+  color: #9ca3af !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+.buyNowUnavailable:hover {
+  background: linear-gradient(135deg, #4b5563, #374151) !important;
+  color: #f3f4f6 !important;
+  border-color: rgba(156, 163, 175, 0.4) !important;
+}
+
+/* ── Features ── */
+.featuresSection {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.sectionLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+}
+
+.featTitle {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--text-main);
+  margin: 0 0 2rem;
+  font-family: 'Tajawal', var(--font-ar);
+}
+
+.featuresList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.2rem;
+  background: rgba(17, 18, 22, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  transition: var(--transition-fast);
+  font-family: 'Tajawal', var(--font-ar);
+  color: var(--text-main);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.featureItem:hover {
+  border-color: rgba(230, 0, 0, 0.12);
+  background: rgba(230, 0, 0, 0.03);
+}
+
+.featureCheck {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* ── Not Found ── */
+.notFound {
+  padding: 10rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  font-family: 'Tajawal', var(--font-ar);
+}
+
+.notFoundLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  background: var(--primary-gradient);
+  color: #fff;
+  border-radius: var(--border-radius-full);
+  text-decoration: none;
+  font-weight: 700;
+  font-family: 'Tajawal', var(--font-ar);
+  transition: var(--transition-smooth);
+  box-shadow: 0 6px 20px rgba(230, 0, 0, 0.3);
+}
+
+.notFoundLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(230, 0, 0, 0.45);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .productHero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem 3rem;
+  }
+  .featuresList { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .productHero { padding: 1.5rem 1.25rem 2.5rem; gap: 2rem; }
+  .plans { grid-template-columns: 1fr; }
+  .featuresList { grid-template-columns: 1fr; }
+  .buyActions { flex-direction: column; }
+  .featuresSection { padding: 0 1.25rem 4rem; }
+}

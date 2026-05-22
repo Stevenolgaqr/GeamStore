@@ -1,0 +1,116 @@
+.container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 20, 25, 1) 0%, rgba(10, 10, 12, 1) 100%);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  background: rgba(46, 213, 115, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  box-shadow: 0 0 30px rgba(46, 213, 115, 0.2);
+}
+
+.icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(46, 213, 115, 0.5));
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.description {
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.homeBtn, .storeBtn {
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.homeBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.homeBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.storeBtn {
+  background: linear-gradient(135deg, #2ed573, #1e90ff);
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 20px rgba(46, 213, 115, 0.2);
+}
+
+.storeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(46, 213, 115, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 3rem 2rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .homeBtn, .storeBtn {
+    width: 100%;
+  }
+}

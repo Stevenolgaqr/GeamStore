@@ -1,0 +1,227 @@
+/* Contact Page CSS */
+
+.page {
+  min-height: 100vh;
+  background: #0b0c10;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+}
+
+.glow {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(ellipse, rgba(230, 0, 0, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 24px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: rgba(230, 0, 0, 0.1);
+  border: 1px solid rgba(230, 0, 0, 0.3);
+  color: #ff4444;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 14px;
+  line-height: 1.15;
+}
+
+.accent {
+  background: linear-gradient(135deg, #e60000, #ff4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #a7aab7;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Contact Cards Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.discordCard:hover {
+  border-color: rgba(88, 101, 242, 0.5);
+  box-shadow: 0 8px 32px rgba(88, 101, 242, 0.15);
+}
+
+.emailCard:hover {
+  border-color: rgba(230, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(230, 0, 0, 0.12);
+}
+
+.statusCard:hover {
+  border-color: rgba(34, 197, 94, 0.4);
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
+}
+
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.discordCard .cardIcon {
+  background: rgba(88, 101, 242, 0.15);
+  color: #7289da;
+}
+
+.emailCard .cardIcon {
+  background: rgba(230, 0, 0, 0.12);
+  color: #ff4444;
+}
+
+.statusCard .cardIcon {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+
+.cardTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: #a7aab7;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.cardCta {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.03em;
+  margin-top: auto;
+}
+
+.discordCard .cardCta { color: #7289da; }
+.emailCard .cardCta { color: #ff4444; }
+.statusCard .cardCta { color: #22c55e; }
+
+/* FAQ Section */
+.faqSection {
+  margin-top: 0;
+}
+
+.faqTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.faqItem {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.faqItem:hover {
+  border-color: rgba(230, 0, 0, 0.25);
+}
+
+.faqQ {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.faqA {
+  font-size: 14px;
+  color: #a7aab7;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faqGrid {
+    grid-template-columns: 1fr;
+  }
+}

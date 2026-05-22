@@ -1,0 +1,313 @@
+/* ═══════════════════════════════════════════════════════════
+   Only-Cheats — Reviews & Support Page
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+.page {
+  padding-top: 72px;
+  min-height: 100vh;
+  background: #050508;
+}
+
+/* ── Header ── */
+.header {
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(180deg, #0a0f1f 0%, #050508 100%);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+}
+
+.label {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: #e2e8f0;
+  margin: 0 0 1rem;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.desc {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* ── Reviews Grid ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+.reviewCard {
+  background: rgba(13, 13, 20, 0.6);
+  border: 1px solid rgba(59, 130, 246, 0.06);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.reviewCard::before {
+  content: '"';
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  font-size: 4rem;
+  color: rgba(59, 130, 246, 0.08);
+  font-family: serif;
+  line-height: 1;
+}
+
+.reviewCard:hover {
+  border-color: rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  flex-shrink: 0;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.reviewerName {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #e2e8f0;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.reviewerGame {
+  font-size: 0.7rem;
+  color: #3b82f6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.reviewStars {
+  color: #f59e0b;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.reviewText {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.reviewDate {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  color: #475569;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* ── Supported Games ── */
+.gamesSection {
+  margin-bottom: 5rem;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #e2e8f0;
+  margin: 0 0 0.5rem;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.sectionDesc {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.gameCard {
+  background: rgba(13, 13, 20, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.06);
+  border-radius: 1rem;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.gameCard:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gameIcon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.gameName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.gameStatus {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.gameStatusUpdating {
+  color: #f59e0b;
+}
+
+/* ── Support Section ── */
+.supportSection {
+  margin-bottom: 2rem;
+}
+
+.supportGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.supportCard {
+  background: rgba(13, 13, 20, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  border-radius: 1.25rem;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.supportCard:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.supportIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.supportTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #e2e8f0;
+  margin-bottom: 0.5rem;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.supportDesc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.6;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .reviewsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gamesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 3rem 1.25rem 2rem;
+  }
+
+  .container {
+    padding: 0 1.25rem 3rem;
+  }
+
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gamesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .supportGrid {
+    grid-template-columns: 1fr;
+  }
+}
