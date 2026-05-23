@@ -32,7 +32,7 @@ export const gameImages: Record<string, string> = {
   'abi': '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180722.jpeg',
   'apex': '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180723 (1).jpeg',
   'fortnite': '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180735.jpeg',
-  'spoofer': '/cheats/اريد_نفس_هذه_الصوره_._202605172217.jpeg',
+  'spoofer': '/cheats/WID_Spoofer_—_Vector_Spoofer_202605231215.jpeg',
   'battlefield': '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180729.jpeg',
   'arc': '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180730.jpeg',
   'rust': '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180731.jpeg',
@@ -46,6 +46,14 @@ export const gameImages: Record<string, string> = {
   'r6': '/cheats/r6.jpeg',
   'valorant': '/cheats/valorant.jpeg',
   'albion': '/cheats/albion.jpeg',
+  'dbd': '/cheats/Dead_by_Daylight_—_Arcane_202605212335.jpeg',
+  'deadside': '/cheats/Deadside_—_Arcane_Deadside_✦_202605212335.jpeg',
+  'dune': '/cheats/Dune__Awakening_—_Arcane_✦_202605212335.jpeg',
+  'farlight': '/cheats/Farlight_84_—_Arcane_✦_202605212335.jpeg',
+  'grayzone': '/cheats/Gray_Zone_Warfare_—_Fellas_202605231215.jpeg',
+  'hell-let-loose': '/cheats/Hell_Let_Loose_—_Arcane_202605231215.jpeg',
+  'highguard': '/cheats/HighGuard_—_Arcane_✦_Positive__202605231215.jpeg',
+  'humanitz': '/cheats/HumanitZ_—_Arcane_✦_Positive__202605231216.jpeg',
 };
 
 export const cheats: Cheat[] = [
