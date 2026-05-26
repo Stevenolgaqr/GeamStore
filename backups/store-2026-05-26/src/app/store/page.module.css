@@ -1,0 +1,497 @@
+/* ════════════════════════════════════════════
+   Store Page — Nova Store Pro Max
+   ════════════════════════════════════════════ */
+
+.page {
+  padding-top: 72px;
+  min-height: 100vh;
+}
+
+/* ── Store Header ── */
+.storeHeader {
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(180deg, rgba(230, 0, 0, 0.03) 0%, var(--bg-main) 100%);
+}
+
+.storeHeader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(230, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+}
+
+.storeLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+}
+
+.storeTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--text-main);
+  margin: 0 0 1rem;
+  font-family: var(--font-ar);
+}
+
+.storeDesc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+  font-family: var(--font-ar);
+}
+
+/* ── Search Bar ── */
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.searchInputWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 1.2rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.9rem 3rem 0.9rem 1.2rem;
+  border-radius: var(--border-radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 18, 22, 0.8);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-family: var(--font-ar);
+  transition: var(--transition-smooth);
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: rgba(230, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(230, 0, 0, 0.2);
+  background: rgba(17, 18, 22, 1);
+}
+
+.clearSearch {
+  position: absolute;
+  left: 1.2rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+  transition: var(--transition-fast);
+}
+
+.clearSearch:hover {
+  color: var(--primary-light);
+}
+
+.searchResultsInfo {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--primary-light);
+  font-weight: 700;
+  font-family: var(--font-ar);
+}
+
+/* ── Filter Tabs — Premium Icon Cards ── */
+.filtersWrapper {
+  position: relative;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.filtersScrollFade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--bg-main));
+  pointer-events: none;
+  z-index: 20;
+}
+
+[dir="rtl"] .filtersScrollFade {
+  right: auto;
+  left: 0;
+  background: linear-gradient(to left, transparent, var(--bg-main));
+}
+
+.filters {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0 2rem 2.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filterTab {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(20, 21, 28, 0.7);
+  backdrop-filter: blur(12px);
+  color: rgba(180, 185, 205, 0.7);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-interactive);
+  min-height: 44px;
+  font-family: var(--font-label), var(--font-ar);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.filterTab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.filterTab:hover {
+  border-color: rgba(230, 0, 0, 0.3);
+  color: #fff;
+  background: rgba(230, 0, 0, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(230, 0, 0, 0.15);
+}
+
+.filterTab:hover::before {
+  opacity: 1;
+}
+
+.filterTab span {
+  font-size: 1rem;
+  line-height: 1;
+  filter: saturate(0.7);
+  transition: filter 0.25s ease;
+}
+
+.filterTab:hover span {
+  filter: saturate(1.2);
+}
+
+.filterTabActive {
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.25), rgba(180, 0, 0, 0.15)) !important;
+  border-color: rgba(230, 0, 0, 0.5) !important;
+  color: #fff !important;
+  box-shadow:
+    0 6px 24px rgba(230, 0, 0, 0.25),
+    0 0 0 1px rgba(230, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.filterTabActive span {
+  filter: saturate(1.5) !important;
+}
+
+.filterTabActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 2px;
+  background: var(--primary-light);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0 8px var(--primary-light);
+}
+
+/* ── Products Grid ── */
+.productsContainer {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-family: var(--font-ar);
+}
+
+/* ── Games Catalog Grid ── */
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Game Card ── */
+.gameCard {
+  height: 250px;
+  border-radius: var(--border-radius-lg);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.gameCard:nth-child(1) { animation-delay: 0.03s; }
+.gameCard:nth-child(2) { animation-delay: 0.08s; }
+.gameCard:nth-child(3) { animation-delay: 0.13s; }
+.gameCard:nth-child(4) { animation-delay: 0.18s; }
+.gameCard:nth-child(5) { animation-delay: 0.23s; }
+.gameCard:nth-child(6) { animation-delay: 0.28s; }
+.gameCard:nth-child(7) { animation-delay: 0.33s; }
+.gameCard:nth-child(8) { animation-delay: 0.38s; }
+
+.gameCard:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-red-strong);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(230, 0, 0, 0.15);
+}
+
+.gameImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gameCard:hover .gameImage {
+  transform: scale(1.08);
+}
+
+.gameCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 12, 16, 0.95) 0%, rgba(11, 12, 16, 0.35) 50%, transparent 100%);
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.gameCard:hover .gameCardOverlay {
+  background: linear-gradient(to top, rgba(11, 12, 16, 0.98) 0%, rgba(11, 12, 16, 0.15) 60%, transparent 100%);
+}
+
+.gameStar {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.gameCard:hover .gameStar {
+  background: rgba(230, 0, 0, 0.85);
+  box-shadow: 0 0 12px rgba(230, 0, 0, 0.5);
+}
+
+.gameCardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gameCardName {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.4rem;
+  font-family: var(--font-ar);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.gameCardCount {
+  font-size: 0.78rem;
+  color: #b0b5c5;
+  margin: 0;
+  font-family: var(--font-ar);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--border-radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  transition: var(--transition-fast);
+}
+
+.gameCard:hover .gameCardCount {
+  background: rgba(230, 0, 0, 0.12);
+  border-color: rgba(230, 0, 0, 0.3);
+  color: #f0f2f8;
+}
+
+.gameCardBtn {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  margin-top: 0.8rem;
+  font-family: var(--font-ar);
+  transition: var(--transition-smooth);
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.gameCard:hover .gameCardBtn {
+  opacity: 1;
+  color: var(--primary-light);
+  transform: translateY(0);
+}
+
+/* ── Back Navigation ── */
+.backContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.backButton {
+  padding: 0.6rem 1.5rem;
+  background: var(--primary-dim);
+  border: 1px solid var(--border-red);
+  color: var(--primary-light);
+  border-radius: var(--border-radius-full);
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: var(--font-ar);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.backButton:hover {
+  background: rgba(230, 0, 0, 0.12);
+  border-color: rgba(230, 0, 0, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(230, 0, 0, 0.15);
+}
+
+/* ── Placeholder ── */
+.gameImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(230, 0, 0, 0.04), rgba(13, 13, 20, 0.98));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gameImagePlaceholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.placeholderIcon {
+  font-size: 3.5rem;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 10px rgba(230, 0, 0, 0.2));
+  transition: var(--transition-smooth);
+  display: inline-block;
+}
+
+.gameCard:hover .placeholderIcon {
+  opacity: 0.28;
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 15px rgba(230, 0, 0, 0.4));
+}
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+  .productsGrid { grid-template-columns: repeat(3, 1fr); }
+  .gamesGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .productsGrid { grid-template-columns: repeat(2, 1fr); }
+  .gamesGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .storeHeader { padding: 3rem 1.25rem 2rem; }
+  .filters { padding: 0 1.25rem 1.5rem; }
+  .productsContainer { padding: 0 1.25rem 4rem; }
+  .productsGrid { grid-template-columns: 1fr; }
+  .gamesGrid { grid-template-columns: 1fr; }
+}
