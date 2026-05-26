@@ -6,19 +6,17 @@ import styles from './ProductImageGallery.module.css';
 type Props = {
   images: string[];
   alt: string;
-  placeholderIcon?: string;
   imagesLabel: string;
 };
 
 export default function ProductImageGallery({
   images,
   alt,
-  placeholderIcon = '🎮',
   imagesLabel,
 }: Props) {
   const list = useMemo(() => images.filter(Boolean), [images]);
   const [index, setIndex] = useState(0);
-  const [fade, setFade] = useState(false);
+  const [transitioning, setTransitioning] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,15 +25,16 @@ export default function ProductImageGallery({
 
   const goTo = useCallback(
     (next: number) => {
-      if (list.length <= 1) return;
+      if (list.length <= 1 || transitioning) return;
       const i = ((next % list.length) + list.length) % list.length;
-      setFade(true);
+      if (i === index) return;
+      setTransitioning(true);
       window.setTimeout(() => {
         setIndex(i);
-        setFade(false);
-      }, 120);
+        setTransitioning(false);
+      }, 180);
     },
-    [list.length]
+    [list.length, index, transitioning]
   );
 
   const scrollThumbs = (dir: -1 | 1) => {
@@ -55,7 +54,7 @@ export default function ProductImageGallery({
       <div className={styles.gallery}>
         <div className={styles.mainStage}>
           <div className={styles.placeholder}>
-            <span className={styles.placeholderIcon}>{placeholderIcon}</span>
+            <span className={styles.placeholderMark} aria-hidden />
           </div>
         </div>
       </div>
@@ -94,7 +93,7 @@ export default function ProductImageGallery({
           key={current}
           src={current}
           alt={`${alt} — ${index + 1}`}
-          className={`${styles.mainImage} ${fade ? styles.mainImageFade : ''}`}
+          className={`${styles.mainImage} ${transitioning ? styles.mainImageTransition : ''}`}
         />
       </div>
 

@@ -1,8 +1,10 @@
 export interface CheatPlan {
   label: string;
+  labelEn?: string;
   price: number;
   currency: string;
   duration: string;
+  popular?: boolean;
   sellauthProductId?: string;
   sellauthVariantId?: string;
 }

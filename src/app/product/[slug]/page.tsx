@@ -1,13 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { cheats, gameImages } from '@/data/cheats';
 import { use } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { formatRetailPrice } from '@/lib/pricing';
+import { getPlanDisplayLabel, isPlanPopular } from '@/lib/productPlans';
 import ProductImageGallery from '@/components/ProductImageGallery';
+import { IconAlert, IconCheck, IconStarRating } from '@/components/icons/ProductIcons';
 import styles from './page.module.css';
+
+const DESC_CLAMP_CHARS = 220;
 
 function buildProductImages(cheat: (typeof cheats)[number]): string[] {
   const urls: string[] = [];
@@ -23,56 +27,121 @@ function buildProductImages(cheat: (typeof cheats)[number]): string[] {
   return urls;
 }
 
+function getStatusClass(status: string): string {
+  if (status === 'undetected') return styles.statusUndetected;
+  if (status === 'updating') return styles.statusUpdating;
+  return styles.statusDetected;
+}
+
 export default function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const cheat = cheats.find((c) => c.slug === slug);
-  const [selectedPlan, setSelectedPlan] = useState(1); // default to weekly
+  const [selectedPlan, setSelectedPlan] = useState(1);
+  const [descExpanded, setDescExpanded] = useState(false);
+  const [featuresVisible, setFeaturesVisible] = useState(false);
+  const featuresRef = useRef<HTMLDivElement>(null);
   const { language, t } = useLanguage();
+
+  useEffect(() => {
+    const el = featuresRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setFeaturesVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [cheat?.slug]);
+
+  const handleCheckout = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (!cheat) return;
+      const plan = cheat.plans[selectedPlan];
+      const isAvailable = !!plan?.sellauthProductId;
+
+      if (isAvailable) {
+        e.preventDefault();
+        const embed = typeof window !== 'undefined' ? (window as unknown as { sellAuthEmbed?: { checkout: (el: HTMLElement, opts: object) => void } }).sellAuthEmbed : undefined;
+        if (embed) {
+          embed.checkout(e.currentTarget, {
+            cart: [{
+              productId: parseInt(plan.sellauthProductId!),
+              variantId: plan.sellauthVariantId ? parseInt(plan.sellauthVariantId) : undefined,
+              quantity: 1,
+            }],
+            shopId: 185564,
+            modal: true,
+          });
+        } else {
+          window.open(`https://nova-store.sellauth.com/product/${plan.sellauthProductId}`, '_blank');
+        }
+      } else {
+        e.preventDefault();
+        window.open('https://discord.gg/novastore', '_blank');
+      }
+    },
+    [cheat, selectedPlan]
+  );
 
   if (!cheat) {
     return (
       <div className={styles.page}>
         <div className={styles.notFound}>
-          <p>❌ المنتج غير موجود</p>
+          <IconAlert size={32} />
+          <p>{t('product.notFound')}</p>
           <Link href="/store" className={styles.notFoundLink}>
-            ← العودة للمتجر
+            {t('product.backToStore')}
           </Link>
         </div>
       </div>
     );
   }
 
-  const statusClass =
-    cheat.status === 'undetected' ? styles.statusUndetected : styles.statusUpdating;
+  const statusClass = getStatusClass(cheat.status);
 
-  // SEO: JSON-LD Schema for Google Rich Results
   const jsonLd = {
-    "@context": "https://schema.org/",
-    "@type": "SoftwareApplication",
-    "name": cheat.title,
-    "description": cheat.description,
-    "applicationCategory": "GameApplication",
-    "operatingSystem": "Windows 10, Windows 11",
-    "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "USD",
-      "lowPrice": Math.min(...cheat.plans.map(p => p.price)),
-      "highPrice": Math.max(...cheat.plans.map(p => p.price)),
-      "offerCount": cheat.plans.length
+    '@context': 'https://schema.org/',
+    '@type': 'SoftwareApplication',
+    name: cheat.title,
+    description: cheat.description,
+    applicationCategory: 'GameApplication',
+    operatingSystem: 'Windows 10, Windows 11',
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'USD',
+      lowPrice: Math.min(...cheat.plans.map((p) => p.price)),
+      highPrice: Math.max(...cheat.plans.map((p) => p.price)),
+      offerCount: cheat.plans.length,
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": cheat.rating,
-      "reviewCount": cheat.reviews
-    }
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: cheat.rating,
+      reviewCount: cheat.reviews,
+    },
   };
 
   const displayTitle = language === 'en' && cheat.titleEn ? cheat.titleEn : cheat.title;
   const displayGame = language === 'en' && cheat.gameEn ? cheat.gameEn : cheat.game;
-  const displayDesc = language === 'en' && (cheat as any).descriptionEn ? (cheat as any).descriptionEn : cheat.description;
-  const displayFeatures = language === 'en' && (cheat as any).featuresEn ? (cheat as any).featuresEn : cheat.features;
+  const displayDesc =
+    language === 'en' && cheat.descriptionEn ? cheat.descriptionEn : cheat.description;
+  const displayFeatures =
+    language === 'en' && cheat.featuresEn ? cheat.featuresEn : cheat.features;
   const statusLabel = t(`status.${cheat.status}`) || cheat.statusLabel;
   const productImages = buildProductImages(cheat);
+  const selectedPlanData = cheat.plans[selectedPlan];
+  const isCheckoutAvailable = !!selectedPlanData?.sellauthProductId;
+  const descNeedsClamp = displayDesc.length > DESC_CLAMP_CHARS;
+  const descShown =
+    descExpanded || !descNeedsClamp
+      ? displayDesc
+      : `${displayDesc.slice(0, DESC_CLAMP_CHARS).trim()}…`;
 
   return (
     <div className={styles.page}>
@@ -80,14 +149,12 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* ═══ Product Hero ═══ */}
+
       <div className={styles.productHero}>
-        {/* Image */}
         <div className={styles.imageCol}>
           <ProductImageGallery
             images={productImages}
             alt={displayTitle}
-            placeholderIcon={cheat.gameIcon}
             imagesLabel={t('product.productImages')}
           />
           <div className={`${styles.statusFloating} ${statusClass}`}>
@@ -96,48 +163,80 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
           </div>
         </div>
 
-        {/* Info */}
         <div className={styles.infoCol}>
-          <div className={styles.breadcrumb}>
+          <nav className={`${styles.breadcrumb} ${styles.infoStagger}`} style={{ '--stagger': 0 } as React.CSSProperties} aria-label="Breadcrumb">
             <Link href="/">{t('product.home')}</Link>
-            <span>/</span>
+            <span aria-hidden>/</span>
             <Link href="/store">{t('nav.store')}</Link>
-            <span>/</span>
+            <span aria-hidden>/</span>
             <span>{displayGame}</span>
-          </div>
+          </nav>
 
-          <span className={styles.gameLabel}>
-            {cheat.gameIcon} {displayGame}
+          <span
+            className={`${styles.gameLabel} ${styles.infoStagger}`}
+            style={{ '--stagger': 1 } as React.CSSProperties}
+          >
+            {displayGame}
           </span>
 
-          <h1 className={styles.productTitle}>{displayTitle}</h1>
-          <p className={styles.productDesc}>{displayDesc}</p>
+          <h1
+            className={`${styles.productTitle} ${styles.infoStagger}`}
+            style={{ '--stagger': 2 } as React.CSSProperties}
+          >
+            {displayTitle}
+          </h1>
 
-          {/* Rating */}
-          <div className={styles.ratingRow}>
-            <span className={styles.stars}>{'★'.repeat(Math.round(cheat.rating))}</span>
-            <span className={styles.ratingNum}>{cheat.rating}</span>
-            <span className={styles.reviewCount}>({cheat.reviews} {t('card.reviews')})</span>
+          <div
+            className={`${styles.trustRow} ${styles.infoStagger}`}
+            style={{ '--stagger': 3 } as React.CSSProperties}
+          >
+            <div className={styles.ratingBlock} aria-label={`${cheat.rating} out of 5, ${cheat.reviews} ${t('card.reviews')}`}>
+              <IconStarRating rating={cheat.rating} />
+              <span className={styles.ratingNum}>{cheat.rating.toFixed(1)}</span>
+              <span className={styles.reviewCount}>
+                ({cheat.reviews} {t('card.reviews')})
+              </span>
+            </div>
+            <span className={`${styles.trustStatusChip} ${statusClass}`}>
+              <span className={styles.statusDot} />
+              {statusLabel}
+            </span>
           </div>
 
-          {/* Plans */}
-          <h3 className={styles.plansTitle} id="plans-heading">
+          <div
+            className={`${styles.descWrap} ${styles.infoStagger}`}
+            style={{ '--stagger': 4 } as React.CSSProperties}
+          >
+            <p className={styles.productDesc}>{descShown}</p>
+            {descNeedsClamp && (
+              <button
+                type="button"
+                className={styles.readMoreBtn}
+                onClick={() => setDescExpanded((v) => !v)}
+                aria-expanded={descExpanded}
+              >
+                {descExpanded ? t('product.readLess') : t('product.readMore')}
+              </button>
+            )}
+          </div>
+
+          <h3
+            className={`${styles.plansTitle} ${styles.infoStagger}`}
+            id="plans-heading"
+            style={{ '--stagger': 5 } as React.CSSProperties}
+          >
             {t('product.choosePlan')}
           </h3>
           <div
-            className={styles.plans}
+            className={`${styles.plans} ${styles.infoStagger}`}
+            style={{ '--stagger': 6 } as React.CSSProperties}
             role="radiogroup"
             aria-labelledby="plans-heading"
           >
             {cheat.plans.map((plan, i) => {
-              let displayDuration = plan.label;
-              if (language === 'en') {
-                if (plan.label === 'يوم واحد') displayDuration = '1 Day';
-                if (plan.label === 'أسبوع') displayDuration = '1 Week';
-                if (plan.label === 'شهر') displayDuration = '1 Month';
-                if (plan.label === 'مدى الحياة') displayDuration = 'Lifetime';
-              }
+              const displayDuration = getPlanDisplayLabel(plan, language, t);
               const isSelected = selectedPlan === i;
+              const showPopular = isPlanPopular(plan, i);
               return (
                 <button
                   type="button"
@@ -147,7 +246,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   className={`${styles.planCard} ${isSelected ? styles.planCardActive : ''}`}
                   onClick={() => setSelectedPlan(i)}
                 >
-                  {i === 1 && <div className={styles.planBadge}>{t('product.popular')}</div>}
+                  {showPopular && <div className={styles.planBadge}>{t('product.popular')}</div>}
                   <div className={styles.planDuration}>{displayDuration}</div>
                   <div className={styles.planPrice}>${formatRetailPrice(plan.price)}</div>
                   <span className={styles.planCurrency}>USD / {plan.duration}</span>
@@ -156,65 +255,51 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
             })}
           </div>
 
-          <div className={styles.buyActions}>
-            {(() => {
-              const plan = cheat.plans[selectedPlan];
-              const isAvailable = !!plan?.sellauthProductId;
-              return (
-                <button
-                  type="button"
-                  className={`${styles.buyNow} ${!isAvailable ? styles.buyNowUnavailable : ''}`}
-                  onClick={(e) => {
-                    if (isAvailable) {
-                      e.preventDefault();
-                      if (typeof window !== 'undefined' && (window as any).sellAuthEmbed) {
-                        (window as any).sellAuthEmbed.checkout(e.currentTarget, {
-                          cart: [{
-                            productId: parseInt(plan.sellauthProductId!),
-                            variantId: plan.sellauthVariantId
-                              ? parseInt(plan.sellauthVariantId)
-                              : undefined,
-                            quantity: 1,
-                          }],
-                          shopId: 185564,
-                          modal: true,
-                        });
-                      } else {
-                        window.open(
-                          `https://nova-store.sellauth.com/product/${plan.sellauthProductId}`,
-                          '_blank'
-                        );
-                      }
-                    } else {
-                      e.preventDefault();
-                      window.open('https://discord.gg/novastore', '_blank');
-                    }
-                  }}
-                >
-                  {isAvailable
-                    ? `${t('product.securePay')} — $${formatRetailPrice(plan.price)}`
-                    : t('product.buyDiscord')}
-                </button>
-              );
-            })()}
+          <div
+            className={`${styles.buyActions} ${styles.infoStagger}`}
+            style={{ '--stagger': 7 } as React.CSSProperties}
+          >
+            <button
+              type="button"
+              className={`${styles.buyNow} ${!isCheckoutAvailable ? styles.buyNowUnavailable : ''}`}
+              onClick={handleCheckout}
+            >
+              <span className={styles.buyNowLabel}>
+                {isCheckoutAvailable ? t('product.buyNow') : t('product.buyDiscord')}
+              </span>
+              {isCheckoutAvailable && selectedPlanData && (
+                <span className={styles.buyNowPrice}>
+                  ${formatRetailPrice(selectedPlanData.price)}
+                </span>
+              )}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* ═══ Features ═══ */}
-      <div className={styles.featuresSection}>
-        <p className={styles.sectionLabel}>{t('product.features')}</p>
-        <h2 className={styles.featTitle}>{t('product.whatYouGet')}</h2>
-        <div className={styles.featuresList}>
+      <section
+        ref={featuresRef}
+        className={`${styles.featuresSection} ${featuresVisible ? styles.featuresSectionVisible : ''}`}
+        aria-labelledby="features-heading"
+      >
+        <h2 id="features-heading" className={styles.featTitle}>
+          {t('product.whatYouGet')}
+        </h2>
+        <ul className={styles.featuresList}>
           {displayFeatures.map((feat: string, i: number) => (
-            <div key={i} className={styles.featureItem}>
-              <div className={styles.featureCheck}>✓</div>
-              {feat}
-            </div>
+            <li
+              key={i}
+              className={styles.featureItem}
+              style={{ '--feature-delay': `${i * 50}ms` } as React.CSSProperties}
+            >
+              <span className={styles.featureCheck} aria-hidden>
+                <IconCheck size={14} />
+              </span>
+              <span>{feat}</span>
+            </li>
           ))}
-        </div>
-      </div>
-
+        </ul>
+      </section>
     </div>
   );
 }
