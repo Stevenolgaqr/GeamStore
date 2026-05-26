@@ -230,7 +230,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-family: var(--font-ar);
+  font-family: var(--font-label);
+  letter-spacing: 0.02em;
 }
 
 /* ── Meta ── */
@@ -252,6 +253,8 @@
 
 .reviewCount {
   color: var(--text-dim);
+  font-family: var(--font-label);
+  letter-spacing: 0.03em;
 }
 
 /* ── Pricing ── */
@@ -267,7 +270,8 @@
 .priceFrom {
   font-size: 0.67rem;
   color: var(--text-dim);
-  font-family: var(--font-ar);
+  font-family: var(--font-label);
+  letter-spacing: 0.04em;
 }
 
 .price {
@@ -283,34 +287,34 @@
   font-size: 0.7rem;
   color: var(--text-dim);
   font-weight: 600;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
+  letter-spacing: 0.04em;
 }
 
 /* ── CTA ── */
 .cta {
-  display: flex;
-  gap: 0.5rem;
   padding: 0 1.2rem 1.2rem;
 }
 
 .buyBtn {
-  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
   padding: 0.72rem;
   background: var(--primary-gradient);
   color: #fff;
   border: none;
   border-radius: var(--border-radius-sm);
-  font-weight: 700;
-  font-size: 0.84rem;
+  font-weight: 800;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: var(--transition-smooth);
   font-family: var(--font-ar);
   text-decoration: none;
   text-align: center;
   box-shadow: 0 4px 16px rgba(230, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media (hover: hover) {
@@ -321,44 +325,11 @@
   }
 }
 
-.buyBtn:focus-visible,
-.detailBtn:focus-visible {
+.buyBtn:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
 .buyBtn:active {
   transform: scale(0.97);
-}
-
-.detailBtn {
-  padding: 0.72rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--border-radius-sm);
-  font-weight: 700;
-  font-size: 0.84rem;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  text-decoration: none;
-  font-family: var(--font-ar);
-  white-space: nowrap;
-}
-
-@media (hover: hover) {
-  .detailBtn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.14);
-    color: var(--text-main);
-  }
-}
-
-.detailBtn:active {
-  transform: scale(0.97);
-}
-
-.buyBtn,
-.detailBtn {
-  min-height: 44px;
 }

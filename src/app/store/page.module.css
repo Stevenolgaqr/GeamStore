@@ -25,12 +25,13 @@
 
 .storeHeaderCompact .storeTitle {
   font-size: clamp(1.35rem, 3vw, 1.75rem);
-  margin-bottom: 0;
+  margin-bottom: 1.25rem;
 }
 
 .storeHeaderCompact .searchContainer {
   margin-inline: 0;
   max-width: 100%;
+  margin-top: 0.25rem;
 }
 
 .storeHeader::before {
@@ -68,14 +69,14 @@
   color: var(--primary-light);
   font-weight: 700;
   margin: 0 0 0.75rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
 }
 
 .storeTitle {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 900;
   color: var(--text-main);
-  margin: 0 0 0.75rem;
+  margin: 0 0 1.35rem;
   font-family: var(--font-ar);
   line-height: 1.15;
 }
@@ -86,7 +87,8 @@
   max-width: 52ch;
   margin: 0 auto 1.25rem;
   line-height: 1.7;
-  font-family: var(--font-ar);
+  font-family: var(--font-label);
+  letter-spacing: 0.02em;
 }
 
 .statsRow {
@@ -101,8 +103,8 @@
 .stat {
   font-size: 0.8rem;
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  letter-spacing: 0.03em;
+  font-family: var(--font-label);
+  letter-spacing: 0.04em;
 }
 
 .stat strong {
@@ -127,7 +129,7 @@
   display: flex;
   justify-content: center;
   max-width: 520px;
-  margin: 0 auto;
+  margin: 0.5rem auto 0;
 }
 
 .searchInputWrapper {
@@ -162,6 +164,13 @@
     background-color var(--duration-fast, 200ms) ease-out;
   outline: none;
   min-height: 48px;
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+  font-family: var(--font-label);
+  letter-spacing: 0.03em;
+  opacity: 1;
 }
 
 .searchInput:focus-visible {
