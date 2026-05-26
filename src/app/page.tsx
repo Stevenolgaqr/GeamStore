@@ -29,14 +29,14 @@ export default function Home() {
   ];
 
   const allGames = [
-    { nameEn: 'ARENA BREAKOUT INFINITE', nameAr: 'ارينا بريك اوت إنفينيت', image: '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180722.jpeg', slug: 'ancient-abi-radar' },
-    { nameEn: 'CALL OF DUTY', nameAr: 'كول أوف ديوتي', image: '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180723.jpeg', slug: 'ancient-cod' },
-    { nameEn: 'APEX LEGENDS', nameAr: 'ابيكس ليجندز', image: '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180723 (1).jpeg', slug: 'ancient-apex' },
-    { nameEn: 'FORTNITE', nameAr: 'فورتنايت', image: '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180735.jpeg', slug: 'ancient-fortnite' },
-    { nameEn: 'HWID SPOOFER', nameAr: 'سبوفر تخطي الباند', image: '/cheats/اريد_نفس_هذه_الصوره_._202605172217.jpeg', slug: 'gouda-spoofer' },
-    { nameEn: 'BATTLEFIELD NOVA', nameAr: 'باتلفيلد نوفا', image: '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180729.jpeg', slug: 'ancient-bf6' },
-    { nameEn: 'ARC RAIDERS', nameAr: 'أرك رايدرز', image: '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180730.jpeg', slug: 'ancient-arc-raiders' },
-    { nameEn: 'RUST NOVA', nameAr: 'راست نوفا', image: '/cheats/Cinematic_gaming_banner,_16_9_widescreen,_202605180731.jpeg', slug: 'ancient-rust' },
+    { nameEn: 'ARENA BREAKOUT INFINITE', nameAr: 'ارينا بريك اوت إنفينيت', image: '/cheats/abi.jpeg', slug: 'ancient-abi-radar' },
+    { nameEn: 'CALL OF DUTY', nameAr: 'كول أوف ديوتي', image: '/cheats/cod.jpeg', slug: 'ancient-cod' },
+    { nameEn: 'APEX LEGENDS', nameAr: 'ابيكس ليجندز', image: '/cheats/apex.jpeg', slug: 'ancient-apex' },
+    { nameEn: 'FORTNITE', nameAr: 'فورتنايت', image: '/cheats/fortnite.jpeg', slug: 'ancient-fortnite' },
+    { nameEn: 'HWID SPOOFER', nameAr: 'سبوفر تخطي الباند', image: '/cheats/spoofer.jpeg', slug: 'gouda-spoofer' },
+    { nameEn: 'BATTLEFIELD NOVA', nameAr: 'باتلفيلد نوفا', image: '/cheats/battlefield.jpeg', slug: 'ancient-bf6' },
+    { nameEn: 'ARC RAIDERS', nameAr: 'أرك رايدرز', image: '/cheats/arc.jpeg', slug: 'ancient-arc-raiders' },
+    { nameEn: 'RUST NOVA', nameAr: 'راست نوفا', image: '/cheats/rust.jpeg', slug: 'ancient-rust' },
   ];
 
   return (

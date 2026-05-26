@@ -1,0 +1,33 @@
+{
+  "keyhubApiKeyEnv": "KEYHUB_API_KEY",
+  "webhookBase": "https://keyhub.club/api/external/sellauth-deliver",
+  "pilots": [
+    {
+      "name": "Ancient Apex",
+      "sellauthProductId": "727058",
+      "variants": [
+        { "sellauthVariantId": "1179736", "label": "1 Day", "keyhubVariationId": "var_477dcb86881b1c10dbbf73f1" },
+        { "sellauthVariantId": "1179737", "label": "1 week", "keyhubVariationId": "var_92d13548c4d16cfc141ff336" },
+        { "sellauthVariantId": "1179738", "label": "1 Month", "keyhubVariationId": "var_22eb8211bba05ce482b7f44c" }
+      ]
+    },
+    {
+      "name": "Arcane Apex",
+      "sellauthProductId": "727070",
+      "variants": [
+        { "sellauthVariantId": "1179774", "label": "24 hours", "keyhubVariationId": "var_4e43e8e9ec6d9746912158b3" },
+        { "sellauthVariantId": "1179775", "label": "1 Week", "keyhubVariationId": "var_d3d4bd05d8036ec748a76167" },
+        { "sellauthVariantId": "1179776", "label": "1 Month", "keyhubVariationId": "var_d68f20d9957156e7599ef83c" }
+      ]
+    },
+    {
+      "name": "Ancient BF6",
+      "sellauthProductId": "727060",
+      "variants": [
+        { "sellauthVariantId": "1179742", "label": "24 hours", "keyhubVariationId": "var_922495e9852a56c6eda15f4d" },
+        { "sellauthVariantId": "1179743", "label": "1 Week", "keyhubVariationId": "var_ee7cadc0d48027d654ad80e4" },
+        { "sellauthVariantId": "1179744", "label": "1 Month", "keyhubVariationId": "var_ae161102f624d17b6695771a" }
+      ]
+    }
+  ]
+}

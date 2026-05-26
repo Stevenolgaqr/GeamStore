@@ -5,6 +5,7 @@ import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats';
 import { useLanguage } from '@/context/LanguageContext';
+import { formatRetailPrice } from '@/lib/pricing';
 import styles from './OCProductCard.module.css';
 
 interface Props {
@@ -68,7 +69,7 @@ export default function OCProductCard({ cheat }: Props) {
         {/* Price */}
         <div className={styles.pricing}>
           <span className={styles.priceFrom}>{t('card.startsFrom')}</span>
-          <span className={styles.price}>${lowestPrice}</span>
+          <span className={styles.price}>${formatRetailPrice(lowestPrice)}</span>
           <span className={styles.priceCurrency}>USD</span>
         </div>
       </div>

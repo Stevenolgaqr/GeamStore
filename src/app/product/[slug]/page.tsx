@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cheats, gameImages } from '@/data/cheats';
 import { use } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { formatRetailPrice } from '@/lib/pricing';
 import styles from './page.module.css';
 
 export default function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -125,7 +126,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                 >
                   {i === 1 && <div className={styles.planBadge}>{t('product.popular')}</div>}
                   <div className={styles.planDuration}>{displayDuration}</div>
-                  <div className={styles.planPrice}>${plan.price}</div>
+                  <div className={styles.planPrice}>${formatRetailPrice(plan.price)}</div>
                   <span className={styles.planCurrency}>USD / {plan.duration}</span>
                 </div>
               );
@@ -164,7 +165,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   style={{ width: '100%', display: 'flex', justifyContent: 'center', gap: '0.5rem', alignItems: 'center' }}
                 >
                   {isAvailable ? (
-                    <>🔒 {t('product.securePay')} — ${plan.price}</>
+                    <>🔒 {t('product.securePay')} — ${formatRetailPrice(plan.price)}</>
                   ) : (
                     <>💬 {t('product.buyDiscord')}</>
                   )}
@@ -188,6 +189,21 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
           ))}
         </div>
       </div>
+
+      {/* ═══ Gallery ═══ */}
+      {cheat.media && cheat.media.length > 0 && (
+        <div className={styles.gallerySection}>
+          <p className={styles.sectionLabel}>{t('product.gallery')}</p>
+          <h2 className={styles.featTitle}>{t('product.illustrativeMedia')}</h2>
+          <div className={styles.galleryGrid}>
+            {cheat.media.map((url: string, i: number) => (
+              <div key={i} className={styles.galleryItem}>
+                <img src={url} alt={`${displayTitle} media ${i + 1}`} className={styles.galleryImage} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
