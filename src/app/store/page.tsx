@@ -2,17 +2,11 @@
 
 import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { cheats, gameImages, storeCategoryOrder } from '@/data/cheats';
+import { cheats, storeCategoryOrder } from '@/data/cheats';
 import OCProductCard from '@/components/OCProductCard';
-import StoreGameCard from '@/components/StoreGameCard';
+import StoreCatalogPanel, { type CatalogCategory } from '@/components/StoreCatalogPanel';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './page.module.css';
-
-function getGameCardVariant(categoryKey: string): 'default' | 'featured' | 'wide' {
-  if (categoryKey === storeCategoryOrder[0]) return 'featured';
-  if (categoryKey === storeCategoryOrder[1]) return 'wide';
-  return 'default';
-}
 
 function StorePageContent() {
   const router = useRouter();
@@ -71,6 +65,15 @@ function StorePageContent() {
     [categoriesMap, language]
   );
 
+  const catalogCategories: CatalogCategory[] = useMemo(
+    () =>
+      sortedCategories.map((cat) => {
+        const stat = categoryStats.get(cat.key) ?? { total: 0, safe: 0 };
+        return { key: cat.key, label: cat.label, total: stat.total, safe: stat.safe };
+      }),
+    [sortedCategories, categoryStats]
+  );
+
   const categories = useMemo(
     () => [{ key: 'all', label: t('store.all') }, ...sortedCategories],
     [sortedCategories, t]
@@ -79,6 +82,7 @@ function StorePageContent() {
   const isSearching = searchQuery.trim().length > 0;
   const showGameCatalog = activeFilter === 'all' && !isSearching;
   const showProducts = isSearching || activeFilter !== 'all';
+  const showFilterTabs = !isSearching && !showGameCatalog;
 
   const displayProducts = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -138,38 +142,44 @@ function StorePageContent() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.storeHeader}>
+      <header
+        className={`${styles.storeHeader} ${showGameCatalog ? styles.storeHeaderCompact : ''}`}
+      >
         <p className={`${styles.storeLabel} ${styles.headerStagger}`} style={{ '--i': 0 } as React.CSSProperties}>
           {t('nav.store')}
         </p>
         <h1 className={`${styles.storeTitle} ${styles.headerStagger}`} style={{ '--i': 1 } as React.CSSProperties}>
           {t('store.title')}
         </h1>
-        <p className={`${styles.storeDesc} ${styles.headerStagger}`} style={{ '--i': 2 } as React.CSSProperties}>
-          {t('store.desc')}
-        </p>
+        {!showGameCatalog && (
+          <p className={`${styles.storeDesc} ${styles.headerStagger}`} style={{ '--i': 2 } as React.CSSProperties}>
+            {t('store.desc')}
+          </p>
+        )}
 
-        <div
-          className={`${styles.statsRow} ${styles.headerStagger}`}
-          style={{ '--i': 3 } as React.CSSProperties}
-          aria-label={language === 'en' ? 'Store statistics' : 'إحصائيات المتجر'}
-        >
-          <span className={styles.stat}>
-            <strong>{stats.gameCount}</strong> {t('store.statsGames')}
-          </span>
-          <span className={styles.statDivider} aria-hidden />
-          <span className={styles.stat}>
-            <strong>{stats.productCount}</strong> {t('store.statsProducts')}
-          </span>
-          <span className={styles.statDivider} aria-hidden />
-          <span className={`${styles.stat} ${styles.statSafe}`}>
-            <strong>{stats.undetectedCount}</strong> {t('store.statsUndetected')}
-          </span>
-        </div>
+        {!showGameCatalog && (
+          <div
+            className={`${styles.statsRow} ${styles.headerStagger}`}
+            style={{ '--i': 3 } as React.CSSProperties}
+            aria-label={language === 'en' ? 'Store statistics' : 'إحصائيات المتجر'}
+          >
+            <span className={styles.stat}>
+              <strong>{stats.gameCount}</strong> {t('store.statsGames')}
+            </span>
+            <span className={styles.statDivider} aria-hidden />
+            <span className={styles.stat}>
+              <strong>{stats.productCount}</strong> {t('store.statsProducts')}
+            </span>
+            <span className={styles.statDivider} aria-hidden />
+            <span className={`${styles.stat} ${styles.statSafe}`}>
+              <strong>{stats.undetectedCount}</strong> {t('store.statsUndetected')}
+            </span>
+          </div>
+        )}
 
         <div
           className={`${styles.searchContainer} ${styles.headerStagger}`}
-          style={{ '--i': 4 } as React.CSSProperties}
+          style={{ '--i': showGameCatalog ? 2 : 4 } as React.CSSProperties}
         >
           <div className={styles.searchInputWrapper}>
             <span className={styles.searchIcon} aria-hidden="true">
@@ -200,7 +210,7 @@ function StorePageContent() {
         </div>
       </header>
 
-      {!isSearching && (
+      {showFilterTabs && (
         <div className={styles.filtersWrapper}>
           <div className={styles.filtersScrollFade} aria-hidden />
           <div className={styles.filters} role="tablist" aria-label={t('store.all')}>
@@ -222,31 +232,12 @@ function StorePageContent() {
 
       <div ref={productsContainerRef} className={styles.productsContainer}>
         {showGameCatalog && (
-          <section className={styles.catalogSection} aria-labelledby="catalog-heading">
-            <h2 id="catalog-heading" className={styles.catalogTitle}>
-              {t('store.pickGame')}
-            </h2>
-            <div className={styles.gamesGrid}>
-              {sortedCategories.map((cat, index) => {
-                const stat = categoryStats.get(cat.key) ?? { total: 0, safe: 0 };
-                return (
-                  <StoreGameCard
-                    key={cat.key}
-                    label={cat.label}
-                    count={stat.total}
-                    countLabel={t('product.options')}
-                    ctaLabel={t('product.view')}
-                    imageUrl={gameImages[cat.key]}
-                    variant={getGameCardVariant(cat.key)}
-                    animationDelay={`${Math.min(index, 12) * 40}ms`}
-                    safeCount={stat.safe}
-                    safeLabel={t('store.safePrograms')}
-                    onSelect={() => selectGameFromCatalog(cat.key)}
-                  />
-                );
-              })}
-            </div>
-          </section>
+          <StoreCatalogPanel
+            categories={catalogCategories}
+            gameCount={stats.gameCount}
+            productCount={stats.productCount}
+            onSelectGame={selectGameFromCatalog}
+          />
         )}
 
         {showProducts && (

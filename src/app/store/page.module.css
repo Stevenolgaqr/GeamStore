@@ -16,6 +16,23 @@
   background: linear-gradient(180deg, rgba(230, 0, 0, 0.04) 0%, transparent 70%);
 }
 
+.storeHeaderCompact {
+  padding: 2rem 2rem 1.25rem;
+  text-align: start;
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+.storeHeaderCompact .storeTitle {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  margin-bottom: 0;
+}
+
+.storeHeaderCompact .searchContainer {
+  margin-inline: 0;
+  max-width: 100%;
+}
+
 .storeHeader::before {
   content: '';
   position: absolute;
@@ -508,6 +525,11 @@
 @media (max-width: 640px) {
   .storeHeader {
     padding: 2.5rem 1.25rem 1.75rem;
+  }
+
+  .storeHeaderCompact {
+    padding: 1.5rem 1.25rem 1rem;
+    text-align: start;
   }
 
   .filters {
