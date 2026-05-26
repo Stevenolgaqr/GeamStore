@@ -14,7 +14,7 @@
 |---------|-------------------|
 | **Make my status page public** | ✅ مفعّل (إلزامي — وإلا الرابط 404) |
 | **Slug** | `odx` (أو `nova-store` إن أردت اسمًا أوضح) |
-| **Published URL** | `https://keyhub.club/status/odx` |
+| **Published URL** | `https://cheatstatus.org/odx` |
 
 ### Branding (انسخ هذه القيم لمتجر Nova)
 
@@ -32,7 +32,7 @@
 
 1. اضغط **Preview** وتأكد أن المنتجات تظهر بحالاتها (Undetected / Maintenance / …).
 2. فعّل **Public** واحفظ.
-3. افتح الرابط في نافذة خاصة: https://keyhub.club/status/odx — يجب ألا يبقى «Loading status…» فقط.
+3. افتح الرابط في نافذة خاصة: https://cheatstatus.org/odx — يجب ألا يبقى «Loading status…» فقط.
 
 ---
 
@@ -41,7 +41,7 @@
 في `.env.local` (ومتغيرات Vercel للإنتاج):
 
 ```env
-NEXT_PUBLIC_KEYHUB_STATUS_URL=https://keyhub.club/status/odx
+NEXT_PUBLIC_KEYHUB_STATUS_URL=https://cheatstatus.org/odx
 NEXT_PUBLIC_KEYHUB_STATUS_SLUG=odx
 ```
 
@@ -75,7 +75,7 @@ node scripts/configure-keyhub-status-page.mjs --apply
 
 | الخطوة | الرابط |
 |--------|--------|
-| KeyHub مباشرة | https://keyhub.club/status/odx |
+| KeyHub مباشرة | https://cheatstatus.org/odx |
 | عبر المتجر | https://geam-store.vercel.app/status |
 
 ---
