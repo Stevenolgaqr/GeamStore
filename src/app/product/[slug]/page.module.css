@@ -25,55 +25,13 @@
 /* ── Image Side ── */
 .imageCol {
   position: relative;
-  border-radius: var(--border-radius-xl);
-  overflow: hidden;
-  aspect-ratio: 16/10;
-  border: 1px solid rgba(230, 0, 0, 0.1);
-  box-shadow: var(--shadow-card);
-}
-
-.productImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.imagePlaceholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #0f1017 0%, #1a1520 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16/10;
-}
-
-.imagePlaceholder::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(230, 0, 0, 0.1) 0%, transparent 70%);
-}
-
-.placeholderIcon {
-  font-size: 5rem;
-  filter: drop-shadow(0 0 15px rgba(230, 0, 0, 0.3));
-  animation: float 3.5s ease-in-out infinite;
-  z-index: 2;
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(11, 12, 16, 0.5) 0%, transparent 50%);
 }
 
 .statusFloating {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
+  pointer-events: none;
   padding: 0.5rem 1.25rem;
   border-radius: var(--border-radius-full);
   font-size: 0.75rem;

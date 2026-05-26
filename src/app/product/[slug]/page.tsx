@@ -6,7 +6,22 @@ import { cheats, gameImages } from '@/data/cheats';
 import { use } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { formatRetailPrice } from '@/lib/pricing';
+import ProductImageGallery from '@/components/ProductImageGallery';
 import styles from './page.module.css';
+
+function buildProductImages(cheat: (typeof cheats)[number]): string[] {
+  const urls: string[] = [];
+  if (cheat.image) urls.push(cheat.image);
+  if (cheat.media?.length) {
+    for (const url of cheat.media) {
+      if (url && !urls.includes(url)) urls.push(url);
+    }
+  }
+  if (urls.length === 0 && gameImages[cheat.category]) {
+    urls.push(gameImages[cheat.category]);
+  }
+  return urls;
+}
 
 export default function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -57,6 +72,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const displayDesc = language === 'en' && (cheat as any).descriptionEn ? (cheat as any).descriptionEn : cheat.description;
   const displayFeatures = language === 'en' && (cheat as any).featuresEn ? (cheat as any).featuresEn : cheat.features;
   const statusLabel = t(`status.${cheat.status}`) || cheat.statusLabel;
+  const productImages = buildProductImages(cheat);
 
   return (
     <div className={styles.page}>
@@ -68,14 +84,12 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
       <div className={styles.productHero}>
         {/* Image */}
         <div className={styles.imageCol}>
-          {cheat.image || gameImages[cheat.category] ? (
-            <img src={cheat.image || gameImages[cheat.category]} alt={displayTitle} className={styles.productImage} />
-          ) : (
-            <div className={styles.imagePlaceholder}>
-              <span className={styles.placeholderIcon}>{cheat.gameIcon}</span>
-            </div>
-          )}
-          <div className={styles.imageOverlay} />
+          <ProductImageGallery
+            images={productImages}
+            alt={displayTitle}
+            placeholderIcon={cheat.gameIcon}
+            imagesLabel={t('product.productImages')}
+          />
           <div className={`${styles.statusFloating} ${statusClass}`}>
             <span className={styles.statusDot} />
             {statusLabel}
@@ -190,20 +204,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         </div>
       </div>
 
-      {/* ═══ Gallery ═══ */}
-      {cheat.media && cheat.media.length > 0 && (
-        <div className={styles.gallerySection}>
-          <p className={styles.sectionLabel}>{t('product.gallery')}</p>
-          <h2 className={styles.featTitle}>{t('product.illustrativeMedia')}</h2>
-          <div className={styles.galleryGrid}>
-            {cheat.media.map((url: string, i: number) => (
-              <div key={i} className={styles.galleryItem}>
-                <img src={url} alt={`${displayTitle} media ${i + 1}`} className={styles.galleryImage} />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

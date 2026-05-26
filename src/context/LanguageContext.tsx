@@ -48,6 +48,7 @@ const translations: Record<string, Record<Language, string>> = {
   'product.features': { en: 'Features', ar: 'المميزات' },
   'product.whatYouGet': { en: 'What you will get', ar: 'ما الذي ستحصل عليه' },
   'product.gallery': { en: 'Gallery', ar: 'المعرض' },
+  'product.productImages': { en: 'Product Images', ar: 'صور المنتج' },
   'product.illustrativeMedia': { en: 'Illustrative Media', ar: 'صور توضيحية' },
   'status.live': { en: 'Live Status', ar: 'الحالة المباشرة' },
   'status.title1': { en: 'Cheat', ar: 'متتبع حالة' },
