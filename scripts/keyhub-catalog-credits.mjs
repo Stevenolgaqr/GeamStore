@@ -5,20 +5,8 @@
  */
 export const CREDIT_USD = 5 / 50;
 
-/** Products deferred until user sends catalog — never sync prices. */
+/** Products with no KeyHub API match — skip pricing. */
 export const SKIP_TITLE_EN = new Set([
-  'Labcore BO7 and Warzone DMA',
-  'Arcane Fortnite',
-  'Arcane Pubg',
-  'Arcane Marvel Rivals',
-  'Arcane Warthunder',
-  'Arcane Warthunder Lite',
-  'MEMEZ Valorant ESP',
-  'MEMEZ Valorant FULL',
-  'UnnamedTech Arena Breakout Infinite',
-  'Zcheats Arma Package',
-  'Zcheats DeadSide',
-  'Arcane Rust',
   'Arcane Dune: Awakening',
   'Arcane Farlight 84',
   'Arcane Hell Let Loose',

@@ -64,7 +64,16 @@ function loadKeyhubSnapshot() {
   return new Map((data.products || []).map((p) => [p.name, p]));
 }
 
-function resolveCredits({ cheat, plan, days, planIndex, overrides, durationSeen }) {
+function findApiVariation(product, durationDays, planIndex) {
+  const vars = product?.variations || [];
+  const byDuration = vars.filter((v) => v.durationDays === durationDays);
+  if (byDuration.length === 1) return byDuration[0];
+  if (byDuration.length > 1) return byDuration[planIndex] ?? byDuration[0];
+  if (vars[planIndex]) return vars[planIndex];
+  return null;
+}
+
+function resolveCredits({ cheat, plan, days, planIndex, overrides, durationSeen, khByName }) {
   const variantId = plan.sellauthVariantId ? String(plan.sellauthVariantId) : null;
   if (variantId && overrides.has(variantId)) {
     return { credits: overrides.get(variantId), source: 'override' };
@@ -74,10 +83,6 @@ function resolveCredits({ cheat, plan, days, planIndex, overrides, durationSeen 
   }
   if (SKIP_TITLE_EN.has(cheat.titleEn)) {
     return { credits: null, source: 'deferred-product' };
-  }
-  const catalog = KEYHUB_CREDITS[cheat.titleEn];
-  if (!catalog) {
-    return { credits: null, source: 'no-catalog' };
   }
   if (days == null) {
     return { credits: null, source: 'unknown-duration' };
@@ -90,11 +95,25 @@ function resolveCredits({ cheat, plan, days, planIndex, overrides, durationSeen 
       return { credits: null, source: 'duplicate-duration' };
     }
   }
-  const credits = creditsForPlan(cheat.titleEn, days);
-  if (credits == null) {
-    return { credits: null, source: 'no-duration-row' };
+
+  const catalogCredits = creditsForPlan(cheat.titleEn, days);
+  if (catalogCredits != null) {
+    return { credits: catalogCredits, source: 'catalog' };
   }
-  return { credits, source: 'catalog' };
+
+  const khProduct = khByName?.get(cheat.titleEn);
+  if (khProduct) {
+    const key = String(days);
+    const idx = durationSeen.get(key) || 0;
+    durationSeen.set(key, idx + 1);
+    const variation = findApiVariation(khProduct, days, idx);
+    if (variation?.priceCredits != null) {
+      return { credits: variation.priceCredits, source: 'keyhub-api' };
+    }
+    return { credits: null, source: 'no-api-variation' };
+  }
+
+  return { credits: null, source: 'no-keyhub-product' };
 }
 
 function buildPricePlan({ overrides, khByName }) {
@@ -116,14 +135,16 @@ function buildPricePlan({ overrides, khByName }) {
   for (const cheat of cheats) {
     const durationSeen = new Map();
 
-    cheat.plans.forEach((plan) => {
+    cheat.plans.forEach((plan, planIndex) => {
       const days = planDurationDays(plan);
       const { credits, source } = resolveCredits({
         cheat,
         plan,
         days,
+        planIndex,
         overrides,
         durationSeen,
+        khByName,
       });
 
       const base = {
@@ -323,7 +344,11 @@ async function updateSellauthProducts(variantPrices, shopId, token) {
 
 async function main() {
   const overrides = loadPlanOverrides();
-  const khByName = validateApi ? loadKeyhubSnapshot() : null;
+  const khByName = loadKeyhubSnapshot();
+  if (!khByName) {
+    console.error('Run: node scripts/fetch-keyhub-products.mjs');
+    process.exit(1);
+  }
   const { report, variantPrices } = buildPricePlan({ overrides, khByName });
 
   const reportPath = path.join(__dirname, 'price-sync-report.json');
