@@ -16,6 +16,8 @@ type Props = {
   animationDelay?: string;
   href?: string;
   onSelect?: () => void;
+  safeCount?: number;
+  safeLabel?: string;
 };
 
 export default function StoreGameCard({
@@ -28,9 +30,12 @@ export default function StoreGameCard({
   animationDelay = '0ms',
   href,
   onSelect,
+  safeCount,
+  safeLabel,
 }: Props) {
   const className = styles.card;
   const style = { '--card-delay': animationDelay } as React.CSSProperties;
+  const showSafeBadge = safeCount !== undefined && safeLabel && count > 0;
 
   const body = (
     <>
@@ -40,6 +45,11 @@ export default function StoreGameCard({
         <div className={styles.placeholder} aria-hidden />
       )}
       <div className={styles.overlay} />
+      {showSafeBadge && (
+        <span className={styles.safeBadge}>
+          {safeCount}/{count} {safeLabel}
+        </span>
+      )}
       <div className={styles.content}>
         <h3 className={styles.name}>{label}</h3>
         <p className={styles.count}>

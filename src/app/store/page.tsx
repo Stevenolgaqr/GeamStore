@@ -1,7 +1,7 @@
 'use client';
 
-import React, { Suspense, useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { cheats, gameImages, storeCategoryOrder } from '@/data/cheats';
 import OCProductCard from '@/components/OCProductCard';
 import StoreGameCard from '@/components/StoreGameCard';
@@ -15,7 +15,9 @@ function getGameCardVariant(categoryKey: string): 'default' | 'featured' | 'wide
 }
 
 function StorePageContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const productsContainerRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const { t, language } = useLanguage();
@@ -24,6 +26,8 @@ function StorePageContent() {
     const category = searchParams.get('category');
     if (category && cheats.some((c) => c.category === category)) {
       setActiveFilter(category);
+    } else if (!category) {
+      setActiveFilter('all');
     }
   }, [searchParams]);
 
@@ -39,6 +43,17 @@ function StorePageContent() {
     });
     return map;
   }, [language]);
+
+  const categoryStats = useMemo(() => {
+    const map = new Map<string, { total: number; safe: number }>();
+    cheats.forEach((cheat) => {
+      const current = map.get(cheat.category) ?? { total: 0, safe: 0 };
+      current.total += 1;
+      if (cheat.status === 'undetected') current.safe += 1;
+      map.set(cheat.category, current);
+    });
+    return map;
+  }, []);
 
   const priorityIndex = (key: string) => {
     const i = storeCategoryOrder.indexOf(key as (typeof storeCategoryOrder)[number]);
@@ -62,6 +77,8 @@ function StorePageContent() {
   );
 
   const isSearching = searchQuery.trim().length > 0;
+  const showGameCatalog = activeFilter === 'all' && !isSearching;
+  const showProducts = isSearching || activeFilter !== 'all';
 
   const displayProducts = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -85,14 +102,39 @@ function StorePageContent() {
     });
   }, [activeFilter, searchQuery, language]);
 
-  const showGameCatalog = activeFilter === 'all' && !isSearching;
-
   const stats = useMemo(() => {
     const gameCount = sortedCategories.length;
     const productCount = cheats.length;
     const undetectedCount = cheats.filter((c) => c.status === 'undetected').length;
     return { gameCount, productCount, undetectedCount };
   }, [sortedCategories.length]);
+
+  const selectFilter = useCallback(
+    (key: string, options?: { scrollToProducts?: boolean }) => {
+      setActiveFilter(key);
+      if (key === 'all') {
+        router.replace('/store', { scroll: false });
+      } else {
+        router.replace(`/store?category=${encodeURIComponent(key)}`, { scroll: false });
+      }
+      if (options?.scrollToProducts && key !== 'all') {
+        requestAnimationFrame(() => {
+          productsContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    },
+    [router]
+  );
+
+  const selectGameFromCatalog = useCallback(
+    (key: string) => {
+      selectFilter(key, { scrollToProducts: true });
+    },
+    [selectFilter]
+  );
+
+  const activeGameLabel =
+    categories.find((c) => c.key === activeFilter && c.key !== 'all')?.label ?? '';
 
   return (
     <div className={styles.page}>
@@ -169,7 +211,7 @@ function StorePageContent() {
                 role="tab"
                 aria-selected={activeFilter === cat.key}
                 className={`${styles.filterTab} ${activeFilter === cat.key ? styles.filterTabActive : ''}`}
-                onClick={() => setActiveFilter(cat.key)}
+                onClick={() => selectFilter(cat.key)}
               >
                 {cat.label}
               </button>
@@ -178,50 +220,56 @@ function StorePageContent() {
         </div>
       )}
 
-      <div className={styles.productsContainer}>
-        <div>
-          {showGameCatalog && (
-            <section className={styles.catalogSection} aria-labelledby="catalog-heading">
-              <h2 id="catalog-heading" className={styles.catalogTitle}>
-                {t('store.browseByGame')}
-              </h2>
-              <div className={styles.gamesGrid}>
-                {sortedCategories.map((cat, index) => {
-                  const count = cheats.filter((c) => c.category === cat.key).length;
-                  const variant = getGameCardVariant(cat.key);
-                  return (
-                    <StoreGameCard
-                      key={cat.key}
-                      label={cat.label}
-                      count={count}
-                      countLabel={t('product.options')}
-                      ctaLabel={t('product.view')}
-                      imageUrl={gameImages[cat.key]}
-                      variant={variant}
-                      animationDelay={`${Math.min(index, 12) * 40}ms`}
-                      onSelect={() => setActiveFilter(cat.key)}
-                    />
-                  );
-                })}
-              </div>
-            </section>
-          )}
+      <div ref={productsContainerRef} className={styles.productsContainer}>
+        {showGameCatalog && (
+          <section className={styles.catalogSection} aria-labelledby="catalog-heading">
+            <h2 id="catalog-heading" className={styles.catalogTitle}>
+              {t('store.pickGame')}
+            </h2>
+            <div className={styles.gamesGrid}>
+              {sortedCategories.map((cat, index) => {
+                const stat = categoryStats.get(cat.key) ?? { total: 0, safe: 0 };
+                return (
+                  <StoreGameCard
+                    key={cat.key}
+                    label={cat.label}
+                    count={stat.total}
+                    countLabel={t('product.options')}
+                    ctaLabel={t('product.view')}
+                    imageUrl={gameImages[cat.key]}
+                    variant={getGameCardVariant(cat.key)}
+                    animationDelay={`${Math.min(index, 12) * 40}ms`}
+                    safeCount={stat.safe}
+                    safeLabel={t('store.safePrograms')}
+                    onSelect={() => selectGameFromCatalog(cat.key)}
+                  />
+                );
+              })}
+            </div>
+          </section>
+        )}
 
-          <section className={styles.productsSection} aria-labelledby="products-heading">
+        {showProducts && (
+          <section
+            className={`${styles.productsSection} ${styles.viewEnter}`}
+            aria-labelledby="products-heading"
+          >
             {!isSearching && activeFilter !== 'all' && (
               <div className={styles.backContainer}>
-                <button type="button" className={styles.backButton} onClick={() => setActiveFilter('all')}>
+                <button type="button" className={styles.backButton} onClick={() => selectFilter('all')}>
                   {t('store.back')}
                 </button>
               </div>
             )}
 
             <h2 id="products-heading" className={styles.productsHeading}>
-              {isSearching
-                ? `${t('store.results')} "${searchQuery}"`
-                : activeFilter === 'all'
-                  ? t('store.allProducts')
-                  : categories.find((c) => c.key === activeFilter)?.label}
+              {isSearching ? (
+                <>
+                  {t('store.results')} &ldquo;{searchQuery}&rdquo;
+                </>
+              ) : (
+                activeGameLabel
+              )}
               <span className={styles.productsCount}>
                 {displayProducts.length} {t('store.products')}
               </span>
@@ -246,7 +294,7 @@ function StorePageContent() {
                     className={styles.emptyReset}
                     onClick={() => {
                       setSearchQuery('');
-                      setActiveFilter('all');
+                      selectFilter('all');
                     }}
                   >
                     {t('store.clearSearch')}
@@ -255,15 +303,23 @@ function StorePageContent() {
               )}
             </div>
           </section>
-        </div>
+        )}
       </div>
+    </div>
+  );
+}
+
+function StorePageFallback() {
+  return (
+    <div className={styles.page}>
+      <div className={styles.storeFallback} aria-busy="true" aria-label="Loading store" />
     </div>
   );
 }
 
 export default function StorePage() {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<StorePageFallback />}>
       <StorePageContent />
     </Suspense>
   );

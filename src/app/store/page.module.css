@@ -279,7 +279,43 @@
 }
 
 .catalogSection {
-  margin-bottom: 3rem;
+  margin-bottom: 0;
+}
+
+.storeFallback {
+  min-height: 50vh;
+  margin: 2rem auto;
+  max-width: var(--content-width);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    90deg,
+    rgba(17, 18, 22, 0.4) 0%,
+    rgba(30, 30, 36, 0.5) 50%,
+    rgba(17, 18, 22, 0.4) 100%
+  );
+  background-size: 200% 100%;
+  animation: storeShimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes storeShimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.viewEnter {
+  animation: viewEnter 0.35s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+@keyframes viewEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .catalogTitle {
@@ -495,7 +531,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   .headerStagger,
-  .productCardWrap {
+  .productCardWrap,
+  .viewEnter {
     animation: none !important;
+  }
+
+  .storeFallback {
+    animation: none;
   }
 }

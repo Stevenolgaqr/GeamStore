@@ -87,6 +87,24 @@
   pointer-events: none;
 }
 
+.safeBadge {
+  position: absolute;
+  top: 0.75rem;
+  inset-inline-end: 0.75rem;
+  z-index: 3;
+  padding: 0.28rem 0.6rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  pointer-events: none;
+}
+
 .content {
   position: absolute;
   inset-inline: 0;
