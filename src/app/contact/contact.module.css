@@ -2,9 +2,8 @@
 
 .page {
   min-height: 100vh;
-  background: #0b0c10;
-  color: #fff;
-  font-family: 'Outfit', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
   position: relative;
 }
 
@@ -53,7 +52,7 @@
   font-family: 'Sora', sans-serif;
   font-size: clamp(28px, 5vw, 48px);
   font-weight: 800;
-  color: #fff;
+  color: var(--text-main);
   margin: 0 0 14px;
   line-height: 1.15;
 }
@@ -145,7 +144,7 @@
   font-family: 'Sora', sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   margin: 0;
 }
 
@@ -178,7 +177,7 @@
   font-family: 'Sora', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   margin: 0 0 28px;
   text-align: center;
 }
@@ -204,7 +203,7 @@
 .faqQ {
   font-size: 15px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-main);
   margin: 0 0 8px;
 }
 

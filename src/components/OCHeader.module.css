@@ -14,7 +14,15 @@
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.03),
     0 4px 30px rgba(0, 0, 0, 0.5);
-  transition: background 0.3s ease;
+  transition: background var(--duration-normal) var(--ease-out);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .headerContainer {
+    background: var(--bg-main);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* ── Top Bar ── */
@@ -37,7 +45,7 @@
   color: #fff;
   letter-spacing: -0.5px;
   text-decoration: none;
-  transition: var(--transition-fast);
+  transition: var(--transition-interactive);
   user-select: none;
 }
 
@@ -70,7 +78,7 @@
   color: #fff;
   box-shadow: 0 4px 14px rgba(230, 0, 0, 0.45);
   flex-shrink: 0;
-  transition: var(--transition-smooth);
+  transition: var(--transition-interactive);
 }
 
 .logo:hover .logoIcon {
@@ -97,58 +105,44 @@
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: 'Tajawal', var(--font-ar);
-  backdrop-filter: blur(8px);
+  transition: var(--transition-interactive);
+  min-height: 44px;
 }
 
 .langToggle:hover {
   background: rgba(230, 0, 0, 0.1);
   border-color: rgba(230, 0, 0, 0.4);
-  color: #fff;
+  color: var(--text-main);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(230, 0, 0, 0.15);
 }
 
 .langToggle:active {
-  transform: translateY(0);
+  transform: scale(0.97);
 }
 
-.signInText {
-  color: var(--text-muted);
-  font-size: 13.5px;
-}
-
-.signInLink {
-  color: var(--primary-light);
-  font-weight: 600;
-  margin-left: 0.3rem;
-  transition: var(--transition-fast);
-}
-
-.signInLink:hover {
-  color: #ff6666;
-}
-
-.signUpBtn {
-  background: var(--primary-gradient);
-  color: #fff;
-  border: none;
-  padding: 0.4rem 1.2rem;
+.discordBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 18px;
   border-radius: var(--border-radius-sm);
-  font-weight: 700;
   font-size: 0.85rem;
-  cursor: pointer;
-  transition: var(--transition-smooth);
+  font-weight: 700;
+  color: #9aa8e8;
+  border: 1px solid rgba(114, 137, 218, 0.35);
+  background: rgba(114, 137, 218, 0.08);
+  transition: var(--transition-interactive);
 }
 
-.signUpBtn:hover {
-  box-shadow: 0 6px 24px rgba(230, 0, 0, 0.55);
+.discordBtn:hover {
+  background: rgba(114, 137, 218, 0.15);
+  border-color: rgba(114, 137, 218, 0.5);
   transform: translateY(-1px);
 }
 
-.signUpBtn:active {
-  transform: translateY(0);
+.discordBtn:active {
+  transform: scale(0.97);
 }
 
 /* ── Nav Bar ── */
@@ -176,8 +170,9 @@
   height: 100%;
   display: flex;
   align-items: center;
-  transition: var(--transition-fast);
+  transition: var(--transition-interactive);
   position: relative;
+  min-height: 44px;
   text-decoration: none;
   border-radius: 4px;
   letter-spacing: 0.2px;
@@ -193,7 +188,8 @@
   height: 2px;
   background: var(--primary-gradient);
   border-radius: 2px 2px 0 0;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width var(--duration-normal) var(--ease-out);
+  transform-origin: center bottom;
 }
 
 .navLink:hover {
@@ -216,30 +212,6 @@
   box-shadow: 0 0 8px rgba(230, 0, 0, 0.6);
 }
 
-/* ── Discord CTA in Nav ── */
-.navLinkDiscord {
-  margin-left: auto;
-  color: #7289da !important;
-  border: 1px solid rgba(114, 137, 218, 0.2);
-  border-radius: var(--border-radius-sm);
-  padding: 0 16px !important;
-  height: 32px !important;
-  font-size: 13px !important;
-  gap: 6px;
-  margin-right: 4px;
-  transition: var(--transition-smooth);
-}
-
-.navLinkDiscord:hover {
-  background: rgba(114, 137, 218, 0.1) !important;
-  border-color: rgba(114, 137, 218, 0.4) !important;
-  color: #9aa8e8 !important;
-}
-
-.navLinkDiscord::after {
-  display: none;
-}
-
 /* ── Mobile ── */
 @media (max-width: 900px) {
   .topBar {
@@ -254,16 +226,8 @@
   .navInner::-webkit-scrollbar {
     display: none;
   }
-  .signInText {
-    display: none;
-  }
   .logo {
     font-size: 19px;
   }
 }
 
-@media (max-width: 600px) {
-  .navLinkDiscord {
-    display: none;
-  }
-}

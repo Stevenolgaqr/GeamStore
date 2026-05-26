@@ -2,8 +2,6 @@
    Only-Cheats — Reviews & Support Page
    ═══════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
-
 .page {
   padding-top: 72px;
   min-height: 100vh;
@@ -45,7 +43,7 @@
   font-weight: 900;
   color: #e2e8f0;
   margin: 0 0 1rem;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 .desc {
@@ -54,7 +52,7 @@
   max-width: 550px;
   margin: 0 auto;
   line-height: 1.7;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 /* ── Reviews Grid ── */
@@ -76,7 +74,7 @@
   border: 1px solid rgba(59, 130, 246, 0.06);
   border-radius: 1.25rem;
   padding: 2rem;
-  transition: all 0.4s ease;
+  transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
 }
@@ -152,14 +150,14 @@
   font-size: 0.9rem;
   color: #94a3b8;
   line-height: 1.7;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 .reviewDate {
   margin-top: 1rem;
   font-size: 0.72rem;
   color: #475569;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 /* ── Supported Games ── */
@@ -172,14 +170,14 @@
   font-weight: 900;
   color: #e2e8f0;
   margin: 0 0 0.5rem;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 .sectionDesc {
   font-size: 0.95rem;
   color: #64748b;
   margin-bottom: 2rem;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 .gamesGrid {
@@ -194,7 +192,7 @@
   border-radius: 1rem;
   padding: 1.75rem 1.25rem;
   text-align: center;
-  transition: all 0.4s ease;
+  transition: var(--transition-smooth);
   cursor: pointer;
 }
 
@@ -248,7 +246,7 @@
   border-radius: 1.25rem;
   padding: 2.5rem 2rem;
   text-align: center;
-  transition: all 0.4s ease;
+  transition: var(--transition-smooth);
   text-decoration: none;
   display: block;
 }
@@ -269,14 +267,14 @@
   font-weight: 800;
   color: #e2e8f0;
   margin-bottom: 0.5rem;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 .supportDesc {
   font-size: 0.85rem;
   color: #64748b;
   line-height: 1.6;
-  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-ar);
 }
 
 /* ── Responsive ── */

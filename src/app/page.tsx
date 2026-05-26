@@ -1,32 +1,31 @@
 'use client';
 
 import Link from 'next/link';
+import { useMemo } from 'react';
+import { cheats, gameImages } from '@/data/cheats';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './page.module.css';
 
 export default function Home() {
   const { t, language } = useLanguage();
 
-  const popularProducts = [
-    {
-      title: 'Nova Store Rust External',
-      desc: language === 'en' ? 'Newest & Cheapest undetected Rust cheat on the market Nova Store External!' : 'أحدث وأرخص هاك راست خارجي آمن في السوق من نوفا ستور!',
-      thumb: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80',
-      slug: 'ancient-rust',
-    },
-    {
-      title: 'Ancient R6',
-      desc: language === 'en' ? 'Best undetected $4 Rainbow Six Siege cheat! With ESP, Aimbot + Radar!' : 'أفضل هاك رينبو 6 سيج آمن بسعر 4 دولار فقط! رادار وايمبوت والمزيد!',
-      thumb: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80',
-      slug: 'ancient-r6',
-    },
-    {
-      title: 'RageByte ARC Raiders',
-      desc: language === 'en' ? 'Best ARC Raiders S3 Cheat! Undetected Aimbot & ESP!' : 'أفضل هاك للعبة أرك رايدرز! ايمبوت ورادار آمن تماماً!',
-      thumb: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&q=80',
-      slug: 'ancient-arc-raiders',
-    },
-  ];
+  const popularProducts = useMemo(
+    () =>
+      [...cheats]
+        .sort((a, b) => b.rating - a.rating || b.reviews - a.reviews)
+        .slice(0, 3)
+        .map((cheat) => ({
+          title: language === 'en' ? cheat.titleEn || cheat.title : cheat.title,
+          desc:
+            language === 'en' && cheat.descriptionEn
+              ? cheat.descriptionEn.split('\n')[0]
+              : cheat.description.split('\n')[0],
+          thumb: cheat.image || gameImages[cheat.category] || '/images/red-hero.jpeg',
+          slug: cheat.slug,
+          rating: cheat.rating,
+        })),
+    [language]
+  );
 
   const allGames = [
     { nameEn: 'ARENA BREAKOUT INFINITE', nameAr: 'ارينا بريك اوت إنفينيت', image: '/cheats/abi.jpeg', slug: 'ancient-abi-radar' },
@@ -41,73 +40,104 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroOverlay}></div>
+      <section className={styles.hero} aria-labelledby="hero-title">
+        <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
-            <h1 className={styles.heroTitle}>
-              {t('home.heroTitle1')}<br />
+            <p className={styles.heroEyebrow}>{t('home.heroEyebrow')}</p>
+            <h1 id="hero-title" className={styles.heroTitle}>
+              {t('home.heroTitle1')}
+              <br />
               {t('home.heroTitle2')} <span>{t('home.heroTitle3')}</span>
             </h1>
-            <p className={styles.heroSubtitle}>
-              {t('home.heroSubtitle')}
-            </p>
+            <p className={styles.heroSubtitle}>{t('home.heroSubtitle')}</p>
             <div className={styles.heroActions}>
-              <Link href="/store" className={styles.primaryBtn}>{t('home.viewAll')}</Link>
+              <Link href="/store" className={styles.primaryBtn}>
+                {t('home.viewAll')}
+              </Link>
+              <Link href="/status" className={styles.secondaryBtn}>
+                {t('home.viewStatus')}
+              </Link>
             </div>
           </div>
           <div className={styles.heroImageContainer}>
-            <div className={styles.heroO}>O</div>
-            <img 
-              src="/images/red-hero.jpeg" 
-              alt="Character" 
-              className={styles.heroCharacter} 
+            <div className={styles.heroO} aria-hidden="true">
+              N
+            </div>
+            <img
+              src="/images/red-hero.jpeg"
+              alt=""
+              className={styles.heroCharacter}
+              width={520}
+              height={580}
+              fetchPriority="high"
             />
           </div>
         </div>
       </section>
 
-      {/* Most Popular Products */}
-      <section className={styles.popularSection}>
+      <section className={styles.popularSection} aria-labelledby="popular-title">
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>{t('home.popular')}</h2>
+          <h2 id="popular-title" className={styles.sectionTitle}>
+            {t('home.popular')}
+          </h2>
           <p className={styles.sectionSubtitle}>{t('home.popularDesc')}</p>
         </div>
-        <div className={styles.popularGrid}>
-          {popularProducts.map((prod, i) => (
-            <div key={i} className={styles.popularCard}>
-              <div 
-                className={styles.videoThumb} 
-                style={{ backgroundImage: `url(${prod.thumb})` }}
-              >
-                <div className={styles.playBtn}></div>
-              </div>
+        <div className={`${styles.popularGrid} stagger`}>
+          {popularProducts.map((prod) => (
+            <article key={prod.slug} className={styles.popularCard}>
+              <Link href={`/product/${prod.slug}`} className={styles.thumbLink}>
+                <div
+                  className={styles.videoThumb}
+                  style={{ backgroundImage: `url(${prod.thumb})` }}
+                >
+                  <span className={styles.ratingBadge} aria-hidden="true">
+                    ★ {prod.rating.toFixed(1)}
+                  </span>
+                </div>
+              </Link>
               <div className={styles.cardContent}>
                 <div className={styles.cardInfo}>
                   <h3>{prod.title}</h3>
                   <p>{prod.desc}</p>
                 </div>
                 <Link href={`/product/${prod.slug}`}>
-                  <button className={styles.viewBtn}>{t('home.viewProd')}</button>
+                  <span className={styles.viewBtn}>{t('home.viewProd')}</span>
                 </Link>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* All Games Grid */}
-      <section className={styles.gamesSection}>
+      <section className={styles.gamesSection} aria-labelledby="games-title">
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>{t('store.all')}</h2>
+          <h2 id="games-title" className={styles.sectionTitle}>
+            {t('store.all')}
+          </h2>
         </div>
-        <div className={styles.gamesGrid}>
-          {allGames.map((game, i) => (
-            <Link href={`/product/${game.slug}`} key={i} className={styles.gameCard} aria-label={`Buy ${game.nameEn} cheat – Nova Store`}>
-              <img src={game.image} alt={`${game.nameEn} cheat – Nova Store`} className={styles.gameImage} loading="lazy" />
-              <div className={styles.gameStar}>★</div>
-              <div className={styles.gameNameOverlay}>{language === 'en' ? game.nameEn : game.nameAr}</div>
+        <div className={`${styles.gamesGrid} stagger`}>
+          {allGames.map((game) => (
+            <Link
+              href={`/product/${game.slug}`}
+              key={game.slug}
+              className={styles.gameCard}
+              aria-label={`${language === 'en' ? game.nameEn : game.nameAr} — Nova Store`}
+            >
+              <img
+                src={game.image}
+                alt=""
+                className={styles.gameImage}
+                loading="lazy"
+                width={400}
+                height={260}
+              />
+              <span className={styles.gameStar} aria-hidden="true">
+                ★
+              </span>
+              <span className={styles.gameNameOverlay}>
+                {language === 'en' ? game.nameEn : game.nameAr}
+              </span>
             </Link>
           ))}
         </div>

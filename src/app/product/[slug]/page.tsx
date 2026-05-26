@@ -121,10 +121,15 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
           </div>
 
           {/* Plans */}
-          <h3 className={styles.plansTitle}>{t('product.choosePlan')}</h3>
-          <div className={styles.plans}>
+          <h3 className={styles.plansTitle} id="plans-heading">
+            {t('product.choosePlan')}
+          </h3>
+          <div
+            className={styles.plans}
+            role="radiogroup"
+            aria-labelledby="plans-heading"
+          >
             {cheat.plans.map((plan, i) => {
-              // translate duration dynamically
               let displayDuration = plan.label;
               if (language === 'en') {
                 if (plan.label === 'يوم واحد') displayDuration = '1 Day';
@@ -132,57 +137,63 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                 if (plan.label === 'شهر') displayDuration = '1 Month';
                 if (plan.label === 'مدى الحياة') displayDuration = 'Lifetime';
               }
+              const isSelected = selectedPlan === i;
               return (
-                <div
+                <button
+                  type="button"
                   key={i}
-                  className={`${styles.planCard} ${selectedPlan === i ? styles.planCardActive : ''}`}
+                  role="radio"
+                  aria-checked={isSelected}
+                  className={`${styles.planCard} ${isSelected ? styles.planCardActive : ''}`}
                   onClick={() => setSelectedPlan(i)}
                 >
                   {i === 1 && <div className={styles.planBadge}>{t('product.popular')}</div>}
                   <div className={styles.planDuration}>{displayDuration}</div>
                   <div className={styles.planPrice}>${formatRetailPrice(plan.price)}</div>
                   <span className={styles.planCurrency}>USD / {plan.duration}</span>
-                </div>
+                </button>
               );
             })}
           </div>
 
-          {/* Buy Actions */}
           <div className={styles.buyActions}>
             {(() => {
               const plan = cheat.plans[selectedPlan];
               const isAvailable = !!plan?.sellauthProductId;
               return (
-                <button 
+                <button
+                  type="button"
                   className={`${styles.buyNow} ${!isAvailable ? styles.buyNowUnavailable : ''}`}
                   onClick={(e) => {
                     if (isAvailable) {
                       e.preventDefault();
                       if (typeof window !== 'undefined' && (window as any).sellAuthEmbed) {
                         (window as any).sellAuthEmbed.checkout(e.currentTarget, {
-                          cart: [{ 
-                            productId: parseInt(plan.sellauthProductId!), 
-                            variantId: plan.sellauthVariantId ? parseInt(plan.sellauthVariantId) : undefined,
-                            quantity: 1 
+                          cart: [{
+                            productId: parseInt(plan.sellauthProductId!),
+                            variantId: plan.sellauthVariantId
+                              ? parseInt(plan.sellauthVariantId)
+                              : undefined,
+                            quantity: 1,
                           }],
                           shopId: 185564,
-                          modal: true
+                          modal: true,
                         });
                       } else {
-                        window.open(`https://nova-store.sellauth.com/product/${plan.sellauthProductId}`, '_blank');
+                        window.open(
+                          `https://nova-store.sellauth.com/product/${plan.sellauthProductId}`,
+                          '_blank'
+                        );
                       }
                     } else {
                       e.preventDefault();
                       window.open('https://discord.gg/novastore', '_blank');
                     }
                   }}
-                  style={{ width: '100%', display: 'flex', justifyContent: 'center', gap: '0.5rem', alignItems: 'center' }}
                 >
-                  {isAvailable ? (
-                    <>🔒 {t('product.securePay')} — ${formatRetailPrice(plan.price)}</>
-                  ) : (
-                    <>💬 {t('product.buyDiscord')}</>
-                  )}
+                  {isAvailable
+                    ? `${t('product.securePay')} — $${formatRetailPrice(plan.price)}`
+                    : t('product.buyDiscord')}
                 </button>
               );
             })()}

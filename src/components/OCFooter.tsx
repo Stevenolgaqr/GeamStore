@@ -20,7 +20,7 @@ export default function OCFooter() {
               rel="noopener noreferrer"
               className={styles.discordBadge}
             >
-              💬 Join our Discord
+              Join our Discord
             </a>
           </div>
 

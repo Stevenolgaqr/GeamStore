@@ -3,6 +3,7 @@ import OCHeader from '@/components/OCHeader';
 import OCFooter from '@/components/OCFooter';
 import SellauthEmbed from '@/components/SellauthEmbed';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { fontVariables } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -37,15 +38,7 @@ export const metadata: Metadata = {
 
 export default function OCLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ar" dir="rtl" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;700;800&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="ar" dir="rtl" className={fontVariables} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <LanguageProvider>
           <SellauthEmbed />

@@ -40,19 +40,34 @@
   --shadow-red-glow: 0 0 30px rgba(230, 0, 0, 0.2);
   --shadow-red-strong: 0 8px 32px rgba(230, 0, 0, 0.4);
 
-  /* ── Transitions ── */
-  --transition-fast: all 0.2s ease;
-  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-spring: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* ── Motion (emilkowal-animations) ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 280ms;
+  --transition-interactive: transform var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+  --transition-smooth: transform var(--duration-normal) var(--ease-out),
+    opacity var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out);
 
-  /* ── Typography ── */
-  --font-family: 'Outfit', 'Montserrat', sans-serif;
-  --font-ar: 'Tajawal', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* ── Typography (set by next/font variables in layout) ── */
+  --font-family: var(--font-outfit), 'Outfit', sans-serif;
+  --font-ar: var(--font-tajawal), 'Tajawal', sans-serif;
+  --font-label: var(--font-rajdhani), 'Rajdhani', sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
 
   /* ── Layout ── */
   --max-width: 1550px;
   --content-width: 1400px;
+
+  /* ── Focus ── */
+  --focus-ring: 2px solid var(--primary);
+  --focus-offset: 2px;
 }
 
 /* ══════════════════════════════════════
@@ -68,10 +83,17 @@ html {
   scroll-behavior: smooth;
 }
 
+html[lang='ar'] body {
+  font-family: var(--font-ar);
+}
+
+html[lang='en'] body {
+  font-family: var(--font-family);
+}
+
 body {
   background-color: var(--bg-main);
   color: var(--text-main);
-  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -84,12 +106,25 @@ a {
 }
 
 button {
-  font-family: var(--font-family);
+  font-family: inherit;
+  cursor: pointer;
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+/* ══════════════════════════════════════
+   FOCUS (emil-design-eng)
+══════════════════════════════════════ */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 /* ══════════════════════════════════════
@@ -124,7 +159,7 @@ img {
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+  50%       { transform: translateY(-8px); }
 }
 
 @keyframes pulse-red {
@@ -153,14 +188,13 @@ img {
    UTILITY CLASSES
 ══════════════════════════════════════ */
 .animate-fade-up {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeInUp 0.6s var(--ease-out) both;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease both;
+  animation: fadeIn 0.5s var(--ease-out) both;
 }
 
-/* Stagger children */
 .stagger > *:nth-child(1) { animation-delay: 0.05s; }
 .stagger > *:nth-child(2) { animation-delay: 0.10s; }
 .stagger > *:nth-child(3) { animation-delay: 0.15s; }
@@ -169,6 +203,35 @@ img {
 .stagger > *:nth-child(6) { animation-delay: 0.30s; }
 .stagger > *:nth-child(7) { animation-delay: 0.35s; }
 .stagger > *:nth-child(8) { animation-delay: 0.40s; }
+
+/* ══════════════════════════════════════
+   REDUCED MOTION & TRANSPARENCY
+══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-fade-up,
+  .animate-fade-in,
+  .stagger > * {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --bg-glass: var(--bg-elevated);
+  }
+}
 
 /* ══════════════════════════════════════
    SCROLLBAR
@@ -188,10 +251,7 @@ img {
   background: rgba(230, 0, 0, 0.7);
 }
 
-/* ══════════════════════════════════════
-   SELECTION
-══════════════════════════════════════ */
 ::selection {
   background: rgba(230, 0, 0, 0.3);
-  color: #fff;
+  color: var(--text-main);
 }

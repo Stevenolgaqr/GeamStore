@@ -2,8 +2,6 @@
    Store Page — Nova Store Pro Max
    ════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
-
 .page {
   padding-top: 72px;
   min-height: 100vh;
@@ -44,7 +42,7 @@
   font-weight: 900;
   color: var(--text-main);
   margin: 0 0 1rem;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
 }
 
 .storeDesc {
@@ -53,7 +51,7 @@
   max-width: 500px;
   margin: 0 auto 2rem;
   line-height: 1.7;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
 }
 
 /* ── Search Bar ── */
@@ -87,7 +85,7 @@
   background: rgba(17, 18, 22, 0.8);
   color: var(--text-main);
   font-size: 0.95rem;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
   transition: var(--transition-smooth);
   outline: none;
 }
@@ -119,7 +117,7 @@
   font-size: 1.1rem;
   color: var(--primary-light);
   font-weight: 700;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
 }
 
 /* ── Filter Tabs — Premium Icon Cards ── */
@@ -178,8 +176,9 @@
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: 'Rajdhani', 'Tajawal', var(--font-ar);
+  transition: var(--transition-interactive);
+  min-height: 44px;
+  font-family: var(--font-label), var(--font-ar);
   letter-spacing: 0.02em;
   white-space: nowrap;
   flex-shrink: 0;
@@ -266,7 +265,7 @@
   padding: 4rem 2rem;
   color: var(--text-muted);
   font-size: 1.1rem;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
 }
 
 /* ── Games Catalog Grid ── */
@@ -372,7 +371,7 @@
   font-weight: 800;
   color: #fff;
   margin: 0 0 0.4rem;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
@@ -380,7 +379,7 @@
   font-size: 0.78rem;
   color: #b0b5c5;
   margin: 0;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
   background: rgba(255, 255, 255, 0.06);
   padding: 0.2rem 0.7rem;
   border-radius: var(--border-radius-full);
@@ -400,7 +399,7 @@
   font-weight: 800;
   color: var(--text-muted);
   margin-top: 0.8rem;
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
   transition: var(--transition-smooth);
   opacity: 0;
   transform: translateY(8px);
@@ -429,7 +428,7 @@
   font-size: 0.85rem;
   cursor: pointer;
   transition: var(--transition-smooth);
-  font-family: 'Tajawal', var(--font-ar);
+  font-family: var(--font-ar);
   display: flex;
   align-items: center;
   gap: 0.5rem;

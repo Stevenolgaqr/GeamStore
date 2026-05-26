@@ -2,10 +2,22 @@
 
 .page {
   min-height: 100vh;
-  background: #0b0c10;
-  color: #fff;
-  font-family: 'Outfit', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
   position: relative;
+}
+
+.prose {
+  max-width: 65ch;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.prose h2 {
+  color: var(--text-main);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
 }
 
 .glow {

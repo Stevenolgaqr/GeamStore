@@ -67,15 +67,20 @@ const translations: Record<string, Record<Language, string>> = {
   'home.heroTitle1': { en: 'Why Work Hard', ar: 'لماذا تتعب وتجتهد' },
   'home.heroTitle2': { en: 'When you can', ar: 'بينما يمكنك اللعب' },
   'home.heroTitle3': { en: 'Play Dirty?', ar: 'بأفضلية كاملة؟' },
-  'home.heroSubtitle': { 
-    en: 'Strip away the competition with Nova Store - your sexy sidekick in gaming!', 
-    ar: 'اقضِ على منافسيك مع نوفا ستور - الرفيق الأقوى في عالم الألعاب للحصول على التفوق المطلق!' 
+  'home.heroEyebrow': {
+    en: 'Trusted since 2020 · Undetected focus',
+    ar: 'موثوق منذ 2020 · أولوية الأمان والتحديث',
+  },
+  'home.heroSubtitle': {
+    en: 'Premium undetected enhancements for competitive players. Instant delivery, live status, and dedicated support.',
+    ar: 'أدوات احترافية آمنة للاعبين التنافسيين. تسليم فوري، حالة مباشرة، ودعم مخصص.',
   },
   'home.viewAll': { en: 'View All Cheats', ar: 'تصفح جميع البرامج' },
+  'home.viewStatus': { en: 'Live Status', ar: 'الحالة المباشرة' },
   'home.popular': { en: 'Most Popular Products', ar: 'المنتجات الأكثر شعبية' },
-  'home.popularDesc': { 
-    en: 'Unlock your naughty side - our cheats are as addictive as your favorite OnlyFans feed!', 
-    ar: 'افتح إمكانياتك الحقيقية - برامجنا تقدم لك الأفضلية وتجعل تجربة اللعب ممتعة ومضمونة!' 
+  'home.popularDesc': {
+    en: 'Top-rated tools with verified undetected status and thousands of reviews.',
+    ar: 'أعلى المنتجات تقييماً مع حالة آمنة مؤكدة وآلاف المراجعات.',
   },
   'home.viewProd': { en: 'View Product', ar: 'عرض المنتج' },
 };
