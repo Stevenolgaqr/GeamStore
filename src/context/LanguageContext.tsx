@@ -88,6 +88,12 @@ const translations: Record<string, Record<Language, string>> = {
   'status.risk': { en: 'Use at Own Risk', ar: 'استخدمه على مسؤوليتك' },
   'status.since': { en: 'Since', ar: 'منذ' },
   'status.buyDiscord': { en: 'Buy on Discord', ar: 'شراء عبر الديسكورد' },
+  'status.keyhubEmbed': {
+    en: 'Live status powered by KeyHub — synced with our catalog.',
+    ar: 'حالة مباشرة عبر KeyHub — متزامنة مع الكتالوج.',
+  },
+  'status.openKeyhub': { en: 'Open status page', ar: 'فتح صفحة الحالة' },
+  'status.iframeTitle': { en: 'Nova Store live status', ar: 'الحالة المباشرة — Nova Store' },
   'home.heroTitle1': { en: 'Why Work Hard', ar: 'لماذا تتعب وتجتهد' },
   'home.heroTitle2': { en: 'When you can', ar: 'بينما يمكنك اللعب' },
   'home.heroTitle3': { en: 'Play Dirty?', ar: 'بأفضلية كاملة؟' },
