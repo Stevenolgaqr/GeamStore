@@ -6,6 +6,7 @@ import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats';
 import { useLanguage } from '@/context/LanguageContext';
 import { formatRetailPrice } from '@/lib/pricing';
+import { IconStarRating } from '@/components/icons/ProductIcons';
 import styles from './OCProductCard.module.css';
 
 interface Props {
@@ -53,17 +54,15 @@ export default function OCProductCard({ cheat }: Props) {
 
       {/* Content */}
       <div className={styles.content}>
-        <span className={styles.gameLabel}>
-          {cheat.gameIcon} {displayGame}
-        </span>
+        <span className={styles.gameLabel}>{displayGame}</span>
         <h3 className={styles.title}>{displayTitle}</h3>
         <p className={styles.desc}>{language === 'en' && (cheat as any).descriptionEn ? (cheat as any).descriptionEn : cheat.description}</p>
 
         {/* Meta */}
-        <div className={styles.meta}>
-          <span className={styles.stars}>{'★'.repeat(Math.round(cheat.rating))}</span>
-          <span>{cheat.rating}</span>
-          <span>({cheat.reviews} {t('card.reviews')})</span>
+        <div className={styles.meta} aria-label={`${cheat.rating} — ${cheat.reviews} ${t('card.reviews')}`}>
+          <IconStarRating rating={cheat.rating} size={12} />
+          <span className={styles.ratingNum}>{cheat.rating.toFixed(1)}</span>
+          <span className={styles.reviewCount}>({cheat.reviews} {t('card.reviews')})</span>
         </div>
 
         {/* Price */}
