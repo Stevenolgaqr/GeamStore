@@ -57,7 +57,13 @@ export const gameImages: Record<string, string> = {
   'hell-let-loose': '/cheats/hell-let-loose.jpeg',
   'highguard': '/cheats/highguard.jpeg',
   'humanitz': '/cheats/humanitz.jpeg',
+  'marvel-rivals': '/cheats/marvel-rivals.jpeg',
+  'off-the-grid': '/cheats/off-the-grid.jpeg',
+  'pioner': '/cheats/pioner.jpeg',
 };
+
+/** Store catalog: games shown first (in this order). */
+export const storeCategoryOrder = ['rust', 'fortnite', 'valorant'] as const;
 
 export const cheats: Cheat[] = [
   {
@@ -1546,156 +1552,8 @@ export const cheats: Cheat[] = [
     "reviews": 162,
     "rating": 4.5
   },
-  {
-    "id": "arcane-warthunder-cheat",
-    "slug": "arcane-warthunder",
-    "game": "وار ثاندر",
-    "gameEn": "Warthunder",
-    "title": "Arcane Warthunder",
-    "titleEn": "Arcane Warthunder",
-    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
-    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
-    "status": "updating",
-    "statusLabel": "Under Maintenance",
-    "features": [
-      "Enabled – enable or disable aimbot",
-      "Aim Mode – aimbot working mode (always / on key press)",
-      "Aim Key – keys to activate aiming",
-      "Prediction – predicts projectile trajectory",
-      "Visible Check – aim only at visible enemies",
-      "Aim Target – select targets (bots / teammates / enemies)",
-      "Aim Position – aiming position selection",
-      "FOV – aimbot action area around the crosshair",
-      "Draw FOV – displays the aimbot area as a circle",
-      "FOV Style – visual customization of the aimbot circle",
-      "Smooth – smooths aimbot movements",
-      "Max Distance – maximum aimbot working range"
-    ],
-    "featuresEn": [
-      "Enabled – enable or disable aimbot",
-      "Aim Mode – aimbot working mode (always / on key press)",
-      "Aim Key – keys to activate aiming",
-      "Prediction – predicts projectile trajectory",
-      "Visible Check – aim only at visible enemies",
-      "Aim Target – select targets (bots / teammates / enemies)",
-      "Aim Position – aiming position selection",
-      "FOV – aimbot action area around the crosshair",
-      "Draw FOV – displays the aimbot area as a circle",
-      "FOV Style – visual customization of the aimbot circle",
-      "Smooth – smooths aimbot movements",
-      "Max Distance – maximum aimbot working range"
-    ],
-    "plans": [
-      {
-        "label": "يوم واحد",
-        "price": 4.79,
-        "currency": "USD",
-        "duration": "1 يوم",
-        "sellauthProductId": "727305",
-        "sellauthVariantId": "1180864"
-      },
-      {
-        "label": "أسبوع",
-        "price": 14.79,
-        "currency": "USD",
-        "duration": "7 أيام",
-        "sellauthProductId": "727305",
-        "sellauthVariantId": "1180865"
-      },
-      {
-        "label": "شهر",
-        "price": 27.79,
-        "currency": "USD",
-        "duration": "30 يوم",
-        "sellauthProductId": "727305",
-        "sellauthVariantId": "1180866"
-      }
-    ],
-    "image": "/cheats/products/arcane-warthunder/hero.jpg",
-    "media": [
-      "/cheats/products/arcane-warthunder/gallery-1.jpg",
-      "/cheats/products/arcane-warthunder/gallery-2.jpg",
-      "/cheats/products/arcane-warthunder/gallery-3.jpg"
-    ],
-    "gameIcon": "✈️",
-    "category": "warthunder",
-    "reviews": 170,
-    "rating": 4.5
-  },
-  {
-    "id": "arcane-warthunder-lite-cheat",
-    "slug": "arcane-warthunder-lite",
-    "game": "وار ثاندر",
-    "gameEn": "Warthunder",
-    "title": "Arcane Warthunder Lite",
-    "titleEn": "Arcane Warthunder Lite",
-    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
-    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
-    "status": "undetected",
-    "statusLabel": "Undetected",
-    "features": [
-      "Box - Tank WH in boxes (rectangles)",
-      "Box Style - customization of type, color, and other box parameters",
-      "Name - show player nicknames",
-      "Distance - distance to targets in meters",
-      "Vehicle Name - name of the vehicle",
-      "Snaplines - WH in the form of lines to tanks",
-      "Max Distance - operating range of WH on tanks",
-      "Turret",
-      "Body",
-      "Commander",
-      "Loader",
-      "Driver"
-    ],
-    "featuresEn": [
-      "Box - Tank WH in boxes (rectangles)",
-      "Box Style - customization of type, color, and other box parameters",
-      "Name - show player nicknames",
-      "Distance - distance to targets in meters",
-      "Vehicle Name - name of the vehicle",
-      "Snaplines - WH in the form of lines to tanks",
-      "Max Distance - operating range of WH on tanks",
-      "Turret",
-      "Body",
-      "Commander",
-      "Loader",
-      "Driver"
-    ],
-    "plans": [
-      {
-        "label": "يوم واحد",
-        "price": 3.79,
-        "currency": "USD",
-        "duration": "1 يوم",
-        "sellauthProductId": "727306",
-        "sellauthVariantId": "1180867"
-      },
-      {
-        "label": "أسبوع",
-        "price": 9.79,
-        "currency": "USD",
-        "duration": "7 أيام",
-        "sellauthProductId": "727306",
-        "sellauthVariantId": "1180868"
-      },
-      {
-        "label": "شهر",
-        "price": 17.79,
-        "currency": "USD",
-        "duration": "30 يوم",
-        "sellauthProductId": "727306",
-        "sellauthVariantId": "1180869"
-      }
-    ],
-    "image": "/cheats/products/arcane-warthunder-lite/hero.jpg",
-    "media": [
-      "/cheats/products/arcane-warthunder-lite/gallery-1.jpg"
-    ],
-    "gameIcon": "✈️",
-    "category": "warthunder",
-    "reviews": 43,
-    "rating": 4.5
-  },
+
+
   {
     "id": "ancient-albion-online-cheat",
     "slug": "ancient-albion-online",
@@ -1774,62 +1632,7 @@ export const cheats: Cheat[] = [
       "/cheats/products/ancient-albion-online/gallery-5.png"
     ]
   },
-  {
-    "id": "zcheats-all-access-cheat",
-    "slug": "zcheats-all-access",
-    "game": "اشتراك شامل",
-    "gameEn": "All Access",
-    "title": "Zcheats All Access",
-    "titleEn": "Zcheats All Access",
-    "description": "أداة Zcheats All Access الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
-    "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
-    ],
-    "plans": [
-      {
-        "label": "يوم واحد",
-        "price": 6.79,
-        "currency": "USD",
-        "duration": "1 يوم",
-        "sellauthProductId": "727104",
-        "sellauthVariantId": "1179886"
-      },
-      {
-        "label": "3 Days",
-        "price": 18.79,
-        "currency": "USD",
-        "duration": "3 Days",
-        "sellauthProductId": "727104",
-        "sellauthVariantId": "1179887"
-      },
-      {
-        "label": "أسبوع",
-        "price": 37.79,
-        "currency": "USD",
-        "duration": "7 أيام",
-        "sellauthProductId": "727104",
-        "sellauthVariantId": "1179888"
-      },
-      {
-        "label": "شهر",
-        "price": 85.79,
-        "currency": "USD",
-        "duration": "30 يوم",
-        "sellauthProductId": "727104",
-        "sellauthVariantId": "1179889"
-      }
-    ],
-    "image": "",
-    "gameIcon": "🔑",
-    "category": "all-access",
-    "reviews": 97,
-    "rating": 4.7
-  },
+
   {
     "id": "ancient-arc-raiders-cheat",
     "slug": "ancient-arc-raiders",

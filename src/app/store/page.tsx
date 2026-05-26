@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { cheats, gameImages } from '@/data/cheats';
+import { cheats, gameImages, storeCategoryOrder } from '@/data/cheats';
 import OCProductCard from '@/components/OCProductCard';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './page.module.css';
@@ -23,10 +23,17 @@ export default function StorePage() {
     }
   });
 
-  // Sort categories alphabetically by game name
-  const sortedCategories = Array.from(categoriesMap.values()).sort((a, b) =>
-    a.label.localeCompare(b.label, language)
-  );
+  const priorityIndex = (key: string) => {
+    const i = storeCategoryOrder.indexOf(key as (typeof storeCategoryOrder)[number]);
+    return i === -1 ? storeCategoryOrder.length : i;
+  };
+
+  const sortedCategories = Array.from(categoriesMap.values()).sort((a, b) => {
+    const pa = priorityIndex(a.key);
+    const pb = priorityIndex(b.key);
+    if (pa !== pb) return pa - pb;
+    return a.label.localeCompare(b.label, language);
+  });
 
   const categories = [
     { key: 'all', label: t('store.all'), icon: '🎮' },
