@@ -38,6 +38,7 @@ scripts/webhook-urls.generated.json
 scripts/keyhub-products-snapshot.json
 scripts/price-sync-report.json
 scripts/store-keyhub-prices.json
+scripts/content-sync-report.json
 
 # vercel
 .vercel

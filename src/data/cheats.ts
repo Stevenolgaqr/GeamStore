@@ -15,10 +15,12 @@ export interface Cheat {
   title: string;
   titleEn: string;
   description: string;
+  descriptionEn?: string;
   status: 'undetected' | 'updating' | 'detected';
   statusLabel: string;
   tag?: string;
   features: string[];
+  featuresEn?: string[];
   plans: CheatPlan[];
   image: string;
   gameIcon: string;
@@ -65,14 +67,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Apex Legends",
     "title": "Ancient Apex",
     "titleEn": "Ancient Apex",
-    "description": "أداة Ancient Apex الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Aimbot",
+      "Enable",
+      "Ignore Knocked",
+      "Aim Only Visible",
+      "Draw FOV",
+      "FOV (slider)",
+      "Aim Bind",
+      "Smooth (slider)",
+      "Second Aim Bind",
+      "Second Smooth (slider)",
+      "Misc",
+      "Lock Target"
+    ],
+    "featuresEn": [
+      "Aimbot",
+      "Enable",
+      "Ignore Knocked",
+      "Aim Only Visible",
+      "Draw FOV",
+      "FOV (slider)",
+      "Aim Bind",
+      "Smooth (slider)",
+      "Second Aim Bind",
+      "Second Smooth (slider)",
+      "Misc",
+      "Lock Target"
     ],
     "plans": [
       {
@@ -100,7 +125,16 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179738"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-apex/hero.png",
+    "media": [
+      "/cheats/products/ancient-apex/gallery-1.png",
+      "/cheats/products/ancient-apex/gallery-2.png",
+      "/cheats/products/ancient-apex/gallery-3.png",
+      "/cheats/products/ancient-apex/gallery-4.png",
+      "/cheats/products/ancient-apex/gallery-5.png",
+      "/cheats/products/ancient-apex/gallery-6.png",
+      "/cheats/products/ancient-apex/gallery-7.png"
+    ],
     "gameIcon": "⚡",
     "category": "apex",
     "reviews": 32,
@@ -113,14 +147,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Apex Legends",
     "title": "Arcane Apex",
     "titleEn": "Arcane Apex",
-    "description": "أداة Arcane Apex الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable Aimbot – enables the aimbot",
+      "Always Active – aimbot works constantly without holding a key",
+      "Prediction – predicts target movement trajectory",
+      "Recoil Control – reduces weapon recoil while shooting",
+      "Target Bots – allows aimbot to target bots",
+      "Target Teammates – allows teammates to be selected as targets",
+      "Target Knocked – aims at knocked enemies",
+      "Visible Check – ignores targets behind walls",
+      "Switch Delay – delay before switching targets",
+      "Radius (FOV) – aimbot target selection radius",
+      "Draw FOV – displays aimbot working area as a circle",
+      "Activation Key (First / Second) – bind up to two activation keys"
+    ],
+    "featuresEn": [
+      "Enable Aimbot – enables the aimbot",
+      "Always Active – aimbot works constantly without holding a key",
+      "Prediction – predicts target movement trajectory",
+      "Recoil Control – reduces weapon recoil while shooting",
+      "Target Bots – allows aimbot to target bots",
+      "Target Teammates – allows teammates to be selected as targets",
+      "Target Knocked – aims at knocked enemies",
+      "Visible Check – ignores targets behind walls",
+      "Switch Delay – delay before switching targets",
+      "Radius (FOV) – aimbot target selection radius",
+      "Draw FOV – displays aimbot working area as a circle",
+      "Activation Key (First / Second) – bind up to two activation keys"
     ],
     "plans": [
       {
@@ -148,7 +205,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179776"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-apex/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-apex/gallery-1.png",
+      "/cheats/products/arcane-apex/gallery-2.gif",
+      "/cheats/products/arcane-apex/gallery-3.jpg"
+    ],
     "gameIcon": "⚡",
     "category": "apex",
     "reviews": 88,
@@ -161,14 +223,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Battlefield",
     "title": "Ancient BF6",
     "titleEn": "Ancient BF6",
-    "description": "أداة Ancient BF6 الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper v disabled for AMD and INTEL CPU.\nSecure Boot enabled.",
+    "descriptionEn": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper v disabled for AMD and INTEL CPU.\nSecure Boot enabled.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "General",
+      "Enable – enables aimbot",
+      "Aim Key 1 – primary aim activation key",
+      "Aim Key 2 – secondary aim activation key",
+      "Enable FOV – enables aimbot field of view",
+      "FOV Radius – aimbot working radius",
+      "Smooth Radius – aim smoothing radius",
+      "Target",
+      "Target Bone (Head, Neck, Body, Pelvis) – select target bone",
+      "Nearest Bone – automatically selects the closest bone",
+      "Force Bone Key – keybind to force selected bone",
+      "Force Bones (Head, Neck, Body, Pelvis) – bones used when force mode is active"
+    ],
+    "featuresEn": [
+      "General",
+      "Enable – enables aimbot",
+      "Aim Key 1 – primary aim activation key",
+      "Aim Key 2 – secondary aim activation key",
+      "Enable FOV – enables aimbot field of view",
+      "FOV Radius – aimbot working radius",
+      "Smooth Radius – aim smoothing radius",
+      "Target",
+      "Target Bone (Head, Neck, Body, Pelvis) – select target bone",
+      "Nearest Bone – automatically selects the closest bone",
+      "Force Bone Key – keybind to force selected bone",
+      "Force Bones (Head, Neck, Body, Pelvis) – bones used when force mode is active"
     ],
     "plans": [
       {
@@ -196,7 +281,15 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179744"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-bf6/hero.png",
+    "media": [
+      "/cheats/products/ancient-bf6/gallery-1.jpg",
+      "/cheats/products/ancient-bf6/gallery-2.jpg",
+      "/cheats/products/ancient-bf6/gallery-3.jpg",
+      "/cheats/products/ancient-bf6/gallery-4.jpg",
+      "/cheats/products/ancient-bf6/gallery-5.jpg",
+      "/cheats/products/ancient-bf6/gallery-6.jpg"
+    ],
     "gameIcon": "🪖",
     "category": "battlefield",
     "reviews": 188,
@@ -209,14 +302,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Battlefield",
     "title": "Arcane BF6",
     "titleEn": "Arcane BF6",
-    "description": "أداة Arcane BF6 الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – enable or disable the aimbot",
+      "Aim Mode – aimbot operation mode (always active / on keypress)",
+      "Aim Key 1 / 2 – two selectable activation keys for aimbot",
+      "Visible Check – aimbot targets only visible enemies",
+      "Targets – select aimbot targets (players / bots / teammates)",
+      "Bones – select target bones (head / neck / chest / pelvis)",
+      "Bones Priority – bone selection priority (closest to crosshair / random / selected)",
+      "Draw FOV – displays the aimbot action radius as a circle",
+      "FOV – size of the aimbot working area",
+      "Smooth – smooths aimbot movements",
+      "Max Distance – maximum aimbot operating range",
+      "Box – wallhack displayed as boxes"
+    ],
+    "featuresEn": [
+      "Enable – enable or disable the aimbot",
+      "Aim Mode – aimbot operation mode (always active / on keypress)",
+      "Aim Key 1 / 2 – two selectable activation keys for aimbot",
+      "Visible Check – aimbot targets only visible enemies",
+      "Targets – select aimbot targets (players / bots / teammates)",
+      "Bones – select target bones (head / neck / chest / pelvis)",
+      "Bones Priority – bone selection priority (closest to crosshair / random / selected)",
+      "Draw FOV – displays the aimbot action radius as a circle",
+      "FOV – size of the aimbot working area",
+      "Smooth – smooths aimbot movements",
+      "Max Distance – maximum aimbot operating range",
+      "Box – wallhack displayed as boxes"
     ],
     "plans": [
       {
@@ -244,7 +360,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179788"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-bf6/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-bf6/gallery-1.gif",
+      "/cheats/products/arcane-bf6/gallery-2.jpg",
+      "/cheats/products/arcane-bf6/gallery-3.jpg"
+    ],
     "gameIcon": "🪖",
     "category": "battlefield",
     "reviews": 78,
@@ -257,14 +378,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Call of Duty",
     "title": "Ancient COD",
     "titleEn": "Ancient COD",
-    "description": "أداة Ancient COD الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "System requirements\n\nSVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper v disabled for AMD CPU only.\nHyper v enabled for INTEL CPU only.\nDisable integrate GPU for laptop in BIOS.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.",
+    "descriptionEn": "System requirements\n\nSVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper v disabled for AMD CPU only.\nHyper v enabled for INTEL CPU only.\nDisable integrate GPU for laptop in BIOS.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "General",
+      "Enable – enables aimbot",
+      "Aim Key – keybind to activate aimbot",
+      "Draw FOV – displays the aimbot field of view",
+      "FOV Color – color of the FOV circle",
+      "FOV Radius – aimbot working radius",
+      "Smooth – enables aim smoothing",
+      "Smooth Value – smoothing strength",
+      "Draw Crosshair – displays custom crosshair",
+      "Prediction Dot – displays prediction point",
+      "Target Line – draws a line to the target",
+      "Other"
+    ],
+    "featuresEn": [
+      "General",
+      "Enable – enables aimbot",
+      "Aim Key – keybind to activate aimbot",
+      "Draw FOV – displays the aimbot field of view",
+      "FOV Color – color of the FOV circle",
+      "FOV Radius – aimbot working radius",
+      "Smooth – enables aim smoothing",
+      "Smooth Value – smoothing strength",
+      "Draw Crosshair – displays custom crosshair",
+      "Prediction Dot – displays prediction point",
+      "Target Line – draws a line to the target",
+      "Other"
     ],
     "plans": [
       {
@@ -308,7 +452,7 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179749"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-cod/hero.png",
     "gameIcon": "💀",
     "category": "cod",
     "reviews": 63,
@@ -377,14 +521,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Escape from Tarkov",
     "title": "Ancient EFT Chams",
     "titleEn": "Ancient EFT Chams",
-    "description": "أداة Ancient EFT Chams الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Main Settings",
+      "PMC (Visible / Invisible Colors) – chams colors for PMC players",
+      "Team (Visible / Invisible Colors) – chams colors for teammates",
+      "Scav (Visible / Invisible Colors) – chams colors for scavs",
+      "AI (Visible / Invisible Colors) – chams colors for AI",
+      "Boss (Visible / Invisible Colors) – chams colors for bosses",
+      "Loot",
+      "Loot &lt; 10k – color for low-value loot",
+      "Loot &gt; 10k – color for medium-value loot",
+      "Loot &gt; 50k – color for high-value loot",
+      "Loot &gt; 100k – color for very high-value loot",
+      "Loot &gt; 500k – color for ultra high-value loot"
+    ],
+    "featuresEn": [
+      "Main Settings",
+      "PMC (Visible / Invisible Colors) – chams colors for PMC players",
+      "Team (Visible / Invisible Colors) – chams colors for teammates",
+      "Scav (Visible / Invisible Colors) – chams colors for scavs",
+      "AI (Visible / Invisible Colors) – chams colors for AI",
+      "Boss (Visible / Invisible Colors) – chams colors for bosses",
+      "Loot",
+      "Loot &lt; 10k – color for low-value loot",
+      "Loot &gt; 10k – color for medium-value loot",
+      "Loot &gt; 50k – color for high-value loot",
+      "Loot &gt; 100k – color for very high-value loot",
+      "Loot &gt; 500k – color for ultra high-value loot"
     ],
     "plans": [
       {
@@ -412,7 +579,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179755"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-eft-chams/hero.png",
+    "media": [
+      "/cheats/products/ancient-eft-chams/gallery-1.jpg",
+      "/cheats/products/ancient-eft-chams/gallery-2.jpg",
+      "/cheats/products/ancient-eft-chams/gallery-3.jpg"
+    ],
     "gameIcon": "🐻",
     "category": "tarkov",
     "reviews": 40,
@@ -425,14 +597,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Escape from Tarkov",
     "title": "Ancient EFT Full",
     "titleEn": "Ancient EFT Full",
-    "description": "أداة Ancient EFT Full الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).",
+    "descriptionEn": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable",
+      "Aim Key",
+      "Draw Crosshair",
+      "Crosshair Color",
+      "Draw Aim FOV",
+      "Dynamic FOV",
+      "FOV Color",
+      "FOV Value",
+      "Max Aimbot Distance",
+      "Target Selection",
+      "Target Capture Mode: Closest to Crosshair | Closest by Distance | Lowest Health",
+      "Target Bones: Head | Neck | Stomach | Pelvis | Legs"
+    ],
+    "featuresEn": [
+      "Enable",
+      "Aim Key",
+      "Draw Crosshair",
+      "Crosshair Color",
+      "Draw Aim FOV",
+      "Dynamic FOV",
+      "FOV Color",
+      "FOV Value",
+      "Max Aimbot Distance",
+      "Target Selection",
+      "Target Capture Mode: Closest to Crosshair | Closest by Distance | Lowest Health",
+      "Target Bones: Head | Neck | Stomach | Pelvis | Legs"
     ],
     "plans": [
       {
@@ -460,7 +655,7 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179758"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-eft-full/hero.png",
     "gameIcon": "🐻",
     "category": "tarkov",
     "reviews": 211,
@@ -473,14 +668,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Fortnite",
     "title": "Ancient Fortnite",
     "titleEn": "Ancient Fortnite",
-    "description": "أداة Ancient Fortnite الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper V disabled for AMD CPU only.\nHyper V enabled for INTEL CPU only.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.\nSupported: INTEL + AMD, Windows 10-11 | 1909 - 25h2.",
+    "descriptionEn": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper V disabled for AMD CPU only.\nHyper V enabled for INTEL CPU only.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.\nSupported: INTEL + AMD, Windows 10-11 | 1909 - 25h2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "General",
+      "Enable AimBot",
+      "AimBot Type: (Static; Curved)",
+      "Aim key",
+      "Aim key 2",
+      "Draw FOV",
+      "Target",
+      "Only Visible",
+      "Lock Target",
+      "Lock Knocked",
+      "Prediction",
+      "Category Settings"
+    ],
+    "featuresEn": [
+      "General",
+      "Enable AimBot",
+      "AimBot Type: (Static; Curved)",
+      "Aim key",
+      "Aim key 2",
+      "Draw FOV",
+      "Target",
+      "Only Visible",
+      "Lock Target",
+      "Lock Knocked",
+      "Prediction",
+      "Category Settings"
     ],
     "plans": [
       {
@@ -508,7 +726,16 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179761"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-fortnite/hero.jpg",
+    "media": [
+      "/cheats/products/ancient-fortnite/gallery-1.jpg",
+      "/cheats/products/ancient-fortnite/gallery-2.jpg",
+      "/cheats/products/ancient-fortnite/gallery-3.jpg",
+      "/cheats/products/ancient-fortnite/gallery-4.jpg",
+      "/cheats/products/ancient-fortnite/gallery-5.jpg",
+      "/cheats/products/ancient-fortnite/gallery-6.jpg",
+      "/cheats/products/ancient-fortnite/gallery-7.jpg"
+    ],
     "gameIcon": "🔥",
     "category": "fortnite",
     "reviews": 83,
@@ -521,14 +748,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Fortnite",
     "title": "Arcane Fortnite",
     "titleEn": "Arcane Fortnite",
-    "description": "أداة Arcane Fortnite الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & INTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Epic",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & INTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Epic",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Use at own Risk",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable Aimbot – turns the aimbot on",
+      "Aim Key – keybind for aimbot activation",
+      "Weapon Type (Pistol / SMG / Rifle / Shotgun / Sniper) – separate aimbot settings per weapon type",
+      "Targets (Knocked / BOT / Team) – select which targets the aimbot can aim at",
+      "Bone (Head / Neck / Body / Legs) – select body parts for aiming",
+      "Smooth – smoothness of aimbot movements (higher value = weaker aim)",
+      "FOV – size of the aimbot working area",
+      "Draw FOV – displays the aimbot area as a circle on the screen",
+      "Distance – maximum aimbot working range",
+      "No Recoil – disables weapon recoil",
+      "Visible Check – aimbot targets only visible enemies",
+      "Prediction – predicts enemy movement trajectories"
+    ],
+    "featuresEn": [
+      "Enable Aimbot – turns the aimbot on",
+      "Aim Key – keybind for aimbot activation",
+      "Weapon Type (Pistol / SMG / Rifle / Shotgun / Sniper) – separate aimbot settings per weapon type",
+      "Targets (Knocked / BOT / Team) – select which targets the aimbot can aim at",
+      "Bone (Head / Neck / Body / Legs) – select body parts for aiming",
+      "Smooth – smoothness of aimbot movements (higher value = weaker aim)",
+      "FOV – size of the aimbot working area",
+      "Draw FOV – displays the aimbot area as a circle on the screen",
+      "Distance – maximum aimbot working range",
+      "No Recoil – disables weapon recoil",
+      "Visible Check – aimbot targets only visible enemies",
+      "Prediction – predicts enemy movement trajectories"
     ],
     "plans": [
       {
@@ -564,7 +814,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179821"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-fortnite/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-fortnite/gallery-1.gif",
+      "/cheats/products/arcane-fortnite/gallery-2.webp",
+      "/cheats/products/arcane-fortnite/gallery-3.webp"
+    ],
     "gameIcon": "🔥",
     "category": "fortnite",
     "reviews": 123,
@@ -577,14 +832,37 @@ export const cheats: Cheat[] = [
     "gameEn": "PUBG",
     "title": "Ancient Pubg",
     "titleEn": "Ancient Pubg",
-    "description": "أداة Ancient Pubg الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper v disabled for AMD CPU only.\nHyper v enabled for INTEL CPU only.\nDisable integrate GPU for laptop in BIOS.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.",
+    "descriptionEn": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper v disabled for AMD CPU only.\nHyper v enabled for INTEL CPU only.\nDisable integrate GPU for laptop in BIOS.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "General",
+      "AimBot Type (Static / Curved) – select aimbot aiming style",
+      "Aim Keys (Aim Key 1 / Aim Key 2) – aimbot activation keys",
+      "FOV – aimbot field of view size",
+      "Smooth – aim smoothing strength",
+      "Draw FOV (Color) – display FOV circle with custom color",
+      "Target",
+      "Bone (Head / Neck / Pelvis / Stomach) – target bone selection",
+      "Force Bone (Head / Neck / Pelvis / Stomach) – forced bone selection",
+      "Force Key – keybind to force selected bone",
+      "Only Visible – aim only at visible targets",
+      "Lock Target – lock aim onto selected target"
+    ],
+    "featuresEn": [
+      "General",
+      "AimBot Type (Static / Curved) – select aimbot aiming style",
+      "Aim Keys (Aim Key 1 / Aim Key 2) – aimbot activation keys",
+      "FOV – aimbot field of view size",
+      "Smooth – aim smoothing strength",
+      "Draw FOV (Color) – display FOV circle with custom color",
+      "Target",
+      "Bone (Head / Neck / Pelvis / Stomach) – target bone selection",
+      "Force Bone (Head / Neck / Pelvis / Stomach) – forced bone selection",
+      "Force Key – keybind to force selected bone",
+      "Only Visible – aim only at visible targets",
+      "Lock Target – lock aim onto selected target"
     ],
     "plans": [
       {
@@ -612,7 +890,16 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179767"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-pubg/hero.png",
+    "media": [
+      "/cheats/products/ancient-pubg/gallery-1.png",
+      "/cheats/products/ancient-pubg/gallery-2.png",
+      "/cheats/products/ancient-pubg/gallery-3.png",
+      "/cheats/products/ancient-pubg/gallery-4.png",
+      "/cheats/products/ancient-pubg/gallery-5.png",
+      "/cheats/products/ancient-pubg/gallery-6.png",
+      "/cheats/products/ancient-pubg/gallery-7.png"
+    ],
     "gameIcon": "🍳",
     "category": "pubg",
     "reviews": 65,
@@ -625,14 +912,37 @@ export const cheats: Cheat[] = [
     "gameEn": "PUBG",
     "title": "Arcane Pubg",
     "titleEn": "Arcane Pubg",
-    "description": "أداة Arcane Pubg الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "System Requirements\nOperating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & INTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Kakao, Epic Games",
+    "descriptionEn": "System Requirements\nOperating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & INTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Kakao, Epic Games",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Use at own Risk",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable Aimbot – enable/disable Aimbot",
+      "Aim Type - the mode of operation of the aimbot (always, when pressed)",
+      "FOV – Aimbot working radius",
+      "FOV Style - the display style of the aimbot circle",
+      "FOV Adaptive - dynamic FOV depending on",
+      "Smooth - smoothing of AIM movements",
+      "Distance – Aimbot working distance",
+      "Bone – target point for Aimbot (head, neck, body)",
+      "Prediction – predicts the movement trajectory of targets",
+      "Lock Target – Aim focuses on the active target until it is destroyed",
+      "Recoil Control System (RCS) – recoil control system",
+      "No Sway – removes weapon sway (only when aiming)"
+    ],
+    "featuresEn": [
+      "Enable Aimbot – enable/disable Aimbot",
+      "Aim Type - the mode of operation of the aimbot (always, when pressed)",
+      "FOV – Aimbot working radius",
+      "FOV Style - the display style of the aimbot circle",
+      "FOV Adaptive - dynamic FOV depending on",
+      "Smooth - smoothing of AIM movements",
+      "Distance – Aimbot working distance",
+      "Bone – target point for Aimbot (head, neck, body)",
+      "Prediction – predicts the movement trajectory of targets",
+      "Lock Target – Aim focuses on the active target until it is destroyed",
+      "Recoil Control System (RCS) – recoil control system",
+      "No Sway – removes weapon sway (only when aiming)"
     ],
     "plans": [
       {
@@ -660,7 +970,7 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179845"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-pubg/hero.jpg",
     "gameIcon": "🍳",
     "category": "pubg",
     "reviews": 79,
@@ -673,14 +983,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Rainbow Six Siege",
     "title": "Ancient R6",
     "titleEn": "Ancient R6",
-    "description": "أداة Ancient R6 الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper V disabled for AMD CPU only.\nHyper V enabled for INTEL CPU only.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.\nSupported: INTEL + AMD, Windows 10-11 | 1909 - 25h2.",
+    "descriptionEn": "SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n16GB RAM (or more).\nHyper V disabled for AMD CPU only.\nHyper V enabled for INTEL CPU only.\nFirmware in UEFI mode only for INTEL CPU.\nThe system use GPT format disk only for INTEL CPU.\nSecure Boot disabled.\nSupported: INTEL + AMD, Windows 10-11 | 1909 - 25h2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "General",
+      "Enable – enables aimbot",
+      "Aim Key – keybind to activate aimbot",
+      "FOV (Slider) – aimbot field of view size",
+      "Aim Smooth (Slider) – smoothness of aim movement",
+      "Aim Sensitivity (Slider) – aimbot sensitivity adjustment",
+      "Target",
+      "Target Bone – select body part to aim at",
+      "Nearest Bone – automatically selects the closest bone",
+      "Target Lock – locks aim onto the selected target",
+      "General",
+      "Box – displays player boxes"
+    ],
+    "featuresEn": [
+      "General",
+      "Enable – enables aimbot",
+      "Aim Key – keybind to activate aimbot",
+      "FOV (Slider) – aimbot field of view size",
+      "Aim Smooth (Slider) – smoothness of aim movement",
+      "Aim Sensitivity (Slider) – aimbot sensitivity adjustment",
+      "Target",
+      "Target Bone – select body part to aim at",
+      "Nearest Bone – automatically selects the closest bone",
+      "Target Lock – locks aim onto the selected target",
+      "General",
+      "Box – displays player boxes"
     ],
     "plans": [
       {
@@ -708,7 +1041,15 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179770"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-r6/hero.png",
+    "media": [
+      "/cheats/products/ancient-r6/gallery-1.png",
+      "/cheats/products/ancient-r6/gallery-2.png",
+      "/cheats/products/ancient-r6/gallery-3.png",
+      "/cheats/products/ancient-r6/gallery-4.png",
+      "/cheats/products/ancient-r6/gallery-5.png",
+      "/cheats/products/ancient-r6/gallery-6.png"
+    ],
     "gameIcon": "💥",
     "category": "r6",
     "reviews": 212,
@@ -721,14 +1062,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Rust",
     "title": "Ancient Rust",
     "titleEn": "Ancient Rust",
-    "description": "أداة Ancient Rust الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "# System requirements\n\n- SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n- 16GB RAM (or more).\n- Hyper v enabled for INTEL and AMD CPU.\n- Firmware in UEFI mode.\n- The system use GPT format disk.\n- Secure Boot disabled.",
+    "descriptionEn": "# System requirements\n\n- SVM [AMD] / VT-X [INTEL] (BIOS) enabled.\n- 16GB RAM (or more).\n- Hyper v enabled for INTEL and AMD CPU.\n- Firmware in UEFI mode.\n- The system use GPT format disk.\n- Secure Boot disabled.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Aimbot Settings",
+      "Enable – enables aimbot",
+      "Aim Type (Silent / Memory) – aimbot operation mode",
+      "Aim Key – keybind to activate aimbot",
+      "Hit Chance (Slider) – chance for aimbot to apply",
+      "Max Aim Distance (Slider) – maximum aimbot range",
+      "Use Smooth (Slider) – smoothing strength (memory aim only)",
+      "Draw FOV – displays aimbot field of view",
+      "Aim FOV (Slider) – aimbot FOV size",
+      "Aim Bone (Head / Neck / Stomach / Closest / Closest No Head) – target bone selection",
+      "Target Settings",
+      "Enemies – target enemies"
+    ],
+    "featuresEn": [
+      "Aimbot Settings",
+      "Enable – enables aimbot",
+      "Aim Type (Silent / Memory) – aimbot operation mode",
+      "Aim Key – keybind to activate aimbot",
+      "Hit Chance (Slider) – chance for aimbot to apply",
+      "Max Aim Distance (Slider) – maximum aimbot range",
+      "Use Smooth (Slider) – smoothing strength (memory aim only)",
+      "Draw FOV – displays aimbot field of view",
+      "Aim FOV (Slider) – aimbot FOV size",
+      "Aim Bone (Head / Neck / Stomach / Closest / Closest No Head) – target bone selection",
+      "Target Settings",
+      "Enemies – target enemies"
     ],
     "plans": [
       {
@@ -756,7 +1120,16 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179773"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-rust/hero.png",
+    "media": [
+      "/cheats/products/ancient-rust/gallery-1.jpg",
+      "/cheats/products/ancient-rust/gallery-2.jpg",
+      "/cheats/products/ancient-rust/gallery-3.jpg",
+      "/cheats/products/ancient-rust/gallery-4.jpg",
+      "/cheats/products/ancient-rust/gallery-5.jpg",
+      "/cheats/products/ancient-rust/gallery-6.jpg",
+      "/cheats/products/ancient-rust/gallery-7.jpg"
+    ],
     "gameIcon": "🦀",
     "category": "rust",
     "reviews": 162,
@@ -769,14 +1142,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Rust",
     "title": "Arcane Rust",
     "titleEn": "Arcane Rust",
-    "description": "أداة Arcane Rust الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "description": "System Requirements\nOperating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: Intel & AMD\nVideo card: Nvidia & AMD\nClient: Steam",
+    "descriptionEn": "System Requirements\nOperating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: Intel & AMD\nVideo card: Nvidia & AMD\nClient: Steam",
+    "status": "updating",
+    "statusLabel": "Under Maintenance",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable Aimbot – enables or disables the aimbot",
+      "Aim Always – keeps the aimbot active without holding a key",
+      "Aim Key – allows binding two keys for aimbot activation",
+      "Aim Type (Silent / Vector) – select aimbot aiming method",
+      "Vector Aimbot – simulates human-like mouse movement",
+      "Silent Aimbot – hits targets without moving the crosshair or camera",
+      "Prediction – predicts target movement for higher accuracy",
+      "Visible Check – targets only enemies in direct line of sight",
+      "Target Bots – allows targeting NPCs and bots",
+      "Target Teams – allows targeting squad members",
+      "Target Knocked – targets knocked-down players",
+      "Max Distance – maximum target search range"
+    ],
+    "featuresEn": [
+      "Enable Aimbot – enables or disables the aimbot",
+      "Aim Always – keeps the aimbot active without holding a key",
+      "Aim Key – allows binding two keys for aimbot activation",
+      "Aim Type (Silent / Vector) – select aimbot aiming method",
+      "Vector Aimbot – simulates human-like mouse movement",
+      "Silent Aimbot – hits targets without moving the crosshair or camera",
+      "Prediction – predicts target movement for higher accuracy",
+      "Visible Check – targets only enemies in direct line of sight",
+      "Target Bots – allows targeting NPCs and bots",
+      "Target Teams – allows targeting squad members",
+      "Target Knocked – targets knocked-down players",
+      "Max Distance – maximum target search range"
     ],
     "plans": [
       {
@@ -812,7 +1208,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179849"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-rust/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-rust/gallery-1.jpg",
+      "/cheats/products/arcane-rust/gallery-2.jpg",
+      "/cheats/products/arcane-rust/gallery-3.gif"
+    ],
     "gameIcon": "🦀",
     "category": "rust",
     "reviews": 117,
@@ -921,14 +1322,37 @@ export const cheats: Cheat[] = [
     "gameEn": "DayZ",
     "title": "Ancient Dayz",
     "titleEn": "Ancient Dayz",
-    "description": "أداة Ancient Dayz الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Main",
+      "Enable (Head / Neck / Chest) – enables aimbot with selectable target bones",
+      "Aimbot Key – keybind to activate aimbot",
+      "On Players – enables aimbot on players",
+      "On Zombies – enables aimbot on zombies",
+      "Settings",
+      "Hitbox – select hitbox for aiming",
+      "Draw FOV – displays aimbot field of view",
+      "Draw Aim Point – displays aim point indicator",
+      "Enable – enables enemy ESP",
+      "Draw Skeleton – displays skeleton ESP",
+      "Draw Box – displays box ESP"
+    ],
+    "featuresEn": [
+      "Main",
+      "Enable (Head / Neck / Chest) – enables aimbot with selectable target bones",
+      "Aimbot Key – keybind to activate aimbot",
+      "On Players – enables aimbot on players",
+      "On Zombies – enables aimbot on zombies",
+      "Settings",
+      "Hitbox – select hitbox for aiming",
+      "Draw FOV – displays aimbot field of view",
+      "Draw Aim Point – displays aim point indicator",
+      "Enable – enables enemy ESP",
+      "Draw Skeleton – displays skeleton ESP",
+      "Draw Box – displays box ESP"
     ],
     "plans": [
       {
@@ -956,7 +1380,16 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179752"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-dayz/hero.png",
+    "media": [
+      "/cheats/products/ancient-dayz/gallery-1.jpg",
+      "/cheats/products/ancient-dayz/gallery-2.jpg",
+      "/cheats/products/ancient-dayz/gallery-3.jpg",
+      "/cheats/products/ancient-dayz/gallery-4.jpg",
+      "/cheats/products/ancient-dayz/gallery-5.jpg",
+      "/cheats/products/ancient-dayz/gallery-6.jpg",
+      "/cheats/products/ancient-dayz/gallery-7.jpg"
+    ],
     "gameIcon": "🧟",
     "category": "dayz",
     "reviews": 72,
@@ -969,14 +1402,37 @@ export const cheats: Cheat[] = [
     "gameEn": "DayZ",
     "title": "Arcane Dayz",
     "titleEn": "Arcane Dayz",
-    "description": "أداة Arcane Dayz الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: Intel & AMD\nVideo card: Nvidia & AMD\nClient: Steam",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: Intel & AMD\nVideo card: Nvidia & AMD\nClient: Steam",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Silent Aimbot – powerful aim type where shots hit targets without moving the camera",
+      "Enabled – enable or disable aimbot",
+      "FOV – size of the area where aimbot selects targets",
+      "Draw FOV (Style / Color) – displays the aiming area as a circle",
+      "Max Distance – maximum aimbot range",
+      "Ignore – ignore selected targets (zombies, friends)",
+      "Bone – select body parts (hitboxes) for aiming",
+      "Line To Target – draws a line to the current aim target",
+      "Players – display players using wallhack",
+      "Zombies – display zombies using wallhack",
+      "Friends – toggle ESP visibility for friends",
+      "Box (2D / Corners / Outline / Filled) – box ESP with multiple styles"
+    ],
+    "featuresEn": [
+      "Silent Aimbot – powerful aim type where shots hit targets without moving the camera",
+      "Enabled – enable or disable aimbot",
+      "FOV – size of the area where aimbot selects targets",
+      "Draw FOV (Style / Color) – displays the aiming area as a circle",
+      "Max Distance – maximum aimbot range",
+      "Ignore – ignore selected targets (zombies, friends)",
+      "Bone – select body parts (hitboxes) for aiming",
+      "Line To Target – draws a line to the current aim target",
+      "Players – display players using wallhack",
+      "Zombies – display zombies using wallhack",
+      "Friends – toggle ESP visibility for friends",
+      "Box (2D / Corners / Outline / Filled) – box ESP with multiple styles"
     ],
     "plans": [
       {
@@ -1004,7 +1460,11 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179805"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-dayz/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-dayz/gallery-1.png",
+      "/cheats/products/arcane-dayz/gallery-2.webp"
+    ],
     "gameIcon": "🧟",
     "category": "dayz",
     "reviews": 92,
@@ -1017,14 +1477,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Marvel Rivals",
     "title": "Arcane Marvel Rivals",
     "titleEn": "Arcane Marvel Rivals",
-    "description": "أداة Arcane Marvel Rivals الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable Aimbot – enables aimbot assistance",
+      "Hold Mode – aimbot is active only while holding the key",
+      "Toggle Mode – aimbot toggles on/off with a single key press",
+      "Aim Key – keybind to activate aimbot",
+      "Vector Aimbot – simulates human-like mouse movements",
+      "FOV (Field of View) – area where aimbot selects targets",
+      "Draw FOV – displays the aiming radius as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Adaptive FOV – dynamically adjusts FOV based on combat situation",
+      "Smooth – aim smoothness (higher value = slower, smoother aim)",
+      "Distance – maximum aiming range in meters",
+      "Bone – select target body part"
+    ],
+    "featuresEn": [
+      "Enable Aimbot – enables aimbot assistance",
+      "Hold Mode – aimbot is active only while holding the key",
+      "Toggle Mode – aimbot toggles on/off with a single key press",
+      "Aim Key – keybind to activate aimbot",
+      "Vector Aimbot – simulates human-like mouse movements",
+      "FOV (Field of View) – area where aimbot selects targets",
+      "Draw FOV – displays the aiming radius as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Adaptive FOV – dynamically adjusts FOV based on combat situation",
+      "Smooth – aim smoothness (higher value = slower, smoother aim)",
+      "Distance – maximum aiming range in meters",
+      "Bone – select target body part"
     ],
     "plans": [
       {
@@ -1052,7 +1535,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179836"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-marvel-rivals/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-marvel-rivals/gallery-1.jpg",
+      "/cheats/products/arcane-marvel-rivals/gallery-2.jpg",
+      "/cheats/products/arcane-marvel-rivals/gallery-3.gif"
+    ],
     "gameIcon": "🦸",
     "category": "marvel-rivals",
     "reviews": 162,
@@ -1065,14 +1553,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Warthunder",
     "title": "Arcane Warthunder",
     "titleEn": "Arcane Warthunder",
-    "description": "أداة Arcane Warthunder الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
+    "status": "updating",
+    "statusLabel": "Under Maintenance",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enabled – enable or disable aimbot",
+      "Aim Mode – aimbot working mode (always / on key press)",
+      "Aim Key – keys to activate aiming",
+      "Prediction – predicts projectile trajectory",
+      "Visible Check – aim only at visible enemies",
+      "Aim Target – select targets (bots / teammates / enemies)",
+      "Aim Position – aiming position selection",
+      "FOV – aimbot action area around the crosshair",
+      "Draw FOV – displays the aimbot area as a circle",
+      "FOV Style – visual customization of the aimbot circle",
+      "Smooth – smooths aimbot movements",
+      "Max Distance – maximum aimbot working range"
+    ],
+    "featuresEn": [
+      "Enabled – enable or disable aimbot",
+      "Aim Mode – aimbot working mode (always / on key press)",
+      "Aim Key – keys to activate aiming",
+      "Prediction – predicts projectile trajectory",
+      "Visible Check – aim only at visible enemies",
+      "Aim Target – select targets (bots / teammates / enemies)",
+      "Aim Position – aiming position selection",
+      "FOV – aimbot action area around the crosshair",
+      "Draw FOV – displays the aimbot area as a circle",
+      "FOV Style – visual customization of the aimbot circle",
+      "Smooth – smooths aimbot movements",
+      "Max Distance – maximum aimbot working range"
     ],
     "plans": [
       {
@@ -1100,7 +1611,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1180866"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-warthunder/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-warthunder/gallery-1.jpg",
+      "/cheats/products/arcane-warthunder/gallery-2.jpg",
+      "/cheats/products/arcane-warthunder/gallery-3.jpg"
+    ],
     "gameIcon": "✈️",
     "category": "warthunder",
     "reviews": 170,
@@ -1113,14 +1629,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Warthunder",
     "title": "Arcane Warthunder Lite",
     "titleEn": "Arcane Warthunder Lite",
-    "description": "أداة Arcane Warthunder Lite الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Box - Tank WH in boxes (rectangles)",
+      "Box Style - customization of type, color, and other box parameters",
+      "Name - show player nicknames",
+      "Distance - distance to targets in meters",
+      "Vehicle Name - name of the vehicle",
+      "Snaplines - WH in the form of lines to tanks",
+      "Max Distance - operating range of WH on tanks",
+      "Turret",
+      "Body",
+      "Commander",
+      "Loader",
+      "Driver"
+    ],
+    "featuresEn": [
+      "Box - Tank WH in boxes (rectangles)",
+      "Box Style - customization of type, color, and other box parameters",
+      "Name - show player nicknames",
+      "Distance - distance to targets in meters",
+      "Vehicle Name - name of the vehicle",
+      "Snaplines - WH in the form of lines to tanks",
+      "Max Distance - operating range of WH on tanks",
+      "Turret",
+      "Body",
+      "Commander",
+      "Loader",
+      "Driver"
     ],
     "plans": [
       {
@@ -1148,7 +1687,10 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1180869"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-warthunder-lite/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-warthunder-lite/gallery-1.jpg"
+    ],
     "gameIcon": "✈️",
     "category": "warthunder",
     "reviews": 43,
@@ -1161,14 +1703,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Albion Online",
     "title": "Ancient Albion Online",
     "titleEn": "Ancient Albion Online",
-    "description": "أداة Ancient Albion Online الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Zoom – zoom level of the radar",
+      "Transparency – radar transparency level",
+      "Point Scale – scale of points/icons",
+      "Text Scale – scale of text labels",
+      "Disable Radar Key – hotkey to disable radar",
+      "Disable Player Key – hotkey to disable player ESP",
+      "General",
+      "Enable – enable player ESP",
+      "Draw Is On Mount – shows if player is mounted",
+      "Draw Name – displays player name",
+      "Draw Health – displays player health",
+      "Draw Distance – displays distance to players"
+    ],
+    "featuresEn": [
+      "Zoom – zoom level of the radar",
+      "Transparency – radar transparency level",
+      "Point Scale – scale of points/icons",
+      "Text Scale – scale of text labels",
+      "Disable Radar Key – hotkey to disable radar",
+      "Disable Player Key – hotkey to disable player ESP",
+      "General",
+      "Enable – enable player ESP",
+      "Draw Is On Mount – shows if player is mounted",
+      "Draw Name – displays player name",
+      "Draw Health – displays player health",
+      "Draw Distance – displays distance to players"
     ],
     "plans": [
       {
@@ -1196,15 +1761,17 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179735"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-albion-online/hero.png",
     "gameIcon": "⚔️",
     "category": "albion",
     "reviews": 123,
     "rating": 4.6,
     "media": [
-      "https://i.ibb.co/L5kP18q/albion-1.jpg",
-      "https://i.ibb.co/H2n2T3k/albion-2.jpg",
-      "https://i.ibb.co/3vkb3tL/albion-3.jpg"
+      "/cheats/products/ancient-albion-online/gallery-1.png",
+      "/cheats/products/ancient-albion-online/gallery-2.png",
+      "/cheats/products/ancient-albion-online/gallery-3.png",
+      "/cheats/products/ancient-albion-online/gallery-4.png",
+      "/cheats/products/ancient-albion-online/gallery-5.png"
     ]
   },
   {
@@ -1270,14 +1837,37 @@ export const cheats: Cheat[] = [
     "gameEn": "ARC Raiders",
     "title": "Ancient Arc Raiders",
     "titleEn": "Ancient Arc Raiders",
-    "description": "أداة Ancient Arc Raiders الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Main",
+      "Enable – enables aimbot",
+      "Aim Key – keybind to activate aimbot",
+      "Aim Type (Mouse, Memory) – aimbot operation mode",
+      "Smooth (Slider) – smoothness of aim movement",
+      "Draw FOV – displays the aimbot field of view",
+      "FOV Radius (Slider) – aimbot working radius",
+      "Prediction – predicts enemy movement",
+      "Prediction Dot – displays a prediction point",
+      "Target Line – draws a line to the current target",
+      "Target",
+      "Target Lock – locks aim onto the selected target"
+    ],
+    "featuresEn": [
+      "Main",
+      "Enable – enables aimbot",
+      "Aim Key – keybind to activate aimbot",
+      "Aim Type (Mouse, Memory) – aimbot operation mode",
+      "Smooth (Slider) – smoothness of aim movement",
+      "Draw FOV – displays the aimbot field of view",
+      "FOV Radius (Slider) – aimbot working radius",
+      "Prediction – predicts enemy movement",
+      "Prediction Dot – displays a prediction point",
+      "Target Line – draws a line to the current target",
+      "Target",
+      "Target Lock – locks aim onto the selected target"
     ],
     "plans": [
       {
@@ -1305,7 +1895,16 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179741"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-arc-raiders/hero.png",
+    "media": [
+      "/cheats/products/ancient-arc-raiders/gallery-1.png",
+      "/cheats/products/ancient-arc-raiders/gallery-2.png",
+      "/cheats/products/ancient-arc-raiders/gallery-3.png",
+      "/cheats/products/ancient-arc-raiders/gallery-4.png",
+      "/cheats/products/ancient-arc-raiders/gallery-5.png",
+      "/cheats/products/ancient-arc-raiders/gallery-6.png",
+      "/cheats/products/ancient-arc-raiders/gallery-7.png"
+    ],
     "gameIcon": "🤖",
     "category": "arc",
     "reviews": 153,
@@ -1318,14 +1917,37 @@ export const cheats: Cheat[] = [
     "gameEn": "ARC Raiders",
     "title": "Arcane Arc Raiders",
     "titleEn": "Arcane Arc Raiders",
-    "description": "أداة Arcane Arc Raiders الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Xbox",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Xbox",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – enable or disable aimbot",
+      "Aim Mode – aimbot operation mode (always active / on keypress)",
+      "Aim Keys – bind up to two keys for aimbot activation",
+      "Visible Check – targets only visible enemies",
+      "Anti Aim – distorts your player model position for opponents",
+      "Draw FOV – displays the aimbot working area as a circle",
+      "Adaptive FOV – dynamically adjusts FOV based on target distance",
+      "FOV Style – visual style of the aimbot circle",
+      "FOV – aimbot field of view size",
+      "Smooth – smooths aimbot movements",
+      "No Spread – removes bullet spread",
+      "Targets – select aimbot targets (players / bots / teammates)"
+    ],
+    "featuresEn": [
+      "Enable – enable or disable aimbot",
+      "Aim Mode – aimbot operation mode (always active / on keypress)",
+      "Aim Keys – bind up to two keys for aimbot activation",
+      "Visible Check – targets only visible enemies",
+      "Anti Aim – distorts your player model position for opponents",
+      "Draw FOV – displays the aimbot working area as a circle",
+      "Adaptive FOV – dynamically adjusts FOV based on target distance",
+      "FOV Style – visual style of the aimbot circle",
+      "FOV – aimbot field of view size",
+      "Smooth – smooths aimbot movements",
+      "No Spread – removes bullet spread",
+      "Targets – select aimbot targets (players / bots / teammates)"
     ],
     "plans": [
       {
@@ -1353,7 +1975,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179779"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-arc-raiders/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-arc-raiders/gallery-1.jpg",
+      "/cheats/products/arcane-arc-raiders/gallery-2.jpg",
+      "/cheats/products/arcane-arc-raiders/gallery-3.gif"
+    ],
     "gameIcon": "🤖",
     "category": "arc",
     "reviews": 29,
@@ -1366,14 +1993,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Arena Breakout Infinite",
     "title": "Ancient ABI Radar",
     "titleEn": "Ancient ABI Radar",
-    "description": "أداة Ancient ABI Radar الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "status": "updating",
+    "statusLabel": "Under Maintenance",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Follow Player",
+      "Return To Player",
+      "Rotate map",
+      "Fullscreen",
+      "Auto Detect map",
+      "Text/Icons scale",
+      "Russian",
+      "English",
+      "Chinese",
+      "Show Enemies",
+      "Show Nicknames",
+      "Show Look Direction"
+    ],
+    "featuresEn": [
+      "Follow Player",
+      "Return To Player",
+      "Rotate map",
+      "Fullscreen",
+      "Auto Detect map",
+      "Text/Icons scale",
+      "Russian",
+      "English",
+      "Chinese",
+      "Show Enemies",
+      "Show Nicknames",
+      "Show Look Direction"
     ],
     "plans": [
       {
@@ -1401,7 +2051,10 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179732"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-abi-radar/hero.png",
+    "media": [
+      "/cheats/products/ancient-abi-radar/gallery-1.png"
+    ],
     "gameIcon": "💰",
     "category": "abi",
     "reviews": 97,
@@ -1462,14 +2115,37 @@ export const cheats: Cheat[] = [
     "gameEn": "ARK Ascended",
     "title": "Arcane Ark Ascended",
     "titleEn": "Arcane Ark Ascended",
-    "description": "أداة Arcane Ark Ascended الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable Aimbot – enable or disable aimbot",
+      "Aim Key – set a custom key to activate aimbot",
+      "Aim Mode (Hold / Always) – choose between hold-to-aim or always active",
+      "Targets (Players / Dinos) – separate aimbot targeting for players and dinosaurs",
+      "Ignore Targets (Sleeper / Dead) – ignores sleeping or dead targets",
+      "Prediction – predicts target movement trajectory",
+      "Humanization – makes aimbot movement look more human-like",
+      "FOV – aimbot working radius",
+      "Draw FOV – displays aimbot area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Distance – maximum aimbot working distance",
+      "Priority (Screen Center / Distance) – target priority method"
+    ],
+    "featuresEn": [
+      "Enable Aimbot – enable or disable aimbot",
+      "Aim Key – set a custom key to activate aimbot",
+      "Aim Mode (Hold / Always) – choose between hold-to-aim or always active",
+      "Targets (Players / Dinos) – separate aimbot targeting for players and dinosaurs",
+      "Ignore Targets (Sleeper / Dead) – ignores sleeping or dead targets",
+      "Prediction – predicts target movement trajectory",
+      "Humanization – makes aimbot movement look more human-like",
+      "FOV – aimbot working radius",
+      "Draw FOV – displays aimbot area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Distance – maximum aimbot working distance",
+      "Priority (Screen Center / Distance) – target priority method"
     ],
     "plans": [
       {
@@ -1497,7 +2173,13 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179782"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-ark-ascended/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-ark-ascended/gallery-1.webp",
+      "/cheats/products/arcane-ark-ascended/gallery-2.webp",
+      "/cheats/products/arcane-ark-ascended/gallery-3.webp",
+      "/cheats/products/arcane-ark-ascended/gallery-4.gif"
+    ],
     "gameIcon": "🦖",
     "category": "ark",
     "reviews": 106,
@@ -1510,14 +2192,37 @@ export const cheats: Cheat[] = [
     "gameEn": "ARK Ascended",
     "title": "Arcane Dark and Darker",
     "titleEn": "Arcane Dark and Darker",
-    "description": "أداة Arcane Dark and Darker الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "status": "updating",
+    "statusLabel": "Under Maintenance",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Player ESP – ESP tab responsible for displaying players",
+      "Box 2D – displays players using 2D boxes",
+      "Box Style (Full / Corner) – full boxes or corner-only boxes",
+      "Box Filled (Static / Gradient) – box background fill style",
+      "Line – wallhack lines pointing to enemies",
+      "Skeleton – ESP displayed as skeletons",
+      "Nickname – displays player names",
+      "Distance – distance to targets in meters",
+      "Level – displays player character level",
+      "Max Distance – ESP render distance for players",
+      "Health (Text / Bar) – displays player HP",
+      "View Line – shows direction of the target’s view"
+    ],
+    "featuresEn": [
+      "Player ESP – ESP tab responsible for displaying players",
+      "Box 2D – displays players using 2D boxes",
+      "Box Style (Full / Corner) – full boxes or corner-only boxes",
+      "Box Filled (Static / Gradient) – box background fill style",
+      "Line – wallhack lines pointing to enemies",
+      "Skeleton – ESP displayed as skeletons",
+      "Nickname – displays player names",
+      "Distance – distance to targets in meters",
+      "Level – displays player character level",
+      "Max Distance – ESP render distance for players",
+      "Health (Text / Bar) – displays player HP",
+      "View Line – shows direction of the target’s view"
     ],
     "plans": [
       {
@@ -1545,7 +2250,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179794"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-dark-and-darker/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-dark-and-darker/gallery-1.png",
+      "/cheats/products/arcane-dark-and-darker/gallery-2.png",
+      "/cheats/products/arcane-dark-and-darker/gallery-3.gif"
+    ],
     "gameIcon": "🦖",
     "category": "ark",
     "reviews": 71,
@@ -1558,14 +2268,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Arma Reforger",
     "title": "Arcane Arma Reforger",
     "titleEn": "Arcane Arma Reforger",
-    "description": "أداة Arcane Arma Reforger الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – enables or disables the aimbot",
+      "Aim Key – keybind to activate the aimbot",
+      "Aim Type – aiming mode (hold / always on)",
+      "Bones – select target bone (head, neck, etc.)",
+      "Adaptive FOV – dynamically adjusts FOV based on target",
+      "Draw FOV Border – displays the FOV circle outline",
+      "Draw FOV Background – displays the FOV circle fill",
+      "FOV Size – adjusts the aimbot working radius",
+      "Smooth – controls aim smoothness",
+      "Max Distance – maximum aimbot operating distance",
+      "Box – displays players using 2D boxes",
+      "Box Style – configure box type, fill, and appearance"
+    ],
+    "featuresEn": [
+      "Enable – enables or disables the aimbot",
+      "Aim Key – keybind to activate the aimbot",
+      "Aim Type – aiming mode (hold / always on)",
+      "Bones – select target bone (head, neck, etc.)",
+      "Adaptive FOV – dynamically adjusts FOV based on target",
+      "Draw FOV Border – displays the FOV circle outline",
+      "Draw FOV Background – displays the FOV circle fill",
+      "FOV Size – adjusts the aimbot working radius",
+      "Smooth – controls aim smoothness",
+      "Max Distance – maximum aimbot operating distance",
+      "Box – displays players using 2D boxes",
+      "Box Style – configure box type, fill, and appearance"
     ],
     "plans": [
       {
@@ -1593,7 +2326,13 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179785"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-arma-reforger/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-arma-reforger/gallery-1.jpg",
+      "/cheats/products/arcane-arma-reforger/gallery-2.jpg",
+      "/cheats/products/arcane-arma-reforger/gallery-3.jpg",
+      "/cheats/products/arcane-arma-reforger/gallery-4.gif"
+    ],
     "gameIcon": "🔫",
     "category": "arma",
     "reviews": 171,
@@ -1662,14 +2401,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Counter Strike 2",
     "title": "Arcane CS2",
     "titleEn": "Arcane CS2",
-    "description": "أداة Arcane CS2 الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: Intel & AMD\nVideo card: Nvidia & AMD\nClient: Steam",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: Intel & AMD\nVideo card: Nvidia & AMD\nClient: Steam",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enabled – activates automatic aim assist",
+      "Aim Key – keybind to activate aimbot (hold)",
+      "Aim Mode – aimbot working mode (hold key / always on)",
+      "Aim Lock – keeps aim locked on target until eliminated",
+      "On Teammate – allows aiming at teammates",
+      "Visible Check – aims only at visible targets",
+      "Bones – select target hitbox (head, chest, body, etc.)",
+      "Target Type – hitbox selection method (selected / closest to crosshair / random)",
+      "Draw FOV – displays aimbot area as a circle",
+      "Dynamic FOV – dynamically changes FOV based on weapon",
+      "FOV – aimbot working radius",
+      "Smooth – smoothness level of aim movement"
+    ],
+    "featuresEn": [
+      "Enabled – activates automatic aim assist",
+      "Aim Key – keybind to activate aimbot (hold)",
+      "Aim Mode – aimbot working mode (hold key / always on)",
+      "Aim Lock – keeps aim locked on target until eliminated",
+      "On Teammate – allows aiming at teammates",
+      "Visible Check – aims only at visible targets",
+      "Bones – select target hitbox (head, chest, body, etc.)",
+      "Target Type – hitbox selection method (selected / closest to crosshair / random)",
+      "Draw FOV – displays aimbot area as a circle",
+      "Dynamic FOV – dynamically changes FOV based on weapon",
+      "FOV – aimbot working radius",
+      "Smooth – smoothness level of aim movement"
     ],
     "plans": [
       {
@@ -1697,7 +2459,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179791"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-cs2/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-cs2/gallery-1.jpg",
+      "/cheats/products/arcane-cs2/gallery-2.png",
+      "/cheats/products/arcane-cs2/gallery-3.gif"
+    ],
     "gameIcon": "🔫",
     "category": "cs2",
     "reviews": 75,
@@ -1766,14 +2533,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Dead by Daylight",
     "title": "Arcane Dead By Daylight",
     "titleEn": "Arcane Dead By Daylight",
-    "description": "أداة Arcane Dead By Daylight الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & INTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Kakao, Epic Games",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & INTEL\nVideo card: AMD & NVIDIA\nClient: Steam, Kakao, Epic Games",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – activate or disable aimbot",
+      "Vector – vector aimbot simulates human mouse movements",
+      "Aim Key – keybind to activate aim",
+      "Max Distance – maximum aimbot working range",
+      "FOV – aimbot field of view size",
+      "FOV Show – displays the aim area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Smooth – smooths aiming movement",
+      "Boxes – ESP displayed as boxes",
+      "Box Style – customize box appearance (full, corners, fill, colors, etc.)",
+      "Skeleton – ESP displayed as skeletons",
+      "Skeleton Thickness – adjust skeleton line thickness"
+    ],
+    "featuresEn": [
+      "Enable – activate or disable aimbot",
+      "Vector – vector aimbot simulates human mouse movements",
+      "Aim Key – keybind to activate aim",
+      "Max Distance – maximum aimbot working range",
+      "FOV – aimbot field of view size",
+      "FOV Show – displays the aim area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Smooth – smooths aiming movement",
+      "Boxes – ESP displayed as boxes",
+      "Box Style – customize box appearance (full, corners, fill, colors, etc.)",
+      "Skeleton – ESP displayed as skeletons",
+      "Skeleton Thickness – adjust skeleton line thickness"
     ],
     "plans": [
       {
@@ -1801,7 +2591,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179808"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-dead-by-daylight/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-dead-by-daylight/gallery-1.gif",
+      "/cheats/products/arcane-dead-by-daylight/gallery-2.jpg",
+      "/cheats/products/arcane-dead-by-daylight/gallery-3.jpg"
+    ],
     "gameIcon": "💀",
     "category": "dbd",
     "reviews": 180,
@@ -1862,14 +2657,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Deadside",
     "title": "Arcane Deadside",
     "titleEn": "Arcane Deadside",
-    "description": "أداة Arcane Deadside الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – enable or disable aimbot",
+      "Aim Key – keybind to activate aim",
+      "Aim Mode (Hold / Always) – aimbot operation type",
+      "Aim at NPC – allows aimbot to target bots",
+      "Visible Check – targets only visible enemies",
+      "FOV – action zone radius of the aimbot",
+      "Draw FOV – displays the aimbot radius as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Bones – select hitboxes (Head / Neck / Chest / Pelvis)",
+      "Smooth – smooth aim assistance",
+      "Max Distance – maximum aimbot working range",
+      "Box – wallhack displayed as 2D boxes"
+    ],
+    "featuresEn": [
+      "Enable – enable or disable aimbot",
+      "Aim Key – keybind to activate aim",
+      "Aim Mode (Hold / Always) – aimbot operation type",
+      "Aim at NPC – allows aimbot to target bots",
+      "Visible Check – targets only visible enemies",
+      "FOV – action zone radius of the aimbot",
+      "Draw FOV – displays the aimbot radius as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Bones – select hitboxes (Head / Neck / Chest / Pelvis)",
+      "Smooth – smooth aim assistance",
+      "Max Distance – maximum aimbot working range",
+      "Box – wallhack displayed as 2D boxes"
     ],
     "plans": [
       {
@@ -1897,7 +2715,11 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179811"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-deadside/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-deadside/gallery-1.webp",
+      "/cheats/products/arcane-deadside/gallery-2.webp"
+    ],
     "gameIcon": "🏚️",
     "category": "deadside",
     "reviews": 207,
@@ -1966,14 +2788,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Dune: Awakening",
     "title": "Arcane Dune: Awakening",
     "titleEn": "Arcane Dune: Awakening",
-    "description": "أداة Arcane Dune: Awakening الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – enable or disable aimbot",
+      "Aim Key – set a key to activate aim assist",
+      "Aim Mode (Hold / Always) – choose hold-to-aim or always active mode",
+      "FOV – aimbot working radius",
+      "Draw FOV – displays the aimbot area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Smooth – smoothness level of aiming",
+      "Targets (Players / Bots) – select aimbot target types",
+      "Visible Check – aimbot works only on visible targets",
+      "Distance – maximum aimbot working distance",
+      "Bones – select hitboxes (head / neck / body / pelvis)",
+      "2D Box – displays players and bots using boxes"
+    ],
+    "featuresEn": [
+      "Enable – enable or disable aimbot",
+      "Aim Key – set a key to activate aim assist",
+      "Aim Mode (Hold / Always) – choose hold-to-aim or always active mode",
+      "FOV – aimbot working radius",
+      "Draw FOV – displays the aimbot area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Smooth – smoothness level of aiming",
+      "Targets (Players / Bots) – select aimbot target types",
+      "Visible Check – aimbot works only on visible targets",
+      "Distance – maximum aimbot working distance",
+      "Bones – select hitboxes (head / neck / body / pelvis)",
+      "2D Box – displays players and bots using boxes"
     ],
     "plans": [
       {
@@ -2001,7 +2846,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179814"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-dune-awakening/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-dune-awakening/gallery-1.jpg",
+      "/cheats/products/arcane-dune-awakening/gallery-2.jpg",
+      "/cheats/products/arcane-dune-awakening/gallery-3.gif"
+    ],
     "gameIcon": "⏳",
     "category": "dune",
     "reviews": 81,
@@ -2014,14 +2864,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Farlight 84",
     "title": "Arcane Farlight 84",
     "titleEn": "Arcane Farlight 84",
-    "description": "أداة Arcane Farlight 84 الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable Aimbot – enables the aimbot",
+      "Always Active – aimbot works without holding a key",
+      "Prediction – predicts target movement trajectory",
+      "Target Bots – allows aiming at bots",
+      "Target Teammates – allows aiming at teammates",
+      "Radius (FOV) – size of the aimbot working area",
+      "Draw FOV – displays the aiming area as a circle",
+      "Smoothness – smooths aim movements (higher value = weaker aim)",
+      "Distance – maximum aimbot range",
+      "Bone – select body parts for aiming",
+      "Nearest Bone – aims at the closest hitbox",
+      "Random Bone – randomly selects a hitbox"
+    ],
+    "featuresEn": [
+      "Enable Aimbot – enables the aimbot",
+      "Always Active – aimbot works without holding a key",
+      "Prediction – predicts target movement trajectory",
+      "Target Bots – allows aiming at bots",
+      "Target Teammates – allows aiming at teammates",
+      "Radius (FOV) – size of the aimbot working area",
+      "Draw FOV – displays the aiming area as a circle",
+      "Smoothness – smooths aim movements (higher value = weaker aim)",
+      "Distance – maximum aimbot range",
+      "Bone – select body parts for aiming",
+      "Nearest Bone – aims at the closest hitbox",
+      "Random Bone – randomly selects a hitbox"
     ],
     "plans": [
       {
@@ -2049,7 +2922,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179817"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-farlight-84/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-farlight-84/gallery-1.jpg",
+      "/cheats/products/arcane-farlight-84/gallery-2.jpg",
+      "/cheats/products/arcane-farlight-84/gallery-3.gif"
+    ],
     "gameIcon": "🚀",
     "category": "farlight",
     "reviews": 43,
@@ -2110,14 +2988,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Hell Let Loose",
     "title": "Arcane Hell Let Loose",
     "titleEn": "Arcane Hell Let Loose",
-    "description": "أداة Arcane Hell Let Loose الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Vector Aimbot – aimbot with human-like aiming behavior",
+      "Enabled – enable or disable the aimbot",
+      "Aim Key – keybind to activate aim",
+      "FOV – aimbot working area",
+      "Smooth – smoothness of aim toward targets",
+      "Bones – select target bones (head / neck / body / legs)",
+      "Show FOV – displays the aim area as a circle",
+      "Distance – maximum aimbot working range",
+      "No Recoil – disables weapon recoil",
+      "Rapid Fire – enables rapid fire for semi-automatic weapons",
+      "Box – ESP displayed as boxes",
+      "Filled – filled boxes for better visibility"
+    ],
+    "featuresEn": [
+      "Vector Aimbot – aimbot with human-like aiming behavior",
+      "Enabled – enable or disable the aimbot",
+      "Aim Key – keybind to activate aim",
+      "FOV – aimbot working area",
+      "Smooth – smoothness of aim toward targets",
+      "Bones – select target bones (head / neck / body / legs)",
+      "Show FOV – displays the aim area as a circle",
+      "Distance – maximum aimbot working range",
+      "No Recoil – disables weapon recoil",
+      "Rapid Fire – enables rapid fire for semi-automatic weapons",
+      "Box – ESP displayed as boxes",
+      "Filled – filled boxes for better visibility"
     ],
     "plans": [
       {
@@ -2145,7 +3046,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179824"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-hell-let-loose/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-hell-let-loose/gallery-1.jpg",
+      "/cheats/products/arcane-hell-let-loose/gallery-2.jpg",
+      "/cheats/products/arcane-hell-let-loose/gallery-3.gif"
+    ],
     "gameIcon": "🎖️",
     "category": "hell-let-loose",
     "reviews": 39,
@@ -2158,14 +3064,37 @@ export const cheats: Cheat[] = [
     "gameEn": "HighGuard",
     "title": "Arcane HighGuard",
     "titleEn": "Arcane HighGuard",
-    "description": "أداة Arcane HighGuard الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "status": "updating",
+    "statusLabel": "Under Maintenance",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – enables or disables the aimbot",
+      "Aim Key – sets the aim activation key",
+      "Adaptive FOV – automatically adjusts the FOV circle size",
+      "Visible Check – aimbot targets only visible enemies",
+      "Aim Mode – aim mode (always active / hold to activate)",
+      "Bone – selects the target bone",
+      "Draw FOV Border – displays the FOV circle outline",
+      "Draw FOV Background – displays the FOV circle fill",
+      "FOV Size – adjusts the FOV circle size",
+      "Smoothness – controls aim smoothing",
+      "Max Distance – maximum aimbot working distance",
+      "Bounding Box – displays 2D boxes around players"
+    ],
+    "featuresEn": [
+      "Enable – enables or disables the aimbot",
+      "Aim Key – sets the aim activation key",
+      "Adaptive FOV – automatically adjusts the FOV circle size",
+      "Visible Check – aimbot targets only visible enemies",
+      "Aim Mode – aim mode (always active / hold to activate)",
+      "Bone – selects the target bone",
+      "Draw FOV Border – displays the FOV circle outline",
+      "Draw FOV Background – displays the FOV circle fill",
+      "FOV Size – adjusts the FOV circle size",
+      "Smoothness – controls aim smoothing",
+      "Max Distance – maximum aimbot working distance",
+      "Bounding Box – displays 2D boxes around players"
     ],
     "plans": [
       {
@@ -2193,7 +3122,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179827"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-highguard/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-highguard/gallery-1.jpg",
+      "/cheats/products/arcane-highguard/gallery-2.jpg",
+      "/cheats/products/arcane-highguard/gallery-3.gif"
+    ],
     "gameIcon": "🛡️",
     "category": "highguard",
     "reviews": 124,
@@ -2206,14 +3140,37 @@ export const cheats: Cheat[] = [
     "gameEn": "HumanitZ",
     "title": "Arcane HumanitZ",
     "titleEn": "Arcane HumanitZ",
-    "description": "أداة Arcane HumanitZ الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Box – displays players using a 2D box",
+      "Box Style – choose box style (corners / full box)",
+      "Filled – fills the box with a background",
+      "Filled Style – box fill style",
+      "Name – displays player nicknames",
+      "Distance – shows distance to players",
+      "Skeleton – displays player skeleton",
+      "Thickness – adjusts skeleton line thickness",
+      "View Line – shows player view direction",
+      "Snaplines – line drawn from you to the target",
+      "Max Distance – maximum player render distance",
+      "Box – displays zombies using a 2D box"
+    ],
+    "featuresEn": [
+      "Box – displays players using a 2D box",
+      "Box Style – choose box style (corners / full box)",
+      "Filled – fills the box with a background",
+      "Filled Style – box fill style",
+      "Name – displays player nicknames",
+      "Distance – shows distance to players",
+      "Skeleton – displays player skeleton",
+      "Thickness – adjusts skeleton line thickness",
+      "View Line – shows player view direction",
+      "Snaplines – line drawn from you to the target",
+      "Max Distance – maximum player render distance",
+      "Box – displays zombies using a 2D box"
     ],
     "plans": [
       {
@@ -2241,7 +3198,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179830"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-humanitz/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-humanitz/gallery-1.jpg",
+      "/cheats/products/arcane-humanitz/gallery-2.jpg",
+      "/cheats/products/arcane-humanitz/gallery-3.gif"
+    ],
     "gameIcon": "🧟",
     "category": "humanitz",
     "reviews": 19,
@@ -2254,14 +3216,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Hunt Showdown",
     "title": "Ancient Hunt Showdown",
     "titleEn": "Ancient Hunt Showdown",
-    "description": "أداة Ancient Hunt Showdown الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "description": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "descriptionEn": "INTEL + AMD CPU.\nWindows 10 - 11 | 1909 - 25H2.",
+    "status": "updating",
+    "statusLabel": "Under Maintenance",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Generals",
+      "Active – enables aimbot",
+      "Crosshair – displays custom crosshair",
+      "Draw FOV – shows aimbot field of view",
+      "Draw Aim Point – displays aim point",
+      "Misc",
+      "Aim at Players – enables aiming at players",
+      "Aim at Zombies – enables aiming at zombies",
+      "Aim at Boss – enables aiming at bosses",
+      "Target Bone (Head, Neck, Pelvis) – select target bone",
+      "Players",
+      "Glow – enables glow effect"
+    ],
+    "featuresEn": [
+      "Generals",
+      "Active – enables aimbot",
+      "Crosshair – displays custom crosshair",
+      "Draw FOV – shows aimbot field of view",
+      "Draw Aim Point – displays aim point",
+      "Misc",
+      "Aim at Players – enables aiming at players",
+      "Aim at Zombies – enables aiming at zombies",
+      "Aim at Boss – enables aiming at bosses",
+      "Target Bone (Head, Neck, Pelvis) – select target bone",
+      "Players",
+      "Glow – enables glow effect"
     ],
     "plans": [
       {
@@ -2289,7 +3274,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179764"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/ancient-hunt-showdown/hero.png",
+    "media": [
+      "/cheats/products/ancient-hunt-showdown/gallery-1.jpg",
+      "/cheats/products/ancient-hunt-showdown/gallery-2.jpg",
+      "/cheats/products/ancient-hunt-showdown/gallery-3.jpg"
+    ],
     "gameIcon": "🤠",
     "category": "hunt",
     "reviews": 181,
@@ -2302,14 +3292,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Hunt Showdown",
     "title": "Arcane Hunt Showdown",
     "titleEn": "Arcane Hunt Showdown",
-    "description": "أداة Arcane Hunt Showdown الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
-    "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA\nClient: Steam",
+    "status": "updating",
+    "statusLabel": "Under Maintenance",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – turn aimbot on or off",
+      "Aim Key – activation key for aimbot",
+      "First Key – first activation key (hold to use)",
+      "Second Key – second activation key (hold to use)",
+      "Aim Mode (Hold / Always) – aimbot operation mode",
+      "Aim at Players – aimbot targets hunters",
+      "Aim at Zombie – aimbot targets zombies",
+      "Aim at Dummy – aimbot targets training dummies",
+      "FOV – action zone radius where aimbot works",
+      "Show FOV – displays the aimbot area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Bones (Head / Neck / Chest / Pelvis) – target hitbox selection"
+    ],
+    "featuresEn": [
+      "Enable – turn aimbot on or off",
+      "Aim Key – activation key for aimbot",
+      "First Key – first activation key (hold to use)",
+      "Second Key – second activation key (hold to use)",
+      "Aim Mode (Hold / Always) – aimbot operation mode",
+      "Aim at Players – aimbot targets hunters",
+      "Aim at Zombie – aimbot targets zombies",
+      "Aim at Dummy – aimbot targets training dummies",
+      "FOV – action zone radius where aimbot works",
+      "Show FOV – displays the aimbot area as a circle",
+      "FOV Color – customize the FOV circle color",
+      "Bones (Head / Neck / Chest / Pelvis) – target hitbox selection"
     ],
     "plans": [
       {
@@ -2337,7 +3350,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179833"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-hunt-showdown/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-hunt-showdown/gallery-1.png",
+      "/cheats/products/arcane-hunt-showdown/gallery-2.png",
+      "/cheats/products/arcane-hunt-showdown/gallery-3.gif"
+    ],
     "gameIcon": "🤠",
     "category": "hunt",
     "reviews": 28,
@@ -2454,14 +3472,37 @@ export const cheats: Cheat[] = [
     "gameEn": "Off The Grid",
     "title": "Arcane Off The Grid",
     "titleEn": "Arcane Off The Grid",
-    "description": "أداة Arcane Off The Grid الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
+    "descriptionEn": "Operating system: Windows 10, Windows 11 (21H2, 22H2, 23H2, 24H2, 25H2)\nProcessor: AMD & iNTEL\nVideo card: AMD & NVIDIA",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Box – ESP displayed as 2D boxes",
+      "Box Style (2D / Corners / Filled) – box display settings",
+      "Skeleton – ESP showing enemies as skeletons",
+      "Skeleton Thickness – adjust skeleton line thickness",
+      "Visible Check – marks visible enemies with a different color",
+      "Lines – shows enemy view direction",
+      "Snaplines – ESP lines pointing to enemies",
+      "Health (Bar / Text) – displays enemy HP",
+      "Shield (Bar / Text) – displays enemy shield level",
+      "Name – displays enemy nicknames",
+      "Clan Tag – displays enemy clan tags",
+      "Team ID – displays player team ID"
+    ],
+    "featuresEn": [
+      "Box – ESP displayed as 2D boxes",
+      "Box Style (2D / Corners / Filled) – box display settings",
+      "Skeleton – ESP showing enemies as skeletons",
+      "Skeleton Thickness – adjust skeleton line thickness",
+      "Visible Check – marks visible enemies with a different color",
+      "Lines – shows enemy view direction",
+      "Snaplines – ESP lines pointing to enemies",
+      "Health (Bar / Text) – displays enemy HP",
+      "Shield (Bar / Text) – displays enemy shield level",
+      "Name – displays enemy nicknames",
+      "Clan Tag – displays enemy clan tags",
+      "Team ID – displays player team ID"
     ],
     "plans": [
       {
@@ -2489,7 +3530,11 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179839"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-off-the-grid/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-off-the-grid/gallery-1.gif",
+      "/cheats/products/arcane-off-the-grid/gallery-2.webp"
+    ],
     "gameIcon": "🔌",
     "category": "off-the-grid",
     "reviews": 29,
@@ -2502,14 +3547,37 @@ export const cheats: Cheat[] = [
     "gameEn": "PIONER",
     "title": "Arcane PIONER",
     "titleEn": "Arcane PIONER",
-    "description": "أداة Arcane PIONER الاحترافية مع ميزات ESP ودعم كامل ومعدل حماية مرتفع.",
+    "description": "Arcane PIONER on KeyHub",
+    "descriptionEn": "Arcane PIONER on KeyHub",
     "status": "undetected",
-    "statusLabel": "غير مكتشف",
+    "statusLabel": "Undetected",
     "features": [
-      "ESP الأعداء والفريق",
-      "Aimbot دقيق وقابل للتعديل",
-      "تجاوز أنظمة مكافحة الغش",
-      "حماية فائقة ودعم مستمر"
+      "Enable – activates the aimbot",
+      "Players – aimbot targets real players",
+      "NPCs – aimbot targets non-playable characters (bots)",
+      "Aim Key – keybind to activate aiming",
+      "Aim Mode – aimbot operation mode (hold / always on)",
+      "Adaptive FOV – dynamically adjusts aim area based on distance or scope",
+      "Visible Check – aimbot targets only visible enemies",
+      "Bones – select target hitbox (head / neck / body / pelvis)",
+      "FOV – aimbot working radius",
+      "FOV Style – visual style settings for the FOV circle",
+      "Smooth – smooths aim movements",
+      "Max Distance – maximum aimbot activation range"
+    ],
+    "featuresEn": [
+      "Enable – activates the aimbot",
+      "Players – aimbot targets real players",
+      "NPCs – aimbot targets non-playable characters (bots)",
+      "Aim Key – keybind to activate aiming",
+      "Aim Mode – aimbot operation mode (hold / always on)",
+      "Adaptive FOV – dynamically adjusts aim area based on distance or scope",
+      "Visible Check – aimbot targets only visible enemies",
+      "Bones – select target hitbox (head / neck / body / pelvis)",
+      "FOV – aimbot working radius",
+      "FOV Style – visual style settings for the FOV circle",
+      "Smooth – smooths aim movements",
+      "Max Distance – maximum aimbot activation range"
     ],
     "plans": [
       {
@@ -2537,7 +3605,12 @@ export const cheats: Cheat[] = [
         "sellauthVariantId": "1179842"
       }
     ],
-    "image": "",
+    "image": "/cheats/products/arcane-pioner/hero.jpg",
+    "media": [
+      "/cheats/products/arcane-pioner/gallery-1.gif",
+      "/cheats/products/arcane-pioner/gallery-2.png",
+      "/cheats/products/arcane-pioner/gallery-3.png"
+    ],
     "gameIcon": "🧭",
     "category": "pioner",
     "reviews": 31,
