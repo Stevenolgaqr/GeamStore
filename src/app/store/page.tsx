@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { Suspense, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { cheats, gameImages, storeCategoryOrder } from '@/data/cheats';
 import OCProductCard from '@/components/OCProductCard';
 import StoreGameCard from '@/components/StoreGameCard';
@@ -13,10 +14,18 @@ function getGameCardVariant(categoryKey: string): 'default' | 'featured' | 'wide
   return 'default';
 }
 
-export default function StorePage() {
+function StorePageContent() {
+  const searchParams = useSearchParams();
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const { t, language } = useLanguage();
+
+  useEffect(() => {
+    const category = searchParams.get('category');
+    if (category && cheats.some((c) => c.category === category)) {
+      setActiveFilter(category);
+    }
+  }, [searchParams]);
 
   const categoriesMap = useMemo(() => {
     const map = new Map<string, { key: string; label: string }>();
@@ -249,5 +258,13 @@ export default function StorePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function StorePage() {
+  return (
+    <Suspense fallback={null}>
+      <StorePageContent />
+    </Suspense>
   );
 }

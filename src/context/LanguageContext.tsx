@@ -98,6 +98,7 @@ const translations: Record<string, Record<Language, string>> = {
     ar: 'أعلى المنتجات تقييماً مع حالة آمنة مؤكدة وآلاف المراجعات.',
   },
   'home.viewProd': { en: 'View Product', ar: 'عرض المنتج' },
+  'home.featuredGames': { en: 'Featured games', ar: 'ألعاب مميزة' },
 };
 
 const LanguageContext = createContext<LanguageContextType>({

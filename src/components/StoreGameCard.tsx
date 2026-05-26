@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import styles from './StoreGameCard.module.css';
 
 type Variant = 'default' | 'featured' | 'wide';
@@ -13,7 +14,8 @@ type Props = {
   imageUrl?: string;
   variant?: Variant;
   animationDelay?: string;
-  onSelect: () => void;
+  href?: string;
+  onSelect?: () => void;
 };
 
 export default function StoreGameCard({
@@ -24,16 +26,14 @@ export default function StoreGameCard({
   imageUrl,
   variant = 'default',
   animationDelay = '0ms',
+  href,
   onSelect,
 }: Props) {
-  return (
-    <button
-      type="button"
-      className={styles.card}
-      data-variant={variant}
-      style={{ '--card-delay': animationDelay } as React.CSSProperties}
-      onClick={onSelect}
-    >
+  const className = styles.card;
+  const style = { '--card-delay': animationDelay } as React.CSSProperties;
+
+  const body = (
+    <>
       {imageUrl ? (
         <img src={imageUrl} alt="" className={styles.image} loading="lazy" />
       ) : (
@@ -58,6 +58,26 @@ export default function StoreGameCard({
           </svg>
         </span>
       </div>
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className={className} data-variant={variant} style={style}>
+        {body}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      className={className}
+      data-variant={variant}
+      style={style}
+      onClick={onSelect}
+    >
+      {body}
     </button>
   );
 }

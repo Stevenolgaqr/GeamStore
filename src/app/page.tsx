@@ -2,46 +2,66 @@
 
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { cheats, gameImages } from '@/data/cheats';
+import { cheats, gameImages, storeCategoryOrder } from '@/data/cheats';
 import { useLanguage } from '@/context/LanguageContext';
+import { IconStarRating } from '@/components/icons/ProductIcons';
+import StoreGameCard from '@/components/StoreGameCard';
 import styles from './page.module.css';
+
+function getGameCardVariant(categoryKey: string): 'default' | 'featured' | 'wide' {
+  if (categoryKey === storeCategoryOrder[0]) return 'featured';
+  if (categoryKey === storeCategoryOrder[1]) return 'wide';
+  return 'default';
+}
 
 export default function Home() {
   const { t, language } = useLanguage();
 
-  const popularProducts = useMemo(
+  const popularCheats = useMemo(
     () =>
       [...cheats]
         .sort((a, b) => b.rating - a.rating || b.reviews - a.reviews)
-        .slice(0, 3)
-        .map((cheat) => ({
-          title: language === 'en' ? cheat.titleEn || cheat.title : cheat.title,
-          desc:
-            language === 'en' && cheat.descriptionEn
-              ? cheat.descriptionEn.split('\n')[0]
-              : cheat.description.split('\n')[0],
-          thumb: cheat.image || gameImages[cheat.category] || '/images/red-hero.jpeg',
-          slug: cheat.slug,
-          rating: cheat.rating,
-        })),
-    [language]
+        .slice(0, 3),
+    []
   );
 
-  const allGames = [
-    { nameEn: 'ARENA BREAKOUT INFINITE', nameAr: 'ارينا بريك اوت إنفينيت', image: '/cheats/abi.jpeg', slug: 'ancient-abi-radar' },
-    { nameEn: 'CALL OF DUTY', nameAr: 'كول أوف ديوتي', image: '/cheats/cod.jpeg', slug: 'ancient-cod' },
-    { nameEn: 'APEX LEGENDS', nameAr: 'ابيكس ليجندز', image: '/cheats/apex.jpeg', slug: 'ancient-apex' },
-    { nameEn: 'FORTNITE', nameAr: 'فورتنايت', image: '/cheats/fortnite.jpeg', slug: 'ancient-fortnite' },
-    { nameEn: 'HWID SPOOFER', nameAr: 'سبوفر تخطي الباند', image: '/cheats/spoofer.jpeg', slug: 'gouda-spoofer' },
-    { nameEn: 'BATTLEFIELD NOVA', nameAr: 'باتلفيلد نوفا', image: '/cheats/battlefield.jpeg', slug: 'ancient-bf6' },
-    { nameEn: 'ARC RAIDERS', nameAr: 'أرك رايدرز', image: '/cheats/arc.jpeg', slug: 'ancient-arc-raiders' },
-    { nameEn: 'RUST NOVA', nameAr: 'راست نوفا', image: '/cheats/rust.jpeg', slug: 'ancient-rust' },
-  ];
+  const featuredCategories = useMemo(() => {
+    const map = new Map<string, { key: string; label: string }>();
+    cheats.forEach((cheat) => {
+      if (cheat.category && !map.has(cheat.category)) {
+        map.set(cheat.category, {
+          key: cheat.category,
+          label: language === 'en' && cheat.gameEn ? cheat.gameEn : cheat.game,
+        });
+      }
+    });
+    const priorityIndex = (key: string) => {
+      const i = storeCategoryOrder.indexOf(key as (typeof storeCategoryOrder)[number]);
+      return i === -1 ? storeCategoryOrder.length : i;
+    };
+    return Array.from(map.values())
+      .sort((a, b) => {
+        const pa = priorityIndex(a.key);
+        const pb = priorityIndex(b.key);
+        if (pa !== pb) return pa - pb;
+        return a.label.localeCompare(b.label, language);
+      })
+      .slice(0, 8);
+  }, [language]);
+
+  const stats = useMemo(() => {
+    const games = new Set(cheats.map((c) => c.category)).size;
+    return {
+      games,
+      products: cheats.length,
+      undetected: cheats.filter((c) => c.status === 'undetected').length,
+    };
+  }, []);
 
   return (
     <div className={styles.page}>
       <section className={styles.hero} aria-labelledby="hero-title">
-        <div className={styles.heroOverlay} />
+        <div className={styles.heroOverlay} aria-hidden />
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
             <p className={styles.heroEyebrow}>{t('home.heroEyebrow')}</p>
@@ -51,6 +71,21 @@ export default function Home() {
               {t('home.heroTitle2')} <span>{t('home.heroTitle3')}</span>
             </h1>
             <p className={styles.heroSubtitle}>{t('home.heroSubtitle')}</p>
+
+            <div className={styles.heroStats} aria-label={language === 'en' ? 'Store stats' : 'إحصائيات'}>
+              <span className={styles.heroStat}>
+                <strong>{stats.games}</strong> {t('store.statsGames')}
+              </span>
+              <span className={styles.heroStatDot} aria-hidden />
+              <span className={styles.heroStat}>
+                <strong>{stats.products}</strong> {t('store.statsProducts')}
+              </span>
+              <span className={styles.heroStatDot} aria-hidden />
+              <span className={`${styles.heroStat} ${styles.heroStatSafe}`}>
+                <strong>{stats.undetected}</strong> {t('store.statsUndetected')}
+              </span>
+            </div>
+
             <div className={styles.heroActions}>
               <Link href="/store" className={styles.primaryBtn}>
                 {t('home.viewAll')}
@@ -60,8 +95,9 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
           <div className={styles.heroImageContainer}>
-            <div className={styles.heroO} aria-hidden="true">
+            <div className={styles.heroO} aria-hidden>
               N
             </div>
             <img
@@ -78,68 +114,96 @@ export default function Home() {
 
       <section className={styles.popularSection} aria-labelledby="popular-title">
         <div className={styles.sectionHeader}>
+          <p className={styles.sectionLabel}>{t('home.popular')}</p>
           <h2 id="popular-title" className={styles.sectionTitle}>
             {t('home.popular')}
           </h2>
           <p className={styles.sectionSubtitle}>{t('home.popularDesc')}</p>
         </div>
-        <div className={`${styles.popularGrid} stagger`}>
-          {popularProducts.map((prod) => (
-            <article key={prod.slug} className={styles.popularCard}>
-              <Link href={`/product/${prod.slug}`} className={styles.thumbLink}>
-                <div
-                  className={styles.videoThumb}
-                  style={{ backgroundImage: `url(${prod.thumb})` }}
-                >
-                  <span className={styles.ratingBadge} aria-hidden="true">
-                    ★ {prod.rating.toFixed(1)}
-                  </span>
-                </div>
-              </Link>
-              <div className={styles.cardContent}>
-                <div className={styles.cardInfo}>
-                  <h3>{prod.title}</h3>
-                  <p>{prod.desc}</p>
-                </div>
-                <Link href={`/product/${prod.slug}`}>
-                  <span className={styles.viewBtn}>{t('home.viewProd')}</span>
+
+        <div className={styles.popularGrid}>
+          {popularCheats.map((cheat, i) => {
+            const displayTitle =
+              language === 'en' && cheat.titleEn ? cheat.titleEn : cheat.title;
+            const displayDesc =
+              language === 'en' && cheat.descriptionEn
+                ? cheat.descriptionEn.split('\n')[0]
+                : cheat.description.split('\n')[0];
+            const thumb = cheat.image || gameImages[cheat.category] || '/images/red-hero.jpeg';
+            const statusLabel = t(`status.${cheat.status}`);
+            const statusClass =
+              cheat.status === 'undetected'
+                ? styles.statusUndetected
+                : cheat.status === 'updating'
+                  ? styles.statusUpdating
+                  : styles.statusDetected;
+
+            return (
+              <article
+                key={cheat.id}
+                className={styles.popularCard}
+                style={{ '--card-delay': `${i * 60}ms` } as React.CSSProperties}
+              >
+                <Link href={`/product/${cheat.slug}`} className={styles.thumbLink}>
+                  <div
+                    className={styles.videoThumb}
+                    style={{ backgroundImage: `url(${thumb})` }}
+                  >
+                    <span className={`${styles.statusChip} ${statusClass}`}>
+                      <span className={styles.statusDot} aria-hidden />
+                      {statusLabel}
+                    </span>
+                    <div className={styles.ratingBlock}>
+                      <IconStarRating rating={cheat.rating} size={12} />
+                      <span>{cheat.rating.toFixed(1)}</span>
+                    </div>
+                  </div>
                 </Link>
-              </div>
-            </article>
-          ))}
+                <div className={styles.cardContent}>
+                  <div className={styles.cardInfo}>
+                    <h3>{displayTitle}</h3>
+                    <p>{displayDesc}</p>
+                  </div>
+                  <Link href={`/product/${cheat.slug}`} className={styles.viewBtn}>
+                    {t('home.viewProd')}
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
       <section className={styles.gamesSection} aria-labelledby="games-title">
-        <div className={styles.sectionHeader}>
-          <h2 id="games-title" className={styles.sectionTitle}>
-            {t('store.all')}
-          </h2>
+        <div className={styles.sectionHeaderRow}>
+          <div>
+            <p className={styles.sectionLabel}>{t('store.all')}</p>
+            <h2 id="games-title" className={styles.sectionTitle}>
+              {t('home.featuredGames')}
+            </h2>
+          </div>
+          <Link href="/store" className={styles.sectionLink}>
+            {t('home.viewAll')}
+          </Link>
         </div>
-        <div className={`${styles.gamesGrid} stagger`}>
-          {allGames.map((game) => (
-            <Link
-              href={`/product/${game.slug}`}
-              key={game.slug}
-              className={styles.gameCard}
-              aria-label={`${language === 'en' ? game.nameEn : game.nameAr} — Nova Store`}
-            >
-              <img
-                src={game.image}
-                alt=""
-                className={styles.gameImage}
-                loading="lazy"
-                width={400}
-                height={260}
+
+        <div className={styles.gamesGrid}>
+          {featuredCategories.map((cat, index) => {
+            const count = cheats.filter((c) => c.category === cat.key).length;
+            return (
+              <StoreGameCard
+                key={cat.key}
+                label={cat.label}
+                count={count}
+                countLabel={t('product.options')}
+                ctaLabel={t('product.view')}
+                imageUrl={gameImages[cat.key]}
+                variant={getGameCardVariant(cat.key)}
+                animationDelay={`${index * 45}ms`}
+                href={`/store?category=${cat.key}`}
               />
-              <span className={styles.gameStar} aria-hidden="true">
-                ★
-              </span>
-              <span className={styles.gameNameOverlay}>
-                {language === 'en' ? game.nameEn : game.nameAr}
-              </span>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>
