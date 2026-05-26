@@ -37,23 +37,25 @@ export default function GameCatalogCard({
       style={{ '--card-delay': animationDelay } as React.CSSProperties}
       onClick={onSelect}
     >
-      <span className={styles.index} aria-hidden>
-        #{indexLabel}
-      </span>
-
-      {imageUrl ? (
-        <img src={imageUrl} alt="" className={styles.image} loading="lazy" />
-      ) : (
-        <div className={styles.placeholder} aria-hidden />
-      )}
-
-      <div className={styles.overlay} aria-hidden />
-
-      {programCount > 0 && (
-        <span className={styles.safeBadge}>
-          {safeCount}/{programCount} {safeLabel}
+      <div className={styles.mediaFrame}>
+        <span className={styles.index} aria-hidden>
+          #{indexLabel}
         </span>
-      )}
+
+        {programCount > 0 && (
+          <span className={styles.safeBadge}>
+            {safeCount}/{programCount} {safeLabel}
+          </span>
+        )}
+
+        {imageUrl ? (
+          <img src={imageUrl} alt="" className={styles.image} loading="lazy" />
+        ) : (
+          <div className={styles.placeholder} aria-hidden />
+        )}
+
+        <div className={styles.mediaFade} aria-hidden />
+      </div>
 
       <div className={styles.body}>
         <h3 className={styles.name}>{label}</h3>
