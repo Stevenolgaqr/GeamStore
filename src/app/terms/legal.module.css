@@ -57,12 +57,12 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   margin-bottom: 16px;
 }
 
 .title {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(28px, 5vw, 44px);
   font-weight: 800;
   color: #fff;
@@ -80,7 +80,7 @@
 .updated {
   font-size: 13px;
   color: #a7aab7;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
 }
 
 /* Content */
@@ -105,7 +105,7 @@
 }
 
 .section h2 {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: #fff;

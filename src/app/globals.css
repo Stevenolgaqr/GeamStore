@@ -55,11 +55,12 @@
     box-shadow var(--duration-normal) var(--ease-out),
     border-color var(--duration-normal) var(--ease-out);
 
-  /* ── Typography (set by next/font variables in layout) ── */
-  --font-family: var(--font-outfit), 'Outfit', sans-serif;
-  --font-ar: var(--font-tajawal), 'Tajawal', sans-serif;
-  --font-label: var(--font-rajdhani), 'Rajdhani', sans-serif;
-  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  /* ── Typography (local: Nexa + Road Rage — see src/lib/fonts.ts) ── */
+  --font-family: var(--font-nexa), system-ui, sans-serif;
+  --font-ar: var(--font-nexa), 'Segoe UI', Tahoma, sans-serif;
+  --font-label: var(--font-road-rage), var(--font-nexa), sans-serif;
+  --font-display: var(--font-road-rage), var(--font-nexa), sans-serif;
+  --font-mono: var(--font-nexa), system-ui, sans-serif;
 
   /* ── Layout ── */
   --max-width: 1550px;
@@ -94,10 +95,22 @@ html[lang='en'] body {
 body {
   background-color: var(--bg-main);
   color: var(--text-main);
+  font-weight: 200;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+  font-weight: 800;
 }
 
 a {

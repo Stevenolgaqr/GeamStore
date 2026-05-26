@@ -44,12 +44,12 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   margin-bottom: 16px;
 }
 
 .title {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(28px, 5vw, 48px);
   font-weight: 800;
   color: var(--text-main);
@@ -141,7 +141,7 @@
 }
 
 .cardTitle {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: var(--text-main);
@@ -159,7 +159,7 @@
 .cardCta {
   font-size: 13px;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   letter-spacing: 0.03em;
   margin-top: auto;
 }
@@ -174,7 +174,7 @@
 }
 
 .faqTitle {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: var(--text-main);

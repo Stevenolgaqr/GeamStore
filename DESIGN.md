@@ -23,13 +23,14 @@ B2C gaming cheats e-commerce, dark-tech premium, CSS Modules + tokens. Dials: va
 
 ## Typography
 
-| Role | EN | AR |
-|------|----|----|
-| Display / UI | Outfit 400–900 | Tajawal 400–800 |
-| Labels / chips | Rajdhani 500–700 (optional) | Tajawal |
-| Prices / IDs | JetBrains Mono | JetBrains Mono |
+| Role | Font |
+|------|------|
+| Body / UI | Nexa ExtraLight (200) + Nexa Heavy (800) |
+| Display / accent | Road Rage |
+| Labels / chips | Road Rage |
+| Prices / IDs | Nexa Heavy |
 
-Load via `next/font` in layout — no per-page `@import`.
+Load via `next/font/local` in [`src/lib/fonts.ts`](src/lib/fonts.ts) — files in `public/fonts/`.
 
 ## Spacing scale
 

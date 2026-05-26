@@ -7,7 +7,7 @@
   min-height: 100vh;
   background-color: #0b0c10;
   color: #fff;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family), sans-serif;
 }
 
 /* ── HERO ─────────────────────────────── */
@@ -50,7 +50,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   margin-bottom: 20px;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .heroTitle {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(32px, 5vw, 56px);
   font-weight: 800;
   line-height: 1.1;
@@ -149,7 +149,7 @@
 
 .statNum {
   display: block;
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 26px;
   font-weight: 800;
   color: #fff;
@@ -160,7 +160,7 @@
   display: block;
   font-size: 11px;
   color: #a7aab7;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   letter-spacing: 0.05em;
   margin-top: 4px;
 }
@@ -189,7 +189,7 @@
 .legendTitle {
   font-size: 12px;
   color: #a7aab7;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   letter-spacing: 0.05em;
 }
 
@@ -243,7 +243,7 @@
 }
 
 .categoryTitle {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: #fff;
@@ -254,7 +254,7 @@
 .categoryCount {
   font-size: 11px;
   color: #a7aab7;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   background: rgba(255, 255, 255, 0.06);
   padding: 4px 10px;
   border-radius: 100px;
@@ -324,7 +324,7 @@
 .productMeta {
   font-size: 11px;
   color: #a7aab7;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   margin: 0;
 }
 
@@ -352,7 +352,7 @@
   border-radius: 100px;
   font-size: 11px;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono), monospace;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }

@@ -17,7 +17,7 @@ export default function NotFound() {
       padding: '40px 24px',
       background: '#0b0c10',
       color: '#fff',
-      fontFamily: "'Outfit', sans-serif",
+      fontFamily: 'var(--font-family)',
     }}>
       {/* Glow */}
       <div style={{
@@ -29,7 +29,7 @@ export default function NotFound() {
       }} />
 
       <p style={{
-        fontFamily: "'JetBrains Mono', monospace",
+        fontFamily: 'var(--font-mono)',
         fontSize: '12px',
         letterSpacing: '0.15em',
         color: '#e60000',
@@ -44,7 +44,7 @@ export default function NotFound() {
       </p>
 
       <h1 style={{
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: 'var(--font-display)',
         fontSize: 'clamp(80px, 15vw, 160px)',
         fontWeight: 900,
         lineHeight: 1,
@@ -58,7 +58,7 @@ export default function NotFound() {
       </h1>
 
       <h2 style={{
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: 'var(--font-display)',
         fontSize: 'clamp(20px, 3vw, 28px)',
         fontWeight: 700,
         color: '#fff',

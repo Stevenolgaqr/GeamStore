@@ -1,31 +1,32 @@
-import { JetBrains_Mono, Outfit, Rajdhani, Tajawal } from 'next/font/google';
+import localFont from 'next/font/local';
 
-export const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-outfit',
+/** Nexa — body & UI (ExtraLight + Heavy) */
+export const nexa = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Nexa-ExtraLight.ttf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Nexa-Heavy.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-nexa',
   display: 'swap',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  fallback: ['system-ui', 'Segoe UI', 'sans-serif'],
 });
 
-export const tajawal = Tajawal({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-tajawal',
+/** Road Rage — display titles & accent labels */
+export const roadRage = localFont({
+  src: '../../public/fonts/Road_Rage.otf',
+  variable: '--font-road-rage',
+  weight: '400',
+  style: 'normal',
   display: 'swap',
-  weight: ['400', '500', '700', '800'],
+  fallback: ['var(--font-nexa)', 'system-ui', 'sans-serif'],
 });
 
-export const rajdhani = Rajdhani({
-  subsets: ['latin'],
-  variable: '--font-rajdhani',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-});
-
-export const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-  weight: ['400', '500', '600'],
-});
-
-export const fontVariables = `${outfit.variable} ${tajawal.variable} ${rajdhani.variable} ${jetbrainsMono.variable}`;
+export const fontVariables = `${nexa.variable} ${roadRage.variable}`;

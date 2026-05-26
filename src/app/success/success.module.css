@@ -42,7 +42,7 @@
   font-weight: 700;
   color: #fff;
   margin-bottom: 1rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family), sans-serif;
 }
 
 .description {
