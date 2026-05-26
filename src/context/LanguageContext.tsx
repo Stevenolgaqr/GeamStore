@@ -34,6 +34,8 @@ const translations: Record<string, Record<Language, string>> = {
   'store.statsProducts': { en: 'programs', ar: 'برنامج' },
   'store.statsUndetected': { en: 'undetected now', ar: 'آمن حالياً' },
   'store.clearSearch': { en: 'Clear search', ar: 'مسح البحث' },
+  'store.allProducts': { en: 'All programs', ar: 'جميع البرامج' },
+  'store.browseByGame': { en: 'Browse by game', ar: 'تصفح حسب اللعبة' },
   'product.buy': { en: 'Purchase Now', ar: 'شراء الآن' },
   'product.options': { en: 'Available Options', ar: 'خيارات متوفرة' },
   'product.view': { en: 'View Programs ←', ar: 'تصفح البرامج ←' },

@@ -276,6 +276,45 @@
   padding: 0 2rem 6rem;
 }
 
+.catalogSection {
+  margin-bottom: 3rem;
+}
+
+.catalogTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  margin: 0 0 1.25rem;
+}
+
+.productsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.productsHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-main);
+  font-family: var(--font-ar);
+  margin: 0 0 1.25rem;
+}
+
+.productsCount {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
 /* Bento-style games grid */
 .gamesGrid {
   display: grid;

@@ -16,7 +16,7 @@ function getGameCardVariant(categoryKey: string): 'default' | 'featured' | 'wide
 export default function StorePage() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [gridVisible, setGridVisible] = useState(false);
+  const [gridVisible, setGridVisible] = useState(true);
   const gridRef = useRef<HTMLDivElement>(null);
   const { t, language } = useLanguage();
 
@@ -58,17 +58,27 @@ export default function StorePage() {
 
   const displayProducts = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
+    let list = cheats;
     if (q) {
-      return cheats.filter(
+      list = cheats.filter(
         (c) =>
           c.title.toLowerCase().includes(q) ||
           c.game.toLowerCase().includes(q) ||
           (c.gameEn && c.gameEn.toLowerCase().includes(q)) ||
           (c.titleEn && c.titleEn.toLowerCase().includes(q))
       );
+    } else if (activeFilter !== 'all') {
+      list = cheats.filter((c) => c.category === activeFilter);
     }
-    return activeFilter === 'all' ? cheats : cheats.filter((c) => c.category === activeFilter);
-  }, [activeFilter, searchQuery]);
+    return [...list].sort((a, b) => {
+      const pa = priorityIndex(a.category);
+      const pb = priorityIndex(b.category);
+      if (pa !== pb) return pa - pb;
+      return a.title.localeCompare(b.title, language);
+    });
+  }, [activeFilter, searchQuery, language]);
+
+  const showGameCatalog = activeFilter === 'all' && !isSearching;
 
   const stats = useMemo(() => {
     const gameCount = sortedCategories.length;
@@ -78,23 +88,36 @@ export default function StorePage() {
   }, [sortedCategories.length]);
 
   useEffect(() => {
-    setGridVisible(false);
     const el = gridRef.current;
-    if (!el) return;
+    if (!el) {
+      setGridVisible(true);
+      return;
+    }
+
+    const reveal = () => setGridVisible(true);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setGridVisible(true);
+          reveal();
           observer.disconnect();
         }
       },
-      { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     );
 
     observer.observe(el);
+
+    requestAnimationFrame(() => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 80) {
+        reveal();
+        observer.disconnect();
+      }
+    });
+
     return () => observer.disconnect();
-  }, [activeFilter, isSearching]);
+  }, [activeFilter, isSearching, showGameCatalog]);
 
   return (
     <div className={styles.page}>
@@ -181,41 +204,54 @@ export default function StorePage() {
       )}
 
       <div className={styles.productsContainer} ref={gridRef}>
-        {activeFilter === 'all' && !isSearching ? (
-          <div className={`${styles.gamesGrid} ${gridVisible ? styles.gridVisible : ''}`}>
-            {sortedCategories.map((cat, index) => {
-              const count = cheats.filter((c) => c.category === cat.key).length;
-              const variant = getGameCardVariant(cat.key);
-              return (
-                <StoreGameCard
-                  key={cat.key}
-                  label={cat.label}
-                  count={count}
-                  countLabel={t('product.options')}
-                  ctaLabel={t('product.view')}
-                  imageUrl={gameImages[cat.key]}
-                  variant={variant}
-                  animationDelay={`${Math.min(index, 12) * 40}ms`}
-                  onSelect={() => setActiveFilter(cat.key)}
-                />
-              );
-            })}
-          </div>
-        ) : (
-          <div className={gridVisible ? styles.gridVisible : ''}>
-            {!isSearching && (
+        <div className={gridVisible ? styles.gridVisible : ''}>
+          {showGameCatalog && (
+            <section className={styles.catalogSection} aria-labelledby="catalog-heading">
+              <h2 id="catalog-heading" className={styles.catalogTitle}>
+                {t('store.browseByGame')}
+              </h2>
+              <div className={styles.gamesGrid}>
+                {sortedCategories.map((cat, index) => {
+                  const count = cheats.filter((c) => c.category === cat.key).length;
+                  const variant = getGameCardVariant(cat.key);
+                  return (
+                    <StoreGameCard
+                      key={cat.key}
+                      label={cat.label}
+                      count={count}
+                      countLabel={t('product.options')}
+                      ctaLabel={t('product.view')}
+                      imageUrl={gameImages[cat.key]}
+                      variant={variant}
+                      animationDelay={`${Math.min(index, 12) * 40}ms`}
+                      onSelect={() => setActiveFilter(cat.key)}
+                    />
+                  );
+                })}
+              </div>
+            </section>
+          )}
+
+          <section className={styles.productsSection} aria-labelledby="products-heading">
+            {!isSearching && activeFilter !== 'all' && (
               <div className={styles.backContainer}>
                 <button type="button" className={styles.backButton} onClick={() => setActiveFilter('all')}>
                   {t('store.back')}
                 </button>
               </div>
             )}
-            {isSearching && (
-              <p className={styles.searchResultsInfo}>
-                {t('store.results')} &ldquo;{searchQuery}&rdquo;: {displayProducts.length}{' '}
-                {t('store.products')}
-              </p>
-            )}
+
+            <h2 id="products-heading" className={styles.productsHeading}>
+              {isSearching
+                ? `${t('store.results')} "${searchQuery}"`
+                : activeFilter === 'all'
+                  ? t('store.allProducts')
+                  : categories.find((c) => c.key === activeFilter)?.label}
+              <span className={styles.productsCount}>
+                {displayProducts.length} {t('store.products')}
+              </span>
+            </h2>
+
             <div className={styles.productsGrid}>
               {displayProducts.length > 0 ? (
                 displayProducts.map((cheat, i) => (
@@ -230,14 +266,21 @@ export default function StorePage() {
               ) : (
                 <div className={styles.emptyState}>
                   <p>{t('store.empty')}</p>
-                  <button type="button" className={styles.emptyReset} onClick={() => setSearchQuery('')}>
+                  <button
+                    type="button"
+                    className={styles.emptyReset}
+                    onClick={() => {
+                      setSearchQuery('');
+                      setActiveFilter('all');
+                    }}
+                  >
                     {t('store.clearSearch')}
                   </button>
                 </div>
               )}
             </div>
-          </div>
-        )}
+          </section>
+        </div>
       </div>
     </div>
   );
