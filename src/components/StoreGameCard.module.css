@@ -15,16 +15,15 @@
     border-color var(--duration-normal, 280ms) var(--ease-out, ease-out),
     box-shadow var(--duration-normal, 280ms) var(--ease-out, ease-out),
     transform var(--duration-fast, 200ms) var(--ease-out, ease-out);
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-:global(.gridVisible) .card {
   animation: storeCardIn 0.45s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) both;
   animation-delay: var(--card-delay, 0ms);
 }
 
 @keyframes storeCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);

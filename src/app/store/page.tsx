@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { cheats, gameImages, storeCategoryOrder } from '@/data/cheats';
 import OCProductCard from '@/components/OCProductCard';
 import StoreGameCard from '@/components/StoreGameCard';
@@ -16,8 +16,6 @@ function getGameCardVariant(categoryKey: string): 'default' | 'featured' | 'wide
 export default function StorePage() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [gridVisible, setGridVisible] = useState(true);
-  const gridRef = useRef<HTMLDivElement>(null);
   const { t, language } = useLanguage();
 
   const categoriesMap = useMemo(() => {
@@ -86,38 +84,6 @@ export default function StorePage() {
     const undetectedCount = cheats.filter((c) => c.status === 'undetected').length;
     return { gameCount, productCount, undetectedCount };
   }, [sortedCategories.length]);
-
-  useEffect(() => {
-    const el = gridRef.current;
-    if (!el) {
-      setGridVisible(true);
-      return;
-    }
-
-    const reveal = () => setGridVisible(true);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          reveal();
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
-    );
-
-    observer.observe(el);
-
-    requestAnimationFrame(() => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 80) {
-        reveal();
-        observer.disconnect();
-      }
-    });
-
-    return () => observer.disconnect();
-  }, [activeFilter, isSearching, showGameCatalog]);
 
   return (
     <div className={styles.page}>
@@ -203,8 +169,8 @@ export default function StorePage() {
         </div>
       )}
 
-      <div className={styles.productsContainer} ref={gridRef}>
-        <div className={gridVisible ? styles.gridVisible : ''}>
+      <div className={styles.productsContainer}>
+        <div>
           {showGameCatalog && (
             <section className={styles.catalogSection} aria-labelledby="catalog-heading">
               <h2 id="catalog-heading" className={styles.catalogTitle}>
