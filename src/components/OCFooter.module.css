@@ -42,25 +42,22 @@
 }
 
 .logo {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--text-main);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   text-decoration: none;
   display: inline-block;
   transition: var(--transition-fast);
 }
 
-.logo span {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.logoImage {
+  display: block;
+  height: 58px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .logo:hover {
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
 .desc {

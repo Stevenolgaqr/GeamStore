@@ -39,51 +39,28 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 22px;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: -0.5px;
   text-decoration: none;
   transition: var(--transition-interactive);
   user-select: none;
+  flex-shrink: 0;
 }
 
 .logo:hover {
-  opacity: 0.85;
+  opacity: 0.92;
 }
 
-.logoText {
-  background: linear-gradient(135deg, #fff 0%, #d1d5db 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.logoImage {
+  display: block;
+  height: 46px;
+  width: auto;
+  max-width: min(180px, 40vw);
+  object-fit: contain;
+  object-position: center;
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
-.logoText span {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.logoIcon {
-  width: 34px;
-  height: 34px;
-  background: var(--primary-gradient);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(230, 0, 0, 0.45);
-  flex-shrink: 0;
-  transition: var(--transition-interactive);
-}
-
-.logo:hover .logoIcon {
-  box-shadow: 0 6px 20px rgba(230, 0, 0, 0.65);
-  transform: scale(1.05);
+.logo:hover .logoImage {
+  transform: scale(1.02);
 }
 
 /* ── Top Bar Actions ── */
@@ -226,8 +203,9 @@
   .navInner::-webkit-scrollbar {
     display: none;
   }
-  .logo {
-    font-size: 19px;
+  .logoImage {
+    height: 38px;
+    max-width: min(150px, 48vw);
   }
 }
 

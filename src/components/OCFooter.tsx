@@ -8,8 +8,15 @@ export default function OCFooter() {
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={styles.brand}>
-            <Link href="/" className={styles.logo}>
-              NOVA<span>STORE</span>
+            <Link href="/" className={styles.logo} aria-label="Nova Store">
+              <img
+                src="/images/nova-store-logo.png"
+                alt=""
+                className={styles.logoImage}
+                width={200}
+                height={64}
+                loading="lazy"
+              />
             </Link>
             <p className={styles.desc}>
               Nova Store is the leading provider for undetected game enhancements. Providing high quality software and unparalleled support since 2020.

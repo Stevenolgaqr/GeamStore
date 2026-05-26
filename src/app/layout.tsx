@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/images/nova-store-logo.png',
+    apple: '/images/nova-store-logo.png',
+  },
 };
 
 export default function OCLayout({ children }: { children: React.ReactNode }) {
