@@ -110,7 +110,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727058",
@@ -118,7 +118,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 11.79,
+        "price": 14.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727058",
@@ -126,7 +126,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727058",
@@ -198,7 +198,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727070",
@@ -206,7 +206,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727070",
@@ -274,7 +274,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727060",
@@ -282,7 +282,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727060",
@@ -353,7 +353,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 17.79,
+        "price": 20.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727074",
@@ -361,7 +361,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727074",
@@ -437,7 +437,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 10.79,
+        "price": 12.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727061",
@@ -445,7 +445,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727061",
@@ -485,7 +485,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 7.79,
+        "price": 9.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727097",
@@ -493,7 +493,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727097",
@@ -501,7 +501,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 26.79,
+        "price": 31.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727097",
@@ -509,7 +509,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "3 أشهر",
-        "price": 69.79,
+        "price": 83.79,
         "currency": "USD",
         "duration": "90 يوم",
         "sellauthProductId": "727097",
@@ -564,7 +564,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727063",
@@ -572,7 +572,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 5.79,
+        "price": 6.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727063",
@@ -580,7 +580,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 11.79,
+        "price": 14.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727063",
@@ -648,7 +648,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 19.79,
+        "price": 23.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727064",
@@ -656,7 +656,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 38.79,
+        "price": 47.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727064",
@@ -719,7 +719,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727065",
@@ -727,7 +727,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727065",
@@ -791,7 +791,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 5.79,
+        "price": 6.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727083",
@@ -799,7 +799,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "3 Days",
-        "price": 12.79,
+        "price": 15.79,
         "currency": "USD",
         "duration": "3 Days",
         "sellauthProductId": "727083",
@@ -807,7 +807,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 27.79,
+        "price": 33.49,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727083",
@@ -815,7 +815,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 46.79,
+        "price": 56.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727083",
@@ -883,7 +883,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727067",
@@ -891,7 +891,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727067",
@@ -963,7 +963,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 17.79,
+        "price": 20.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727091",
@@ -971,7 +971,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727091",
@@ -1026,7 +1026,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727068",
@@ -1034,7 +1034,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 11.79,
+        "price": 14.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727068",
@@ -1042,7 +1042,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727068",
@@ -1113,7 +1113,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 19.79,
+        "price": 23.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727069",
@@ -1121,7 +1121,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 38.79,
+        "price": 47.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727069",
@@ -1185,7 +1185,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727092",
@@ -1193,7 +1193,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "3 Days",
-        "price": 11.79,
+        "price": 14.79,
         "currency": "USD",
         "duration": "3 Days",
         "sellauthProductId": "727092",
@@ -1201,7 +1201,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727092",
@@ -1209,7 +1209,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 46.79,
+        "price": 56.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727092",
@@ -1246,7 +1246,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 3.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727098",
@@ -1254,7 +1254,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 11.79,
+        "price": 13.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727098",
@@ -1262,7 +1262,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 24.79,
+        "price": 29.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727098",
@@ -1294,7 +1294,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727099",
@@ -1302,7 +1302,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727099",
@@ -1310,7 +1310,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 29.79,
+        "price": 36.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727099",
@@ -1365,7 +1365,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727062",
@@ -1373,7 +1373,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727062",
@@ -1381,7 +1381,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 46.79,
+        "price": 56.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727062",
@@ -1445,7 +1445,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727078",
@@ -1453,7 +1453,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 9.79,
+        "price": 11.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727078",
@@ -1461,7 +1461,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 20.79,
+        "price": 24.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727078",
@@ -1528,7 +1528,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 11.79,
+        "price": 14.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727088",
@@ -1536,7 +1536,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727088",
@@ -1606,7 +1606,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 11.79,
+        "price": 14.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727057",
@@ -1614,7 +1614,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727057",
@@ -1685,7 +1685,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727059",
@@ -1693,7 +1693,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727059",
@@ -1765,7 +1765,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 17.79,
+        "price": 20.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727071",
@@ -1773,7 +1773,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727071",
@@ -1841,7 +1841,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727056",
@@ -1849,7 +1849,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727056",
@@ -1884,7 +1884,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 7.79,
+        "price": 8.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727101",
@@ -1892,7 +1892,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 25.79,
+        "price": 31.49,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727101",
@@ -1900,7 +1900,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 51.79,
+        "price": 62.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727101",
@@ -1955,7 +1955,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727072",
@@ -1963,7 +1963,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 17.79,
+        "price": 20.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727072",
@@ -1971,7 +1971,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 37.79,
+        "price": 45.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727072",
@@ -2032,7 +2032,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727076",
@@ -2040,7 +2040,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727076",
@@ -2048,7 +2048,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 9.79,
+        "price": 11.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727076",
@@ -2116,7 +2116,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 17.79,
+        "price": 20.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727073",
@@ -2124,7 +2124,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727073",
@@ -2162,7 +2162,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 6.79,
+        "price": 8.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727105",
@@ -2170,7 +2170,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "3 Days",
-        "price": 14.79,
+        "price": 17.79,
         "currency": "USD",
         "duration": "3 Days",
         "sellauthProductId": "727105",
@@ -2178,7 +2178,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727105",
@@ -2186,7 +2186,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 56.79,
+        "price": 67.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727105",
@@ -2241,7 +2241,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727075",
@@ -2257,7 +2257,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 6.79,
+        "price": 7.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727075",
@@ -2294,7 +2294,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 1.79,
+        "price": 1.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727100",
@@ -2302,7 +2302,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 3.79,
+        "price": 4.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727100",
@@ -2310,7 +2310,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 5.79,
+        "price": 7.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727100",
@@ -2318,7 +2318,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "3 أشهر",
-        "price": 12.79,
+        "price": 15.79,
         "currency": "USD",
         "duration": "90 يوم",
         "sellauthProductId": "727100",
@@ -2381,7 +2381,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 11.79,
+        "price": 14.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727079",
@@ -2389,7 +2389,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 23.79,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727079",
@@ -2426,7 +2426,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 3.79,
+        "price": 3.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727102",
@@ -2434,7 +2434,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 10.79,
+        "price": 13.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727102",
@@ -2442,7 +2442,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 20.79,
+        "price": 25.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727102",
@@ -2505,7 +2505,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 9.79,
+        "price": 11.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727080",
@@ -2513,7 +2513,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 17.79,
+        "price": 20.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727080",
@@ -2549,7 +2549,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727106",
@@ -2557,7 +2557,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "3 Days",
-        "price": 9.79,
+        "price": 11.79,
         "currency": "USD",
         "duration": "3 Days",
         "sellauthProductId": "727106",
@@ -2565,7 +2565,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 16.79,
+        "price": 20.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727106",
@@ -2573,7 +2573,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 32.79,
+        "price": 39.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727106",
@@ -2628,7 +2628,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 38.75,
+        "price": 4.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727081",
@@ -2636,7 +2636,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 116.25,
+        "price": 14.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727081",
@@ -2644,7 +2644,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 232.50,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727081",
@@ -2704,7 +2704,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 23.25,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727082",
@@ -2712,7 +2712,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 46.50,
+        "price": 5.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727082",
@@ -2720,7 +2720,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 93,
+        "price": 11.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727082",
@@ -2757,7 +2757,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727095",
@@ -2765,7 +2765,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 14.79,
+        "price": 17.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727095",
@@ -2773,7 +2773,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 37.79,
+        "price": 45.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727095",
@@ -2828,7 +2828,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 31,
+        "price": 3.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727084",
@@ -2836,7 +2836,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 116.25,
+        "price": 14.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727084",
@@ -2844,7 +2844,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 232.50,
+        "price": 28.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727084",
@@ -2904,7 +2904,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 35.65,
+        "price": 4.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727085",
@@ -2912,7 +2912,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 128.65,
+        "price": 15.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727085",
@@ -2920,7 +2920,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 263.50,
+        "price": 32.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727085",
@@ -2980,7 +2980,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 31,
+        "price": 3.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727086",
@@ -2988,7 +2988,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 93,
+        "price": 11.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727086",
@@ -2996,7 +2996,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 170.50,
+        "price": 20.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727086",
@@ -3056,7 +3056,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 4.79,
+        "price": 5.79,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727066",
@@ -3064,7 +3064,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727066",
@@ -3072,7 +3072,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 31.79,
+        "price": 37.49,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727066",
@@ -3132,7 +3132,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 23.25,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727087",
@@ -3140,7 +3140,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 77.50,
+        "price": 9.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727087",
@@ -3148,7 +3148,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 155,
+        "price": 18.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727087",
@@ -3193,7 +3193,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 7.79,
+        "price": 9.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727096",
@@ -3201,7 +3201,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727096",
@@ -3209,7 +3209,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "سنة واحدة",
-        "price": 93.79,
+        "price": 105.79,
         "currency": "USD",
         "duration": "365 يوم",
         "sellauthProductId": "727096",
@@ -3241,7 +3241,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 2.79,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727103",
@@ -3249,7 +3249,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 10.79,
+        "price": 12.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727103",
@@ -3257,7 +3257,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 15.79,
+        "price": 18.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727103",
@@ -3312,7 +3312,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 23.25,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727089",
@@ -3320,7 +3320,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 77.50,
+        "price": 9.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727089",
@@ -3328,7 +3328,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 155,
+        "price": 18.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727089",
@@ -3387,7 +3387,7 @@ export const cheats: Cheat[] = [
     "plans": [
       {
         "label": "يوم واحد",
-        "price": 23.25,
+        "price": 2.99,
         "currency": "USD",
         "duration": "1 يوم",
         "sellauthProductId": "727090",
@@ -3395,7 +3395,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "أسبوع",
-        "price": 93,
+        "price": 11.79,
         "currency": "USD",
         "duration": "7 أيام",
         "sellauthProductId": "727090",
@@ -3403,7 +3403,7 @@ export const cheats: Cheat[] = [
       },
       {
         "label": "شهر",
-        "price": 170.50,
+        "price": 20.79,
         "currency": "USD",
         "duration": "30 يوم",
         "sellauthProductId": "727090",

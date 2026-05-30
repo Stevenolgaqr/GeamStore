@@ -5,17 +5,8 @@
  */
 export const CREDIT_USD = 5 / 50;
 
-/** Products with no KeyHub API match — skip pricing. */
-export const SKIP_TITLE_EN = new Set([
-  'Arcane Dune: Awakening',
-  'Arcane Farlight 84',
-  'Arcane Hell Let Loose',
-  'Arcane HighGuard',
-  'Arcane HumanitZ',
-  'Arcane Hunt Showdown',
-  'Arcane Off The Grid',
-  'Arcane PIONER',
-]);
+/** Products previously deferred — now priced via KeyHub API when not in manual catalog. */
+export const SKIP_TITLE_EN = new Set([]);
 
 /** durationDays → credits (titleEn must match cheat.titleEn exactly) */
 export const KEYHUB_CREDITS = {

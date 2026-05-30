@@ -1,26 +1,57 @@
 /** KeyHub: 50 credits = $5.00 */
 export const CREDIT_USD = 5 / 50;
 
-export const KEYHUB_MARKUP = 1.55;
+export const CHARM_ENDINGS = [0.79, 0.49, 0.99, 0.97];
+
+/** Tiered minimum markup over KeyHub cost USD. */
+export function tierMultiplier(costUsd) {
+  if (costUsd < 1) return 2.0;
+  if (costUsd < 5) return 1.89;
+  if (costUsd < 15) return 1.87;
+  if (costUsd < 40) return 1.874;
+  if (costUsd < 50) return 1.85;
+  return 1.75;
+}
+
+/** Charm priority order varies by cost tier. */
+export function charmOrderForCost(costUsd) {
+  if (costUsd < 2) return [0.99, 0.79, 0.49, 0.97];
+  if (costUsd < 15) return [0.79, 0.49, 0.99, 0.97];
+  if (costUsd < 40) return [0.49, 0.79, 0.99, 0.97];
+  return [0.79, 0.49, 0.99, 0.97];
+}
 
 export function costUsdFromCredits(credits) {
   return Math.round(credits * CREDIT_USD * 100) / 100;
 }
 
+export function minRetailFromCost(costUsd) {
+  return Math.round(costUsd * tierMultiplier(costUsd) * 100) / 100;
+}
+
+/** First valid charm price >= minRetail (tier-aware psychological pricing). */
+export function psychologicalRetailFromCost(costUsd) {
+  const minRetail = minRetailFromCost(costUsd);
+  const startDollar = Math.floor(minRetail - 0.01);
+  const order = charmOrderForCost(costUsd);
+
+  for (const cents of order) {
+    for (let d = startDollar; d <= startDollar + 4; d++) {
+      const price = Math.round((d + cents) * 100) / 100;
+      if (price + 0.001 >= minRetail) return price;
+    }
+  }
+
+  return minRetail;
+}
+
+/** @deprecated use minRetailFromCost */
 export function rawRetailFromCredits(credits) {
-  return Math.round(costUsdFromCredits(credits) * KEYHUB_MARKUP * 100) / 100;
+  return minRetailFromCost(costUsdFromCredits(credits));
 }
 
-export function retailWithCharmEndingFromRaw(raw) {
-  const dollars = Math.floor(raw);
-  let price = dollars + 0.79;
-  if (price < raw) price = dollars + 1 + 0.79;
-  return Math.round(price * 100) / 100;
-}
-
-/** Retail = costUsd × 1.55 → first .79 >= raw */
 export function retailFromKeyhubCredits(credits) {
-  return retailWithCharmEndingFromRaw(rawRetailFromCredits(credits));
+  return psychologicalRetailFromCost(costUsdFromCredits(credits));
 }
 
 export function retailWithCharmEnding(credits) {

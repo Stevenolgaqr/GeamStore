@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Sync retail prices: manual KeyHub catalog → costUsd × 1.55 → .79 charm.
+ * Sync retail prices: KeyHub cost → tiered psychological retail (.79/.49/.99).
  * Updates cheats.ts + SellAuth variants by sellauthVariantId.
  * Never calls sellauth-deliver (no key purchases).
  *
@@ -14,12 +14,12 @@ import { fileURLToPath } from 'url';
 import {
   retailFromKeyhubCredits,
   costUsdFromCredits,
-  rawRetailFromCredits,
+  minRetailFromCost,
+  tierMultiplier,
   planDurationDays,
-  KEYHUB_MARKUP,
   CREDIT_USD,
 } from './pricing-core.mjs';
-import { KEYHUB_CREDITS, SKIP_TITLE_EN, creditsForPlan } from './keyhub-catalog-credits.mjs';
+import { KEYHUB_CREDITS, creditsForPlan } from './keyhub-catalog-credits.mjs';
 import { loadCheats } from './parse-cheats.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -81,9 +81,6 @@ function resolveCredits({ cheat, plan, days, planIndex, overrides, durationSeen,
   if (SKIP_VARIANT_IDS.has(variantId)) {
     return { credits: null, source: 'skip-variant' };
   }
-  if (SKIP_TITLE_EN.has(cheat.titleEn)) {
-    return { credits: null, source: 'deferred-product' };
-  }
   if (days == null) {
     return { credits: null, source: 'unknown-duration' };
   }
@@ -120,11 +117,13 @@ function buildPricePlan({ overrides, khByName }) {
   const { cheats } = loadCheats();
   const report = {
     generatedAt: new Date().toISOString(),
-    formula: { CREDIT_USD, KEYHUB_MARKUP, charm: '.79' },
+    formula: {
+      CREDIT_USD,
+      pricing: 'tiered multiplier + charm (.79/.49/.99)',
+    },
     rows: [],
     matched: [],
     unmatched: [],
-    deferred: [],
     ambiguous: [],
     byVariant: {},
     apiWarnings: [],
@@ -159,18 +158,15 @@ function buildPricePlan({ overrides, khByName }) {
       };
 
       if (credits == null) {
-        const row = { ...base, keyhubCredits: null, costUsd: null, rawPlus55: null, retail: null };
+        const row = { ...base, keyhubCredits: null, costUsd: null, tierMult: null, minRetail: null, retail: null };
         report.rows.push(row);
-        if (SKIP_TITLE_EN.has(cheat.titleEn)) {
-          report.deferred.push(row);
-        } else {
-          report.unmatched.push({ ...row, reason: source });
-        }
+        report.unmatched.push({ ...row, reason: source });
         return;
       }
 
       const costUsd = costUsdFromCredits(credits);
-      const rawPlus55 = rawRetailFromCredits(credits);
+      const tierMult = tierMultiplier(costUsd);
+      const minRetail = minRetailFromCost(costUsd);
       const retail = retailFromKeyhubCredits(credits);
 
       if (validateApi && khByName) {
@@ -190,8 +186,10 @@ function buildPricePlan({ overrides, khByName }) {
         ...base,
         keyhubCredits: credits,
         costUsd,
-        rawPlus55,
+        tierMult,
+        minRetail,
         retail,
+        delta: Math.round((retail - plan.price) * 100) / 100,
       };
 
       report.matched.push(entry);
@@ -212,6 +210,27 @@ function buildPricePlan({ overrides, khByName }) {
   }
 
   return { report, variantPrices };
+}
+
+function writeCsvReport(report, csvPath) {
+  const header = 'titleEn,label,durationDays,keyhubCredits,costUsd,tierMult,minRetail,retail,oldPrice,delta,sellauthVariantId,source';
+  const lines = report.matched.map((e) =>
+    [
+      e.titleEn,
+      e.label,
+      e.durationDays,
+      e.keyhubCredits,
+      e.costUsd,
+      e.tierMult,
+      e.minRetail,
+      e.retail,
+      e.oldPrice,
+      e.delta,
+      e.sellauthVariantId,
+      e.source,
+    ].join(',')
+  );
+  fs.writeFileSync(csvPath, [header, ...lines].join('\n'));
 }
 
 function applyCheatsTs(variantPrices) {
@@ -353,12 +372,12 @@ async function main() {
 
   const reportPath = path.join(__dirname, 'price-sync-report.json');
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+  writeCsvReport(report, path.join(__dirname, 'price-sync-report.csv'));
 
   const priced = Object.keys(report.byVariant).length;
   console.log(`Catalog products: ${Object.keys(KEYHUB_CREDITS).length}`);
   console.log(`Plans priced (variants): ${priced}`);
   console.log(`Matched rows: ${report.matched.length}`);
-  console.log(`Deferred products (18): ${report.deferred.length} plan rows`);
   console.log(`Skipped (no catalog / plan): ${report.unmatched.length}`);
   console.log(`Ambiguous: ${report.ambiguous.length}`);
   if (report.apiWarnings.length) {
@@ -372,14 +391,23 @@ async function main() {
   }
 
   if (!apply) {
-    console.log('\nSample (Ancient Apex):');
+    console.log('\nAnchor check (Ancient ABI Radar):');
+    const anchors = { 1: 3.79, 7: 18.79, 30: 37.49 };
     for (const e of Object.values(report.byVariant)) {
-      if (e.slug === 'ancient-apex') {
-        console.log(
-          `  ${e.label}: ${e.keyhubCredits} cr → cost $${e.costUsd} → raw $${e.rawPlus55} → $${e.retail} (was $${e.oldPrice})`
-        );
+      if (e.slug !== 'ancient-abi-radar') continue;
+      const expected = anchors[e.durationDays];
+      const ok = e.retail === expected ? 'OK' : 'FAIL';
+      console.log(
+        `  ${ok} ${e.label}: ${e.keyhubCredits} cr → cost $${e.costUsd} → min $${e.minRetail} (×${e.tierMult}) → $${e.retail} (was $${e.oldPrice}, Δ${e.delta >= 0 ? '+' : ''}${e.delta})`
+      );
+      if (expected != null && e.retail !== expected) {
+        console.error(`    Expected $${expected}`);
       }
     }
+
+    const changes = report.matched.filter((e) => e.delta !== 0);
+    console.log(`\nPrice changes: ${changes.length} / ${report.matched.length}`);
+    console.log('Full table: scripts/price-sync-report.csv');
     console.log('\nDry run only. Use --apply to write cheats.ts and SellAuth.');
     return;
   }

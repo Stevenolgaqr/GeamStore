@@ -18,21 +18,33 @@ node scripts/generate-webhook-urls.mjs
 
 Paste each URL into **Pricing & Stock → Dynamic Delivery URL** for the matching variant only (never one URL for all durations).
 
-## Price alignment (retail = KeyHub USD cost + 55%, charm `.79`)
+## Price alignment (tiered psychological retail)
 
-**Formula:** `50 credits = $5.00` → cost = credits × $0.10 → retail = cost × 1.55 → round up to nearest `.79` (never below +55%).
+**Formula:** `50 credits = $5.00` → cost = credits × $0.10 → tiered minimum markup → charm ending (`.79` / `.49` / `.99`).
+
+| Cost tier | Min multiplier | Charm priority |
+|-----------|----------------|----------------|
+| < $1 | ×2.00 | `.99` first |
+| $1 – $5 | ×1.89 | `.99` then `.79` |
+| $5 – $15 | ×1.87 | `.79` first |
+| $15 – $40 | ×1.874 | `.49` first |
+| $40 – $50 | ×1.85 | `.79` first |
+| ≥ $50 | ×1.75 | `.79` first |
+
+**Examples (Ancient ABI Radar):** $2.00 → **$3.79** | $10.00 → **$18.79** | $20.00 → **$37.49**
 
 | Product | Day / 24h | Week | Month |
 |---------|-----------|------|-------|
-| Ancient Apex | 2.79 | 11.79 | 23.79 |
-| Arcane Apex | 4.79 | 15.79 | 31.79 |
-| Ancient BF6 | 3.79 | 15.79 | 31.79 |
+| Ancient ABI Radar | 3.79 | 18.79 | 37.49 |
+| Ancient Apex | 2.99 | 14.49 | 28.49 |
+| Arcane Apex | 4.79 | 18.79 | 37.49 |
 
-Source of truth: [`scripts/keyhub-catalog-credits.mjs`](../scripts/keyhub-catalog-credits.mjs) (user-provided catalog). Exact `titleEn` match only — no cross-product name mapping.
+Source of truth: KeyHub credits via [`scripts/keyhub-catalog-credits.mjs`](../scripts/keyhub-catalog-credits.mjs) + KeyHub API snapshot. Exact `titleEn` match only.
 
-Sync matched products only (18 store products without catalog entries stay unchanged until you add them):
+Sync all matched products:
 
 ```bash
+node scripts/fetch-keyhub-products.mjs
 node scripts/sync-prices.mjs --dry-run
 node scripts/sync-prices.mjs --apply
 node scripts/audit-all-prices.mjs
