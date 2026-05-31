@@ -13,7 +13,6 @@ export default function OCHeader() {
   const navItems = [
     { label: t('nav.store'), href: '/store' },
     { label: t('nav.status'), href: '/status' },
-    { label: t('nav.instructions'), href: '/instructions' },
     { label: t('nav.reviews'), href: '/reviews' },
     { label: t('nav.support'), href: '/contact' },
   ];

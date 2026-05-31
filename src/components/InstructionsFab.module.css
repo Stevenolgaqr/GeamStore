@@ -1,0 +1,80 @@
+.fab {
+  position: fixed;
+  inset-inline-end: 24px;
+  bottom: 24px;
+  z-index: 900;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #e60000 0%, #b80000 100%);
+  color: #fff;
+  text-decoration: none;
+  box-shadow:
+    0 8px 28px rgba(230, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+  transition:
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.22s ease;
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-nexa), sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+.ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 0, 0, 0.35);
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .fab:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow:
+      0 14px 36px rgba(230, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+  }
+
+  .fab:hover .ring {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.fab:active {
+  transform: scale(0.96);
+}
+
+.fab:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .fab {
+    inset-inline-end: 16px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .icon {
+    font-size: 1.25rem;
+  }
+}

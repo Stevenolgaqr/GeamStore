@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import OCHeader from '@/components/OCHeader';
 import OCFooter from '@/components/OCFooter';
+import InstructionsFab from '@/components/InstructionsFab';
 import SellauthEmbed from '@/components/SellauthEmbed';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { fontVariables } from '@/lib/fonts';
@@ -49,6 +50,7 @@ export default function OCLayout({ children }: { children: React.ReactNode }) {
           <OCHeader />
           <main>{children}</main>
           <OCFooter />
+          <InstructionsFab />
         </LanguageProvider>
       </body>
     </html>
