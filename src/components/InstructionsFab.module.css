@@ -1,10 +1,10 @@
 .fab {
   position: fixed;
-  top: 24px;
-  right: 24px;
+  top: 12px;
+  right: 20px;
   z-index: 1001;
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   z-index: 1;
   font-family: var(--font-nexa), sans-serif;
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   line-height: 1;
   margin-top: -2px;
 }
@@ -68,13 +68,13 @@
 
 @media (max-width: 640px) {
   .fab {
-    top: 16px;
-    right: 16px;
-    width: 48px;
-    height: 48px;
+    top: 10px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
   }
 
   .icon {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
   }
 }
