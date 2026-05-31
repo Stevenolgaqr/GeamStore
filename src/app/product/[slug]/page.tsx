@@ -274,6 +274,14 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
               )}
             </button>
           </div>
+
+          <Link
+            href={`/instructions#${cheat.slug}`}
+            className={`${styles.setupGuideLink} ${styles.infoStagger}`}
+            style={{ '--stagger': 8 } as React.CSSProperties}
+          >
+            {t('product.setupGuide')} →
+          </Link>
         </div>
       </div>
 

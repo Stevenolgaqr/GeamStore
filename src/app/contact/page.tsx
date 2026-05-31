@@ -116,6 +116,6 @@ const faqs = [
   },
   {
     q: 'How do I get started after purchasing?',
-    a: 'After purchase, you\'ll receive a setup guide via email and access to our Discord support channel.',
+    a: 'Visit our Setup Instructions page for step-by-step guides for every product, or open Discord if you need help.',
   },
 ];

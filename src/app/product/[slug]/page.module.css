@@ -424,6 +424,24 @@
   font-variant-numeric: tabular-nums;
 }
 
+.setupGuideLink {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ff6666;
+  text-decoration: none;
+  font-family: var(--font-mono), monospace;
+}
+
+@media (hover: hover) {
+  .setupGuideLink:hover {
+    color: #ff8888;
+    text-decoration: underline;
+  }
+}
+
 .buyNowUnavailable {
   background: linear-gradient(135deg, #374151, #1f2937) !important;
   color: #9ca3af !important;
