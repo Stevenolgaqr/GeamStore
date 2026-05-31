@@ -1,8 +1,8 @@
 .fab {
   position: fixed;
-  inset-inline-end: 24px;
-  bottom: 24px;
-  z-index: 900;
+  top: 24px;
+  right: 24px;
+  z-index: 1001;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -68,8 +68,8 @@
 
 @media (max-width: 640px) {
   .fab {
-    inset-inline-end: 16px;
-    bottom: 16px;
+    top: 16px;
+    right: 16px;
     width: 48px;
     height: 48px;
   }
