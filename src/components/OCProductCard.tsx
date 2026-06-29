@@ -1,11 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats';
 import { useLanguage } from '@/context/LanguageContext';
+import { useSellauthReady } from '@/hooks/useSellauthReady';
 import { formatRetailPrice } from '@/lib/pricing';
+import { getDefaultPlan, openSellauthCheckout } from '@/lib/sellauth';
+import OptimizedImage from '@/components/OptimizedImage';
 import { IconStarRating } from '@/components/icons/ProductIcons';
 import styles from './OCProductCard.module.css';
 
@@ -15,6 +18,9 @@ interface Props {
 
 export default function OCProductCard({ cheat }: Props) {
   const { language, t } = useLanguage();
+  const checkoutReady = useSellauthReady();
+  const defaultPlan = getDefaultPlan(cheat.plans);
+  const canQuickBuy = !!defaultPlan?.sellauthProductId;
 
   const statusClass =
     cheat.status === 'undetected'
@@ -24,16 +30,34 @@ export default function OCProductCard({ cheat }: Props) {
         : styles.statusDetected;
 
   const lowestPrice = Math.min(...cheat.plans.map((p) => p.price));
+  const imageSrc = cheat.image || gameImages[cheat.category];
 
   const displayTitle = language === 'en' && cheat.titleEn ? cheat.titleEn : cheat.title;
   const displayGame = language === 'en' && cheat.gameEn ? cheat.gameEn : cheat.game;
+  const displayDesc =
+    language === 'en' && cheat.descriptionEn ? cheat.descriptionEn : cheat.description;
   const statusLabel = t(`status.${cheat.status}`) || cheat.statusLabel;
+
+  const handleQuickBuy = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (!defaultPlan?.sellauthProductId) return;
+      e.preventDefault();
+      openSellauthCheckout(e.currentTarget, defaultPlan);
+    },
+    [defaultPlan]
+  );
 
   return (
     <div className={styles.card}>
       <div className={styles.imageWrap}>
-        {cheat.image || gameImages[cheat.category] ? (
-          <img src={cheat.image || gameImages[cheat.category]} alt={displayTitle} className={styles.image} loading="lazy" />
+        {imageSrc ? (
+          <OptimizedImage
+            src={imageSrc}
+            alt={displayTitle}
+            className={styles.image}
+            fill
+            sizes="(max-width: 768px) 50vw, 25vw"
+          />
         ) : (
           <div className={styles.imagePlaceholder}>
             <span className={styles.placeholderIcon}>{cheat.gameIcon}</span>
@@ -52,7 +76,7 @@ export default function OCProductCard({ cheat }: Props) {
       <div className={styles.content}>
         <span className={styles.gameLabel}>{displayGame}</span>
         <h3 className={styles.title}>{displayTitle}</h3>
-        <p className={styles.desc}>{language === 'en' && cheat.descriptionEn ? cheat.descriptionEn : cheat.description}</p>
+        <p className={styles.desc}>{displayDesc}</p>
 
         <div className={styles.meta} aria-label={`${cheat.rating} — ${cheat.reviews} ${t('card.reviews')}`}>
           <IconStarRating rating={cheat.rating} size={12} />
@@ -68,8 +92,23 @@ export default function OCProductCard({ cheat }: Props) {
       </div>
 
       <div className={styles.cta}>
-        <Link href={`/product/${cheat.slug}`} className={styles.buyBtn}>
-          {t('card.buyNow')}
+        {canQuickBuy ? (
+          <button
+            type="button"
+            className={styles.buyBtn}
+            onClick={handleQuickBuy}
+            disabled={!checkoutReady}
+            aria-busy={!checkoutReady}
+          >
+            {checkoutReady ? t('card.quickBuy') : t('product.loadingCheckout')}
+          </button>
+        ) : (
+          <Link href={`/product/${cheat.slug}`} className={styles.buyBtn}>
+            {t('card.buyNow')}
+          </Link>
+        )}
+        <Link href={`/product/${cheat.slug}`} className={styles.detailBtn}>
+          {t('card.details')}
         </Link>
       </div>
     </div>

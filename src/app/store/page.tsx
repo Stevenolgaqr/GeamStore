@@ -14,12 +14,19 @@ function StorePageContent() {
   const productsContainerRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [catalogViewMode, setCatalogViewMode] = useState<'catalog' | 'all'>('catalog');
   const { t, language } = useLanguage();
 
   useEffect(() => {
     const category = searchParams.get('category');
+    const q = searchParams.get('q');
+    if (q) {
+      setSearchQuery(q);
+      setCatalogViewMode('all');
+    }
     if (category && cheats.some((c) => c.category === category)) {
       setActiveFilter(category);
+      setCatalogViewMode('all');
     } else if (!category) {
       setActiveFilter('all');
     }
@@ -80,21 +87,28 @@ function StorePageContent() {
   );
 
   const isSearching = searchQuery.trim().length > 0;
-  const showGameCatalog = activeFilter === 'all' && !isSearching;
-  const showProducts = isSearching || activeFilter !== 'all';
-  const showFilterTabs = !isSearching && !showGameCatalog;
+  const showGameCatalog = activeFilter === 'all' && !isSearching && catalogViewMode === 'catalog';
+  const showProducts = isSearching || activeFilter !== 'all' || catalogViewMode === 'all';
+  const showFilterTabs = !isSearching && activeFilter !== 'all';
+  const showViewToggle = activeFilter === 'all' && !isSearching;
 
   const displayProducts = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     let list = cheats;
     if (q) {
-      list = cheats.filter(
-        (c) =>
-          c.title.toLowerCase().includes(q) ||
-          c.game.toLowerCase().includes(q) ||
-          (c.gameEn && c.gameEn.toLowerCase().includes(q)) ||
-          (c.titleEn && c.titleEn.toLowerCase().includes(q))
-      );
+      list = cheats.filter((c) => {
+        const fields = [
+          c.title,
+          c.game,
+          c.titleEn,
+          c.gameEn,
+          c.description,
+          c.descriptionEn,
+          ...(c.features ?? []),
+          ...(c.featuresEn ?? []),
+        ];
+        return fields.some((field) => field?.toLowerCase().includes(q));
+      });
     } else if (activeFilter !== 'all') {
       list = cheats.filter((c) => c.category === activeFilter);
     }
@@ -210,6 +224,25 @@ function StorePageContent() {
         </div>
       </header>
 
+      {showViewToggle && (
+        <div className={styles.viewToggle}>
+          <button
+            type="button"
+            className={`${styles.viewToggleBtn} ${catalogViewMode === 'catalog' ? styles.viewToggleBtnActive : ''}`}
+            onClick={() => setCatalogViewMode('catalog')}
+          >
+            {t('store.viewCatalog')}
+          </button>
+          <button
+            type="button"
+            className={`${styles.viewToggleBtn} ${catalogViewMode === 'all' ? styles.viewToggleBtnActive : ''}`}
+            onClick={() => setCatalogViewMode('all')}
+          >
+            {t('store.viewAllProducts')}
+          </button>
+        </div>
+      )}
+
       {showFilterTabs && (
         <div className={styles.filtersWrapper}>
           <div className={styles.filtersScrollFade} aria-hidden />
@@ -258,8 +291,10 @@ function StorePageContent() {
                 <>
                   {t('store.results')} &ldquo;{searchQuery}&rdquo;
                 </>
-              ) : (
+              ) : activeFilter !== 'all' ? (
                 activeGameLabel
+              ) : (
+                t('store.viewAllProducts')
               )}
               <span className={styles.productsCount}>
                 {displayProducts.length} {t('store.products')}

@@ -38,7 +38,7 @@ export function IconStar({ filled = true, size = 14 }: { filled?: boolean; size?
 }
 
 export function IconStarRating({ rating, max = 5, size = 14 }: { rating: number; max?: number; size?: number }) {
-  const full = Math.round(rating);
+  const full = Math.floor(Math.min(max, Math.max(0, rating)));
   return (
     <span className="inline-flex items-center gap-0.5" aria-hidden>
       {Array.from({ length: max }, (_, i) => (

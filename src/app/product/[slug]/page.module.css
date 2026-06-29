@@ -367,6 +367,17 @@
 }
 
 /* ── Buy Buttons ── */
+.deliveryNote {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-label);
+}
+
 .buyActions {
   display: flex;
   gap: 0.75rem;
@@ -410,6 +421,13 @@
 .buyNow:focus-visible {
   outline: 2px solid var(--text-main);
   outline-offset: 2px;
+}
+
+.buyNow:disabled,
+.buyNowLoading {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
 }
 
 .buyNowLabel {

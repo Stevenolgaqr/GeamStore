@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import LegalPageHeader from '@/components/LegalPageHeader';
 import styles from '../terms/legal.module.css';
 
 export const metadata: Metadata = {
@@ -12,11 +13,7 @@ export default function RefundsPage() {
     <div className={styles.page}>
       <div className={styles.glow} />
       <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.badge}>Legal</span>
-          <h1 className={styles.title}>Refund <span className={styles.accent}>Policy</span></h1>
-          <p className={styles.updated}>Last updated: May 2026</p>
-        </div>
+        <LegalPageHeader titleKey="legal.refundsTitle" />
 
         <div className={styles.content}>
           <section className={styles.section}>
@@ -46,7 +43,7 @@ export default function RefundsPage() {
 
           <section className={styles.section}>
             <h2>How to Request a Refund</h2>
-            <p>To request a refund, contact our support team via <Link href="/contact" className={styles.link}>the Contact page</Link> or our <Link href="/discord" className={styles.link}>Discord server</Link> within 24 hours of purchase. Include your order ID and a detailed description of the issue.</p>
+            <p>To request a refund, contact our support team via <Link href="/contact" className={styles.link}>the Contact page</Link> or our <a href="https://discord.gg/novastore" target="_blank" rel="noopener noreferrer" className={styles.link}>Discord server</a> within 24 hours of purchase. Include your order ID and a detailed description of the issue.</p>
           </section>
 
           <section className={styles.section}>

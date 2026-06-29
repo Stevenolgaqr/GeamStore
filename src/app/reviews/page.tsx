@@ -2,35 +2,33 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { reviewsData, cheats } from '@/data/cheats';
+import { reviewsData } from '@/data/cheats';
+import { useLanguage } from '@/context/LanguageContext';
 import styles from './page.module.css';
 
 const supportedGames = [
-  { icon: '🦀', name: 'Rust', status: 'UNDETECTED' },
-  { icon: '🎯', name: 'Rainbow Six Siege', status: 'UNDETECTED' },
-  { icon: '⚡', name: 'Apex Legends', status: 'UNDETECTED' },
-  { icon: '💀', name: 'Call of Duty', status: 'UPDATING', isUpdating: true },
-  { icon: '🐻', name: 'Escape from Tarkov', status: 'UNDETECTED' },
-  { icon: '🔫', name: 'Counter Strike 2', status: 'UNDETECTED' },
-  { icon: '🚗', name: 'FiveM', status: 'UNDETECTED' },
-  { icon: '🤖', name: 'ARC Raiders', status: 'UNDETECTED' },
+  { icon: '🦀', name: 'Rust', statusKey: 'status.undetected', category: 'rust' },
+  { icon: '🎯', name: 'Rainbow Six Siege', statusKey: 'status.undetected', category: 'r6' },
+  { icon: '⚡', name: 'Apex Legends', statusKey: 'status.undetected', category: 'apex' },
+  { icon: '💀', name: 'Call of Duty', statusKey: 'status.updating', category: 'cod', isUpdating: true },
+  { icon: '🐻', name: 'Escape from Tarkov', statusKey: 'status.undetected', category: 'tarkov' },
+  { icon: '🔫', name: 'Counter Strike 2', statusKey: 'status.undetected', category: 'cs2' },
+  { icon: '🚗', name: 'FiveM', statusKey: 'status.undetected', category: 'fivem' },
+  { icon: '🤖', name: 'ARC Raiders', statusKey: 'status.undetected', category: 'arc' },
 ];
 
 export default function ReviewsPage() {
+  const { t } = useLanguage();
+
   return (
     <div className={styles.page}>
-      {/* Header */}
       <div className={styles.header}>
-        <p className={styles.label}>المراجعات والدعم</p>
-        <h1 className={styles.title}>ماذا يقول عملاؤنا</h1>
-        <p className={styles.desc}>
-          انضم إلى الآلاف من اللاعبين المحترفين الذين يثقون في حلولنا المتطورة.
-          شاهد ما يقوله مجتمعنا حول تجاربهم.
-        </p>
+        <p className={styles.label}>{t('reviews.label')}</p>
+        <h1 className={styles.title}>{t('reviews.title')}</h1>
+        <p className={styles.desc}>{t('reviews.desc')}</p>
       </div>
 
       <div className={styles.container}>
-        {/* Reviews Grid */}
         <div className={styles.reviewsGrid}>
           {reviewsData.map((review) => (
             <div key={review.id} className={styles.reviewCard}>
@@ -50,63 +48,48 @@ export default function ReviewsPage() {
           ))}
         </div>
 
-        {/* Supported Games */}
         <div className={styles.gamesSection}>
-          <p className={styles.label}>الألعاب المدعومة</p>
-          <h2 className={styles.sectionTitle}>جميع الألعاب التي ندعمها</h2>
-          <p className={styles.sectionDesc}>
-            نحدث منتجاتنا باستمرار لضمان عملها بسلاسة مع كل تحديث للعبة.
-          </p>
+          <p className={styles.label}>{t('reviews.gamesLabel')}</p>
+          <h2 className={styles.sectionTitle}>{t('reviews.gamesTitle')}</h2>
+          <p className={styles.sectionDesc}>{t('reviews.gamesDesc')}</p>
 
           <div className={styles.gamesGrid}>
-            {supportedGames.map((game, i) => (
-              <Link href="/store" key={i} className={styles.gameCard}>
+            {supportedGames.map((game) => (
+              <Link href={`/store?category=${game.category}`} key={game.category} className={styles.gameCard}>
                 <div className={styles.gameIcon}>{game.icon}</div>
                 <div className={styles.gameName}>{game.name}</div>
                 <div
                   className={`${styles.gameStatus} ${game.isUpdating ? styles.gameStatusUpdating : ''}`}
                 >
-                  ● {game.status}
+                  ● {t(game.statusKey).toUpperCase()}
                 </div>
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Support Section */}
         <div className={styles.supportSection}>
-          <p className={styles.label}>الدعم الفني</p>
-          <h2 className={styles.sectionTitle}>نحن هنا لمساعدتك</h2>
-          <p className={styles.sectionDesc}>
-            فريقنا المتخصص جاهز لمساعدتك على مدار الساعة.
-          </p>
+          <p className={styles.label}>{t('reviews.supportLabel')}</p>
+          <h2 className={styles.sectionTitle}>{t('reviews.supportTitle')}</h2>
+          <p className={styles.sectionDesc}>{t('reviews.supportDesc')}</p>
 
           <div className={styles.supportGrid}>
             <a
-              href="https://discord.gg/onlycheats"
+              href="https://discord.gg/novastore"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.supportCard}
             >
               <div className={styles.supportIcon}>💎</div>
-              <h3 className={styles.supportTitle}>ديسكورد</h3>
-              <p className={styles.supportDesc}>
-                انضم لمجتمعنا على ديسكورد للحصول على دعم فوري وتحديثات مباشرة.
-              </p>
+              <h3 className={styles.supportTitle}>{t('reviews.discordTitle')}</h3>
+              <p className={styles.supportDesc}>{t('reviews.discordDesc')}</p>
             </a>
 
-            <a
-              href="https://t.me/onlycheats"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.supportCard}
-            >
-              <div className={styles.supportIcon}>✈️</div>
-              <h3 className={styles.supportTitle}>تيليغرام</h3>
-              <p className={styles.supportDesc}>
-                تابع آخر الأخبار والعروض الحصرية على قناة تيليغرام.
-              </p>
-            </a>
+            <Link href="/contact" className={styles.supportCard}>
+              <div className={styles.supportIcon}>✉️</div>
+              <h3 className={styles.supportTitle}>{t('reviews.emailTitle')}</h3>
+              <p className={styles.supportDesc}>{t('reviews.emailDesc')}</p>
+            </Link>
 
             <a
               href="https://youtube.com"
@@ -115,10 +98,8 @@ export default function ReviewsPage() {
               className={styles.supportCard}
             >
               <div className={styles.supportIcon}>📺</div>
-              <h3 className={styles.supportTitle}>يوتيوب</h3>
-              <p className={styles.supportDesc}>
-                شاهد فيديوهات الشرح والمعاينات الحية على قناة يوتيوب الخاصة بنا.
-              </p>
+              <h3 className={styles.supportTitle}>{t('reviews.youtubeTitle')}</h3>
+              <p className={styles.supportDesc}>{t('reviews.youtubeDesc')}</p>
             </a>
           </div>
         </div>

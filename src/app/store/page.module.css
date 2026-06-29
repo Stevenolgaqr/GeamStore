@@ -215,6 +215,36 @@
   font-family: var(--font-ar);
 }
 
+/* ── View toggle ── */
+.viewToggle {
+  display: flex;
+  gap: 0.5rem;
+  max-width: var(--content-width);
+  margin: 0 auto 1.25rem;
+  padding: 0 1.5rem;
+}
+
+.viewToggleBtn {
+  flex: 1;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-ar);
+  transition: var(--transition-interactive);
+}
+
+.viewToggleBtnActive {
+  color: #fff;
+  border-color: rgba(230, 0, 0, 0.35);
+  background: rgba(230, 0, 0, 0.12);
+}
+
 /* ── Filters ── */
 .filtersWrapper {
   position: relative;

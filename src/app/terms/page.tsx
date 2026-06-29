@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import LegalPageHeader from '@/components/LegalPageHeader';
 import styles from './legal.module.css';
 
 export const metadata: Metadata = {
@@ -12,11 +13,7 @@ export default function TermsPage() {
     <div className={styles.page}>
       <div className={styles.glow} />
       <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.badge}>Legal</span>
-          <h1 className={styles.title}>Terms of <span className={styles.accent}>Service</span></h1>
-          <p className={styles.updated}>Last updated: May 2026</p>
-        </div>
+        <LegalPageHeader titleKey="legal.termsTitle" />
 
         <div className={styles.content}>
           <section className={styles.section}>
@@ -61,7 +58,7 @@ export default function TermsPage() {
 
           <section className={styles.section}>
             <h2>9. Contact</h2>
-            <p>For questions regarding these terms, contact us via our <Link href="/contact" className={styles.link}>Support page</Link> or join our <Link href="/discord" className={styles.link}>Discord server</Link>.</p>
+            <p>For questions regarding these terms, contact us via our <Link href="/contact" className={styles.link}>Support page</Link> or join our <a href="https://discord.gg/novastore" target="_blank" rel="noopener noreferrer" className={styles.link}>Discord server</a>.</p>
           </section>
         </div>
       </div>

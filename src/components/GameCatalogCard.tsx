@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import OptimizedImage from '@/components/OptimizedImage';
 import styles from './GameCatalogCard.module.css';
 
 type Props = {
@@ -49,7 +50,7 @@ export default function GameCatalogCard({
         )}
 
         {imageUrl ? (
-          <img src={imageUrl} alt="" className={styles.image} loading="lazy" />
+          <OptimizedImage src={imageUrl} alt="" className={styles.image} fill sizes="(max-width: 768px) 50vw, 20vw" />
         ) : (
           <div className={styles.placeholder} aria-hidden />
         )}

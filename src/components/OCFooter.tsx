@@ -1,62 +1,65 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import OptimizedImage from '@/components/OptimizedImage';
+import { useLanguage } from '@/context/LanguageContext';
 import styles from './OCFooter.module.css';
 
 export default function OCFooter() {
+  const { t } = useLanguage();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
-              <img
+              <OptimizedImage
                 src="/images/nova-store-logo.png"
-                alt=""
+                alt="Nova Store"
                 className={styles.logoImage}
                 width={120}
                 height={48}
-                loading="lazy"
               />
               <span className={styles.logoText}>
                 NOVA<span>STORE</span>
               </span>
             </Link>
-            <p className={styles.desc}>
-              Nova Store is the leading provider for undetected game enhancements. Providing high quality software and unparalleled support since 2020.
-            </p>
+            <p className={styles.desc}>{t('footer.desc')}</p>
             <a
               href="https://discord.gg/novastore"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.discordBadge}
             >
-              Join our Discord
+              {t('footer.discord')}
             </a>
           </div>
 
           <div>
-            <h4 className={styles.colTitle}>Navigation</h4>
+            <h4 className={styles.colTitle}>{t('footer.navigation')}</h4>
             <ul className={styles.linkList}>
-              <li><Link href="/" className={styles.link}>Home</Link></li>
-              <li><Link href="/store" className={styles.link}>Store</Link></li>
-              <li><Link href="/status" className={styles.link}>Status</Link></li>
-              <li><Link href="/reviews" className={styles.link}>Reviews</Link></li>
-              <li><Link href="/contact" className={styles.link}>Contact</Link></li>
+              <li><Link href="/" className={styles.link}>{t('footer.home')}</Link></li>
+              <li><Link href="/store" className={styles.link}>{t('footer.store')}</Link></li>
+              <li><Link href="/status" className={styles.link}>{t('footer.status')}</Link></li>
+              <li><Link href="/reviews" className={styles.link}>{t('footer.reviews')}</Link></li>
+              <li><Link href="/contact" className={styles.link}>{t('footer.contact')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className={styles.colTitle}>Information</h4>
+            <h4 className={styles.colTitle}>{t('footer.information')}</h4>
             <ul className={styles.linkList}>
-              <li><Link href="/terms" className={styles.link}>Terms of Service</Link></li>
-              <li><Link href="/privacy" className={styles.link}>Privacy Policy</Link></li>
-              <li><Link href="/refunds" className={styles.link}>Refund Policy</Link></li>
-              <li><Link href="/contact" className={styles.link}>Contact Us</Link></li>
+              <li><Link href="/terms" className={styles.link}>{t('footer.terms')}</Link></li>
+              <li><Link href="/privacy" className={styles.link}>{t('footer.privacy')}</Link></li>
+              <li><Link href="/refunds" className={styles.link}>{t('footer.refunds')}</Link></li>
+              <li><Link href="/contact" className={styles.link}>{t('footer.contactUs')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className={styles.colTitle}>Top Games</h4>
+            <h4 className={styles.colTitle}>{t('footer.topGames')}</h4>
             <ul className={styles.linkList}>
               <li><Link href="/product/ancient-rust" className={styles.link}>Rust</Link></li>
               <li><Link href="/product/ancient-r6" className={styles.link}>Rainbow Six Siege</Link></li>
@@ -67,7 +70,7 @@ export default function OCFooter() {
         </div>
 
         <div className={styles.bottom}>
-          <div>&copy; {new Date().getFullYear()} Nova Store. All Rights Reserved.</div>
+          <div>&copy; {new Date().getFullYear()} Nova Store. {t('footer.rights')}</div>
           <div className={styles.payments}>
             <div className={styles.paymentIcon}>VISA</div>
             <div className={styles.paymentIcon}>MC</div>

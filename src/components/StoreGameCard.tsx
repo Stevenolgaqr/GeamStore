@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import OptimizedImage from '@/components/OptimizedImage';
 import styles from './StoreGameCard.module.css';
 
 type Variant = 'default' | 'featured' | 'wide';
@@ -40,7 +41,7 @@ export default function StoreGameCard({
   const body = (
     <>
       {imageUrl ? (
-        <img src={imageUrl} alt="" className={styles.image} loading="lazy" />
+        <OptimizedImage src={imageUrl} alt="" className={styles.image} fill sizes="(max-width: 768px) 50vw, 25vw" />
       ) : (
         <div className={styles.placeholder} aria-hidden />
       )}

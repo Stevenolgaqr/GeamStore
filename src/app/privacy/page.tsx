@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import LegalPageHeader from '@/components/LegalPageHeader';
 import styles from '../terms/legal.module.css';
 
 export const metadata: Metadata = {
@@ -12,11 +13,7 @@ export default function PrivacyPage() {
     <div className={styles.page}>
       <div className={styles.glow} />
       <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.badge}>Legal</span>
-          <h1 className={styles.title}>Privacy <span className={styles.accent}>Policy</span></h1>
-          <p className={styles.updated}>Last updated: May 2026</p>
-        </div>
+        <LegalPageHeader titleKey="legal.privacyTitle" />
 
         <div className={styles.content}>
           <section className={styles.section}>

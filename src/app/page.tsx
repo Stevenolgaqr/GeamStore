@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { cheats, gameImages, storeCategoryOrder } from '@/data/cheats';
+import OptimizedImage from '@/components/OptimizedImage';
 import { useLanguage } from '@/context/LanguageContext';
 import { IconStarRating } from '@/components/icons/ProductIcons';
 import StoreGameCard from '@/components/StoreGameCard';
@@ -20,6 +21,7 @@ export default function Home() {
   const popularCheats = useMemo(
     () =>
       [...cheats]
+        .filter((c) => c.status === 'undetected')
         .sort((a, b) => b.rating - a.rating || b.reviews - a.reviews)
         .slice(0, 3),
     []
@@ -100,13 +102,13 @@ export default function Home() {
             <div className={styles.heroO} aria-hidden>
               N
             </div>
-            <img
+            <OptimizedImage
               src="/images/red-hero.jpeg"
               alt=""
               className={styles.heroCharacter}
               width={520}
               height={580}
-              fetchPriority="high"
+              priority
             />
           </div>
         </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import OptimizedImage from '@/components/OptimizedImage';
 import styles from './ProductImageGallery.module.css';
 
 type Props = {
@@ -89,11 +90,14 @@ export default function ProductImageGallery({
             </span>
           </>
         )}
-        <img
+        <OptimizedImage
           key={current}
           src={current}
           alt={`${alt} — ${index + 1}`}
           className={`${styles.mainImage} ${transitioning ? styles.mainImageTransition : ''}`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority={index === 0}
         />
       </div>
 
@@ -131,7 +135,7 @@ export default function ProductImageGallery({
                 aria-label={`Image ${i + 1}`}
                 aria-current={i === index ? 'true' : undefined}
               >
-                <img src={src} alt="" className={styles.thumbImg} loading="lazy" />
+                <OptimizedImage src={src} alt="" className={styles.thumbImg} width={80} height={48} />
               </button>
             ))}
           </div>
