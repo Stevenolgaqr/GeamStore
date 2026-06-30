@@ -1,17 +1,20 @@
 'use client';
 
+import 'altcha';
+import type {} from 'altcha/types/react';
+
 import React, {
   useState,
   useCallback,
-  useRef,
   useEffect,
-  forwardRef,
-  useImperativeHandle,
+  useRef,
+  useSyncExternalStore,
 } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '@/components/SellAuthModal.module.css';
 
 const API_BASE_URL = 'https://api-internal-3.sellauth.com/v1';
+const CAPTCHA_FALLBACK_MS = 12_000;
 
 export interface CartItem {
   productId: number;
@@ -31,65 +34,56 @@ type AltchaStateDetail = {
   payload?: string;
 };
 
-const HiddenAltcha = forwardRef<
-  { value: string | null },
-  { onStateChange?: (detail: AltchaStateDetail | undefined) => void }
->(({ onStateChange }, ref) => {
-  const widgetRef = useRef<HTMLElement>(null);
-  const [value, setValue] = useState<string | null>(null);
-  const [isReady, setIsReady] = useState(false);
+type AltchaWidgetElement = HTMLElement & {
+  reset?: (newState?: string, err?: string | null) => void;
+};
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      get value() {
-        return value;
-      },
-    }),
-    [value]
+function HiddenAltcha({
+  onStateChange,
+}: {
+  onStateChange?: (detail: AltchaStateDetail | undefined) => void;
+}) {
+  const isClient = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
   );
 
-  useEffect(() => {
-    let cancelled = false;
+  const onStateChangeRef = useRef(onStateChange);
+  onStateChangeRef.current = onStateChange;
 
-    const load = async () => {
-      try {
-        await import('altcha');
-        await customElements.whenDefined('altcha-widget');
-        if (!cancelled) setIsReady(true);
-      } catch (error) {
-        console.error('Failed to load altcha:', error);
-      }
-    };
+  const widgetNodeRef = useRef<AltchaWidgetElement | null>(null);
+  const widgetHandlerRef = useRef<((ev: Event) => void) | null>(null);
 
-    void load();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const widgetCallbackRef = useCallback((node: AltchaWidgetElement | null) => {
+    if (widgetNodeRef.current && widgetHandlerRef.current) {
+      widgetNodeRef.current.removeEventListener('statechange', widgetHandlerRef.current);
+    }
 
-  useEffect(() => {
-    if (!isReady || !widgetRef.current) return;
+    widgetNodeRef.current = node;
+    widgetHandlerRef.current = null;
 
-    const widget = widgetRef.current;
+    if (!node) return;
 
     const handleStateChange = (ev: Event) => {
       const detail = (ev as CustomEvent<AltchaStateDetail>).detail;
-      const payload = detail?.payload ?? null;
-      setValue(payload);
-      onStateChange?.(detail);
+      onStateChangeRef.current?.(detail);
+
+      if (detail?.state === 'expired' || detail?.state === 'error') {
+        node.reset?.('unverified');
+      }
     };
 
-    widget.addEventListener('statechange', handleStateChange);
-    return () => widget.removeEventListener('statechange', handleStateChange);
-  }, [isReady, onStateChange]);
+    widgetHandlerRef.current = handleStateChange;
+    node.addEventListener('statechange', handleStateChange);
+  }, []);
 
-  if (!isReady) return null;
+  if (!isClient || typeof document === 'undefined') return null;
 
   return createPortal(
     React.createElement('altcha-widget', {
-      ref: widgetRef,
-      challengeurl: `${API_BASE_URL}/altcha`,
+      ref: widgetCallbackRef,
+      challenge: `${API_BASE_URL}/altcha`,
       auto: 'onload',
       hidefooter: true,
       hidelogo: true,
@@ -103,9 +97,7 @@ const HiddenAltcha = forwardRef<
     }),
     document.body
   );
-});
-
-HiddenAltcha.displayName = 'HiddenAltcha';
+}
 
 function CheckoutModal({ url, onClose }: { url: string; onClose: () => void }) {
   return createPortal(
@@ -134,6 +126,7 @@ export interface SellAuthEmbedHook {
   checkout: (options: CheckoutOptions) => Promise<void>;
   isLoading: boolean;
   captchaReady: boolean;
+  useFallback: boolean;
   closeModal: () => void;
   captcha: React.ReactElement;
   modal: React.ReactElement | null;
@@ -143,13 +136,28 @@ export function useSellAuthEmbed(): SellAuthEmbedHook {
   const [isLoading, setIsLoading] = useState(false);
   const [modalUrl, setModalUrl] = useState<string | null>(null);
   const [altchaToken, setAltchaToken] = useState<string | null>(null);
+  const [useFallback, setUseFallback] = useState(false);
   const [altchaKey, setAltchaKey] = useState(0);
 
   const handleCaptchaStateChange = useCallback((detail: AltchaStateDetail | undefined) => {
     if (detail?.state === 'verified') {
       setAltchaToken(detail.payload ?? null);
+      setUseFallback(false);
+    } else if (detail?.state === 'expired' || detail?.state === 'error') {
+      setAltchaToken(null);
     }
   }, []);
+
+  useEffect(() => {
+    if (altchaToken) return;
+
+    setUseFallback(false);
+    const timer = window.setTimeout(() => {
+      setUseFallback(true);
+    }, CAPTCHA_FALLBACK_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [altchaKey, altchaToken]);
 
   const closeModal = useCallback(() => {
     setModalUrl(null);
@@ -201,6 +209,7 @@ export function useSellAuthEmbed(): SellAuthEmbedHook {
     checkout,
     isLoading,
     captchaReady: !!altchaToken,
+    useFallback,
     closeModal,
     captcha: <HiddenAltcha key={altchaKey} onStateChange={handleCaptchaStateChange} />,
     modal: modalUrl ? <CheckoutModal url={modalUrl} onClose={closeModal} /> : null,

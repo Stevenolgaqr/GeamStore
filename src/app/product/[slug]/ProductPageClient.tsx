@@ -56,8 +56,8 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
   const [featuresVisible, setFeaturesVisible] = useState(false);
   const featuresRef = useRef<HTMLDivElement>(null);
   const { language, t } = useLanguage();
-  const { checkout, captchaReady, isLoading } = useSellAuthCheckout();
-  const checkoutAvailable = captchaReady && !isLoading;
+  const { checkout, captchaReady, isLoading, useFallback } = useSellAuthCheckout();
+  const checkoutAvailable = (captchaReady || useFallback) && !isLoading;
 
   useEffect(() => {
     if (cheat) {
@@ -107,6 +107,12 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
       if (isAvailable) {
         e.preventDefault();
         trackBeginCheckout(cheat, plan.price);
+
+        if (useFallback && !captchaReady) {
+          openSellauthProductFallback(plan.sellauthProductId!);
+          return;
+        }
+
         try {
           await checkout({
             cart: [buildSellAuthCart(plan)],
@@ -122,7 +128,7 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
         window.open('https://discord.gg/novastore', '_blank');
       }
     },
-    [cheat, selectedPlan, checkout]
+    [cheat, selectedPlan, checkout, captchaReady, useFallback]
   );
 
   const statusClass = getStatusClass(cheat.status);

@@ -23,8 +23,8 @@ interface Props {
 
 export default function OCProductCard({ cheat }: Props) {
   const { language, t } = useLanguage();
-  const { checkout, captchaReady, isLoading } = useSellAuthCheckout();
-  const checkoutAvailable = captchaReady && !isLoading;
+  const { checkout, captchaReady, isLoading, useFallback } = useSellAuthCheckout();
+  const checkoutAvailable = (captchaReady || useFallback) && !isLoading;
   const defaultPlan = getDefaultPlan(cheat.plans);
   const canQuickBuy = !!defaultPlan?.sellauthProductId;
 
@@ -48,6 +48,12 @@ export default function OCProductCard({ cheat }: Props) {
     async (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!defaultPlan?.sellauthProductId) return;
       e.preventDefault();
+
+      if (useFallback && !captchaReady) {
+        openSellauthProductFallback(defaultPlan.sellauthProductId);
+        return;
+      }
+
       try {
         await checkout({
           cart: [buildSellAuthCart(defaultPlan)],
@@ -59,7 +65,7 @@ export default function OCProductCard({ cheat }: Props) {
         openSellauthProductFallback(defaultPlan.sellauthProductId);
       }
     },
-    [defaultPlan, checkout]
+    [defaultPlan, checkout, captchaReady, useFallback]
   );
 
   return (

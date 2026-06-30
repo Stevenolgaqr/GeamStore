@@ -7,6 +7,7 @@ interface SellAuthCheckoutContextValue {
   checkout: (options: CheckoutOptions) => Promise<void>;
   captchaReady: boolean;
   isLoading: boolean;
+  useFallback: boolean;
 }
 
 const SellAuthCheckoutContext = createContext<SellAuthCheckoutContextValue | null>(null);
@@ -20,10 +21,10 @@ export function useSellAuthCheckout(): SellAuthCheckoutContextValue {
 }
 
 export default function SellAuthCheckoutProvider({ children }: { children: React.ReactNode }) {
-  const { checkout, captchaReady, isLoading, captcha, modal } = useSellAuthEmbed();
+  const { checkout, captchaReady, isLoading, useFallback, captcha, modal } = useSellAuthEmbed();
 
   return (
-    <SellAuthCheckoutContext.Provider value={{ checkout, captchaReady, isLoading }}>
+    <SellAuthCheckoutContext.Provider value={{ checkout, captchaReady, isLoading, useFallback }}>
       {children}
       {captcha}
       {modal}
