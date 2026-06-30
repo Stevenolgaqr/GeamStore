@@ -1,19 +1,9 @@
 import type { CheatPlan } from '@/data/cheats';
 import { isPlanPopular } from '@/lib/productPlans';
+import type { CartItem } from '@/hooks/useSellAuthEmbed';
 
 export const SELLAUTH_SHOP_ID = 185564;
 export const SELLAUTH_SHOP_SLUG = 'nova-store';
-
-export const SELLAUTH_READY_EVENT = 'sellauth-ready';
-
-type SellAuthEmbed = {
-  checkout: (el: HTMLElement, opts: object) => void;
-};
-
-export function getSellAuthEmbed(): SellAuthEmbed | undefined {
-  if (typeof window === 'undefined') return undefined;
-  return (window as unknown as { sellAuthEmbed?: SellAuthEmbed }).sellAuthEmbed;
-}
 
 export function getDefaultPlanIndex(plans: CheatPlan[]): number {
   const popularIdx = plans.findIndex((plan, index) => isPlanPopular(plan, index) && plan.sellauthProductId);
@@ -35,22 +25,18 @@ export function getDefaultPlan(plans: CheatPlan[]): CheatPlan | undefined {
   return plans[index];
 }
 
-export function openSellauthCheckout(button: HTMLElement, plan: CheatPlan): void {
-  if (!plan.sellauthProductId) return;
+export function buildSellAuthCart(plan: CheatPlan): CartItem {
+  return {
+    productId: parseInt(plan.sellauthProductId!, 10),
+    variantId: plan.sellauthVariantId ? parseInt(plan.sellauthVariantId, 10) : undefined,
+    quantity: 1,
+  };
+}
 
-  const embed = getSellAuthEmbed();
-  if (embed) {
-    embed.checkout(button, {
-      cart: [{
-        productId: parseInt(plan.sellauthProductId, 10),
-        variantId: plan.sellauthVariantId ? parseInt(plan.sellauthVariantId, 10) : undefined,
-        quantity: 1,
-      }],
-      shopId: SELLAUTH_SHOP_ID,
-      modal: true,
-    });
-    return;
-  }
-
-  window.open(`https://${SELLAUTH_SHOP_SLUG}.sellauth.com/product/${plan.sellauthProductId}`, '_blank');
+export function openSellauthProductFallback(productId: string): void {
+  window.open(
+    `https://${SELLAUTH_SHOP_SLUG}.sellauth.com/product/${productId}`,
+    '_blank',
+    'noopener,noreferrer'
+  );
 }

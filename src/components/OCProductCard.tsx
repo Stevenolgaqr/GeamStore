@@ -5,9 +5,14 @@ import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats-meta';
 import { useLanguage } from '@/context/LanguageContext';
-import { useSellauthReady, canOpenCheckout } from '@/hooks/useSellauthReady';
+import { useSellAuthCheckout } from '@/components/SellAuthCheckoutProvider';
 import { formatRetailPrice } from '@/lib/pricing';
-import { getDefaultPlan, openSellauthCheckout } from '@/lib/sellauth';
+import {
+  buildSellAuthCart,
+  getDefaultPlan,
+  openSellauthProductFallback,
+  SELLAUTH_SHOP_ID,
+} from '@/lib/sellauth';
 import OptimizedImage from '@/components/OptimizedImage';
 import { IconStarRating } from '@/components/icons/ProductIcons';
 import styles from './OCProductCard.module.css';
@@ -18,8 +23,8 @@ interface Props {
 
 export default function OCProductCard({ cheat }: Props) {
   const { language, t } = useLanguage();
-  const checkoutState = useSellauthReady();
-  const checkoutAvailable = canOpenCheckout(checkoutState);
+  const { checkout, captchaReady, isLoading } = useSellAuthCheckout();
+  const checkoutAvailable = captchaReady && !isLoading;
   const defaultPlan = getDefaultPlan(cheat.plans);
   const canQuickBuy = !!defaultPlan?.sellauthProductId;
 
@@ -40,12 +45,21 @@ export default function OCProductCard({ cheat }: Props) {
   const statusLabel = t(`status.${cheat.status}`) || cheat.statusLabel;
 
   const handleQuickBuy = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+    async (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!defaultPlan?.sellauthProductId) return;
       e.preventDefault();
-      void openSellauthCheckout(e.currentTarget, defaultPlan);
+      try {
+        await checkout({
+          cart: [buildSellAuthCart(defaultPlan)],
+          shopId: SELLAUTH_SHOP_ID,
+          modal: true,
+        });
+      } catch (err) {
+        console.error('SellAuth checkout failed:', err);
+        openSellauthProductFallback(defaultPlan.sellauthProductId);
+      }
     },
-    [defaultPlan]
+    [defaultPlan, checkout]
   );
 
   return (
