@@ -5,14 +5,8 @@ import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats-meta';
 import { useLanguage } from '@/context/LanguageContext';
-import { useSellAuthCheckout } from '@/components/SellAuthCheckoutProvider';
 import { formatRetailPrice } from '@/lib/pricing';
-import {
-  buildSellAuthCart,
-  getDefaultPlan,
-  openSellauthProductFallback,
-  SELLAUTH_SHOP_ID,
-} from '@/lib/sellauth';
+import { getDefaultPlan, openSellauthCheckout } from '@/lib/sellauth';
 import OptimizedImage from '@/components/OptimizedImage';
 import { IconStarRating } from '@/components/icons/ProductIcons';
 import styles from './OCProductCard.module.css';
@@ -23,8 +17,6 @@ interface Props {
 
 export default function OCProductCard({ cheat }: Props) {
   const { language, t } = useLanguage();
-  const { checkout, captchaReady, isLoading, useFallback } = useSellAuthCheckout();
-  const checkoutAvailable = (captchaReady || useFallback) && !isLoading;
   const defaultPlan = getDefaultPlan(cheat.plans);
   const canQuickBuy = !!defaultPlan?.sellauthProductId;
 
@@ -45,27 +37,12 @@ export default function OCProductCard({ cheat }: Props) {
   const statusLabel = t(`status.${cheat.status}`) || cheat.statusLabel;
 
   const handleQuickBuy = useCallback(
-    async (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!defaultPlan?.sellauthProductId) return;
       e.preventDefault();
-
-      if (useFallback && !captchaReady) {
-        openSellauthProductFallback(defaultPlan.sellauthProductId);
-        return;
-      }
-
-      try {
-        await checkout({
-          cart: [buildSellAuthCart(defaultPlan)],
-          shopId: SELLAUTH_SHOP_ID,
-          modal: true,
-        });
-      } catch (err) {
-        console.error('SellAuth checkout failed:', err);
-        openSellauthProductFallback(defaultPlan.sellauthProductId);
-      }
+      openSellauthCheckout(defaultPlan);
     },
-    [defaultPlan, checkout, captchaReady, useFallback]
+    [defaultPlan]
   );
 
   return (
@@ -121,14 +98,8 @@ export default function OCProductCard({ cheat }: Props) {
 
       <div className={styles.cta}>
         {canQuickBuy ? (
-          <button
-            type="button"
-            className={styles.buyBtn}
-            onClick={handleQuickBuy}
-            disabled={!checkoutAvailable}
-            aria-busy={!checkoutAvailable}
-          >
-            {checkoutAvailable ? t('card.quickBuy') : t('product.loadingCheckout')}
+          <button type="button" className={styles.buyBtn} onClick={handleQuickBuy}>
+            {t('card.quickBuy')}
           </button>
         ) : (
           <Link href={`/product/${cheat.slug}`} className={styles.buyBtn}>

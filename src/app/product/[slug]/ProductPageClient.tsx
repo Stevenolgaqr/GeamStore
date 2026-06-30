@@ -5,16 +5,10 @@ import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats-meta';
 import { useLanguage } from '@/context/LanguageContext';
-import { useSellAuthCheckout } from '@/components/SellAuthCheckoutProvider';
+import { getDefaultPlanIndex, openSellauthCheckout } from '@/lib/sellauth';
 import { formatRetailPrice } from '@/lib/pricing';
 import { dailyRate, isBestValuePlan, savingsVsDaily } from '@/lib/planSavings';
 import { getPlanDisplayLabel, isPlanPopular } from '@/lib/productPlans';
-import {
-  buildSellAuthCart,
-  getDefaultPlanIndex,
-  openSellauthProductFallback,
-  SELLAUTH_SHOP_ID,
-} from '@/lib/sellauth';
 import { trackBeginCheckout, trackSelectPlan, trackViewItem } from '@/lib/analytics';
 import { getProductVideoId } from '@/data/product-videos';
 import { trackView } from '@/hooks/useRecentlyViewed';
@@ -56,8 +50,6 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
   const [featuresVisible, setFeaturesVisible] = useState(false);
   const featuresRef = useRef<HTMLDivElement>(null);
   const { language, t } = useLanguage();
-  const { checkout, captchaReady, isLoading, useFallback } = useSellAuthCheckout();
-  const checkoutAvailable = (captchaReady || useFallback) && !isLoading;
 
   useEffect(() => {
     if (cheat) {
@@ -99,36 +91,20 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
   }, [cheat?.slug]);
 
   const handleCheckout = useCallback(
-    async (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!cheat) return;
       const plan = cheat.plans[selectedPlan];
       const isAvailable = !!plan?.sellauthProductId;
 
+      e.preventDefault();
       if (isAvailable) {
-        e.preventDefault();
         trackBeginCheckout(cheat, plan.price);
-
-        if (useFallback && !captchaReady) {
-          openSellauthProductFallback(plan.sellauthProductId!);
-          return;
-        }
-
-        try {
-          await checkout({
-            cart: [buildSellAuthCart(plan)],
-            shopId: SELLAUTH_SHOP_ID,
-            modal: true,
-          });
-        } catch (err) {
-          console.error('SellAuth checkout failed:', err);
-          openSellauthProductFallback(plan.sellauthProductId!);
-        }
+        openSellauthCheckout(plan);
       } else {
-        e.preventDefault();
         window.open('https://discord.gg/novastore', '_blank');
       }
     },
-    [cheat, selectedPlan, checkout, captchaReady, useFallback]
+    [cheat, selectedPlan]
   );
 
   const statusClass = getStatusClass(cheat.status);
@@ -314,19 +290,13 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
           >
             <button
               type="button"
-              className={`${styles.buyNow} ${!isCheckoutAvailable ? styles.buyNowUnavailable : ''} ${!checkoutAvailable && isCheckoutAvailable ? styles.buyNowLoading : ''}`}
+              className={`${styles.buyNow} ${!isCheckoutAvailable ? styles.buyNowUnavailable : ''}`}
               onClick={handleCheckout}
-              disabled={isCheckoutAvailable && !checkoutAvailable}
-              aria-busy={isCheckoutAvailable && !checkoutAvailable}
             >
               <span className={styles.buyNowLabel}>
-                {isCheckoutAvailable
-                  ? checkoutAvailable
-                    ? t('product.buyNow')
-                    : t('product.loadingCheckout')
-                  : t('product.buyDiscord')}
+                {isCheckoutAvailable ? t('product.buyNow') : t('product.buyDiscord')}
               </span>
-              {isCheckoutAvailable && selectedPlanData && checkoutAvailable && (
+              {isCheckoutAvailable && selectedPlanData && (
                 <span className={styles.buyNowPrice}>
                   ${formatRetailPrice(selectedPlanData.price)}
                 </span>

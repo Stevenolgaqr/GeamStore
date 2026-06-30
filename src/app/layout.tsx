@@ -3,7 +3,6 @@ import OCHeader from '@/components/OCHeader';
 import OCFooter from '@/components/OCFooter';
 import InstructionsFab from '@/components/InstructionsFab';
 import CroGlobal from '@/components/CroGlobal';
-import SellAuthCheckoutProvider from '@/components/SellAuthCheckoutProvider';
 import JsonLd from '@/components/JsonLd';
 import SkipLink from '@/components/SkipLink';
 import CookieConsent from '@/components/CookieConsent';
@@ -60,14 +59,11 @@ export default function OCLayout({ children }: { children: React.ReactNode }) {
     <html lang="ar" dir="rtl" className={fontVariables} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://sellauth.com" />
-        <link rel="preconnect" href="https://api-internal-3.sellauth.com" />
         <link rel="dns-prefetch" href="https://sellauth.com" />
-        <link rel="dns-prefetch" href="https://api-internal-3.sellauth.com" />
       </head>
       <body suppressHydrationWarning>
         <JsonLd data={[buildOrganizationJsonLd(), buildWebSiteJsonLd()]} />
         <LanguageProvider>
-          <SellAuthCheckoutProvider>
           <SkipLink />
           <OCHeader />
           <CroGlobal showPurchaseToast={purchaseToastEnabled} />
@@ -76,7 +72,6 @@ export default function OCLayout({ children }: { children: React.ReactNode }) {
           <InstructionsFab />
           {analyticsEnabled && <CookieConsent />}
           {analyticsEnabled && <Analytics />}
-          </SellAuthCheckoutProvider>
         </LanguageProvider>
       </body>
     </html>

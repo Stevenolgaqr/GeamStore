@@ -1,6 +1,5 @@
 import type { CheatPlan } from '@/data/cheats';
 import { isPlanPopular } from '@/lib/productPlans';
-import type { CartItem } from '@/hooks/useSellAuthEmbed';
 
 export const SELLAUTH_SHOP_ID = 185564;
 export const SELLAUTH_SHOP_SLUG = 'nova-store';
@@ -25,18 +24,15 @@ export function getDefaultPlan(plans: CheatPlan[]): CheatPlan | undefined {
   return plans[index];
 }
 
-export function buildSellAuthCart(plan: CheatPlan): CartItem {
-  return {
-    productId: parseInt(plan.sellauthProductId!, 10),
-    variantId: plan.sellauthVariantId ? parseInt(plan.sellauthVariantId, 10) : undefined,
-    quantity: 1,
-  };
+export function getSellauthProductUrl(plan: CheatPlan): string {
+  const base = `https://${SELLAUTH_SHOP_SLUG}.sellauth.com/product/${plan.sellauthProductId}`;
+  if (plan.sellauthVariantId) {
+    return `${base}?variation_id=${plan.sellauthVariantId}`;
+  }
+  return base;
 }
 
-export function openSellauthProductFallback(productId: string): void {
-  window.open(
-    `https://${SELLAUTH_SHOP_SLUG}.sellauth.com/product/${productId}`,
-    '_blank',
-    'noopener,noreferrer'
-  );
+export function openSellauthCheckout(plan: CheatPlan): void {
+  if (!plan.sellauthProductId) return;
+  window.open(getSellauthProductUrl(plan), '_blank', 'noopener,noreferrer');
 }
