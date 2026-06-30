@@ -1,0 +1,71 @@
+export const reviewsData = [
+  {
+    id: 1,
+    name: 'w queen',
+    avatar: 'W',
+    game: 'Rust',
+    rating: 5,
+    text: 'لقد كان دليلاً متعمقاً للغاية وعمل بشكل جيد دون أي مشاكل حتى الآن!',
+    date: 'منذ 3 أيام',
+  },
+  {
+    id: 2,
+    name: 'love ancient',
+    avatar: 'L',
+    game: 'Rainbow Six Siege',
+    rating: 5,
+    text: 'أفضل أداة استخدمتها في R6. الـ ESP دقيق جداً والـ aimbot مذهل. لم أكشف أبداً.',
+    date: 'منذ أسبوع',
+  },
+  {
+    id: 3,
+    name: 'XxShadowxX',
+    avatar: 'X',
+    game: 'Apex Legends',
+    rating: 5,
+    text: 'الدعم الفني ممتاز، ردوا علي خلال دقائق. الأداة تعمل بشكل مثالي على Apex.',
+    date: 'منذ أسبوعين',
+  },
+  {
+    id: 4,
+    name: 'GhostSniper',
+    avatar: 'G',
+    game: 'CS2',
+    rating: 4,
+    text: 'رائع جداً، الـ triggerbot يعمل بشكل مثالي. أتمنى لو كان فيه خيارات أكثر للـ aimbot.',
+    date: 'منذ 3 أسابيع',
+  },
+  {
+    id: 5,
+    name: 'RustyBoy99',
+    avatar: 'R',
+    game: 'Rust',
+    rating: 5,
+    text: 'استخدمه منذ 6 أشهر، لم أكشف مرة واحدة. التحديثات سريعة جداً بعد كل باتش.',
+    date: 'منذ شهر',
+  },
+  {
+    id: 6,
+    name: 'TarkovKing',
+    avatar: 'T',
+    game: 'EFT',
+    rating: 5,
+    text: 'الـ item ESP في Tarkov غيّر اللعبة كلياً. أفضل استثمار قمت به!',
+    date: 'منذ شهر',
+  },
+];
+
+export const videoTestimonials = [
+  {
+    id: 'rust-review',
+    title: 'Rust — Customer Review',
+    youtubeId: 'dQw4w9WgXcQ',
+    game: 'Rust',
+  },
+  {
+    id: 'apex-review',
+    title: 'Apex Legends — Setup Walkthrough',
+    youtubeId: 'dQw4w9WgXcQ',
+    game: 'Apex Legends',
+  },
+] as const;

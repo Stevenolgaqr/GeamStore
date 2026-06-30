@@ -38,7 +38,11 @@ export default function PrivacyPage() {
 
           <section className={styles.section}>
             <h2>5. Cookies</h2>
-            <p>We use essential cookies for session management and to remember your preferences. We do not use tracking or advertising cookies.</p>
+            <p>
+              We use essential cookies for preferences and optional analytics (Google Analytics) when you
+              consent via our cookie banner. You can decline non-essential tracking at any time. We do not
+              sell your personal data.
+            </p>
           </section>
 
           <section className={styles.section}>

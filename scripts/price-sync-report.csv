@@ -1,95 +1,149 @@
-titleEn,label,durationDays,keyhubCredits,costUsd,rawPlus55,retail,oldPrice,sellauthVariantId,source
-Ancient Apex,يوم واحد,,15,1.50,2.33,2.79,23.25,1179736,catalog
-Ancient Apex,أسبوع,,75,7.50,11.63,11.79,116.25,1179737,catalog
-Ancient Apex,شهر,,150,15.00,23.25,23.79,232.5,1179738,catalog
-Arcane Apex,يوم واحد,,25,2.50,3.88,4.79,38.75,1179774,catalog
-Arcane Apex,أسبوع,,100,10.00,15.50,15.79,155,1179775,catalog
-Arcane Apex,شهر,,200,20.00,31.00,31.79,310,1179776,catalog
-Ancient BF6,يوم واحد,,20,2.00,3.10,3.79,31,1179742,catalog
-Ancient BF6,أسبوع,,100,10.00,15.50,15.79,155,1179743,catalog
-Ancient BF6,شهر,,200,20.00,31.00,31.79,310,1179744,catalog
-Arcane BF6,يوم واحد,,25,2.50,3.88,4.79,38.75,1179786,catalog
-Arcane BF6,أسبوع,,110,11.00,17.05,17.79,170.5,1179787,catalog
-Arcane BF6,شهر,,200,20.00,31.00,31.79,310,1179788,catalog
-Ancient COD,يوم واحد,,20,2.00,3.10,3.79,31,1179745,catalog
-Ancient COD,أسبوع,,65,6.50,10.08,10.79,100.75,1179747,catalog
-Ancient COD,شهر,,150,15.00,23.25,23.79,232.5,1179748,catalog
-Ancient COD,شهر,,150,15.00,23.25,23.79,232.5,1179749,catalog
-Ancient EFT Chams,يوم واحد,,15,1.50,2.33,2.79,23.25,1179753,catalog
-Ancient EFT Chams,أسبوع,,35,3.50,5.43,5.79,54.25,1179754,catalog
-Ancient EFT Chams,شهر,,75,7.50,11.63,11.79,116.25,1179755,catalog
-Ancient EFT Full,يوم واحد,,25,2.50,3.88,4.79,38.75,1179756,catalog
-Ancient EFT Full,أسبوع,,125,12.50,19.38,19.79,193.75,1179757,catalog
-Ancient EFT Full,شهر,,250,25.00,38.75,38.79,387.5,1179758,catalog
-Ancient Fortnite,يوم واحد,,20,2.00,3.10,3.79,31,1179759,catalog
-Ancient Fortnite,أسبوع,,100,10.00,15.50,15.79,155,1179760,catalog
-Ancient Fortnite,شهر,,200,20.00,31.00,31.79,310,1179761,catalog
-Ancient Pubg,يوم واحد,,20,2.00,3.10,3.79,31,1179765,catalog
-Ancient Pubg,أسبوع,,100,10.00,15.50,15.79,155,1179766,catalog
-Ancient Pubg,شهر,,200,20.00,31.00,31.79,310,1179767,catalog
-Ancient R6,يوم واحد,,15,1.50,2.33,2.79,23.25,1179768,catalog
-Ancient R6,أسبوع,,75,7.50,11.63,11.79,116.25,1179769,catalog
-Ancient R6,شهر,,150,15.00,23.25,23.79,232.5,1179770,catalog
-Ancient Rust,يوم واحد,,25,2.50,3.88,4.79,38.75,1179771,catalog
-Ancient Rust,أسبوع,,125,12.50,19.38,19.79,193.75,1179772,catalog
-Ancient Rust,شهر,,250,25.00,38.75,38.79,387.5,1179773,catalog
-Ancient Dayz,يوم واحد,,30,3.00,4.65,4.79,46.5,1179750,catalog
-Ancient Dayz,أسبوع,,150,15.00,23.25,23.79,232.5,1179751,catalog
-Ancient Dayz,شهر,,300,30.00,46.50,46.79,465,1179752,catalog
-Arcane Dayz,يوم واحد,,15,1.50,2.33,2.79,23.25,1179803,catalog
-Arcane Dayz,أسبوع,,60,6.00,9.30,9.79,93,1179804,catalog
-Arcane Dayz,شهر,,130,13.00,20.15,20.79,201.5,1179805,catalog
-Ancient Albion Online,يوم واحد,,20,2.00,3.10,3.79,31,1179733,catalog
-Ancient Albion Online,أسبوع,,75,7.50,11.63,11.79,116.25,1179734,catalog
-Ancient Albion Online,شهر,,150,15.00,23.25,23.79,232.5,1179735,catalog
-Zcheats All Access,يوم واحد,,42,4.20,6.51,6.79,65.79,1179886,catalog
-Zcheats All Access,3 Days,,120,12.00,18.60,18.79,186.79,1179887,catalog
-Zcheats All Access,أسبوع,,240,24.00,37.20,37.79,372.79,1179888,catalog
-Zcheats All Access,شهر,,550,55.00,85.25,85.79,852.79,1179889,catalog
-Ancient Arc Raiders,يوم واحد,,20,2.00,3.10,3.79,31,1179739,catalog
-Ancient Arc Raiders,أسبوع,,100,10.00,15.50,15.79,155,1179740,catalog
-Ancient Arc Raiders,شهر,,200,20.00,31.00,31.79,310,1179741,catalog
-Arcane Arc Raiders,يوم واحد,,25,2.50,3.88,4.79,38.75,1179777,catalog
-Arcane Arc Raiders,أسبوع,,110,11.00,17.05,17.79,170.5,1179778,catalog
-Arcane Arc Raiders,شهر,,200,20.00,31.00,31.79,310,1179779,catalog
-Ancient ABI Radar,يوم واحد,,20,2.00,3.10,3.79,31,1179730,catalog
-Ancient ABI Radar,أسبوع,,100,10.00,15.50,15.79,155,1179731,catalog
-Ancient ABI Radar,شهر,,200,20.00,31.00,31.79,310,1179732,catalog
-Arcane Ark Ascended,يوم واحد,,30,3.00,4.65,4.79,46.5,1179780,catalog
-Arcane Ark Ascended,أسبوع,,110,11.00,17.05,17.79,170.5,1179781,catalog
-Arcane Ark Ascended,شهر,,240,24.00,37.20,37.79,372,1179782,catalog
-Arcane Dark and Darker,يوم واحد,,13,1.30,2.02,2.79,20.15,1179792,catalog
-Arcane Dark and Darker,أسبوع,,30,3.00,4.65,4.79,46.5,1179793,catalog
-Arcane Dark and Darker,شهر,,60,6.00,9.30,9.79,93,1179794,catalog
-Arcane Arma Reforger,يوم واحد,,25,2.50,3.88,4.79,38.75,1179783,catalog
-Arcane Arma Reforger,أسبوع,,110,11.00,17.05,17.79,170.5,1179784,catalog
-Arcane Arma Reforger,شهر,,200,20.00,31.00,31.79,310,1179785,catalog
-Arcane CS2,يوم واحد,,13,1.30,2.02,2.79,20.15,1179789,catalog
-Arcane CS2,أسبوع,,25,2.50,3.88,4.79,38.75,1179790,catalog
-Arcane CS2,شهر,,40,4.00,6.20,6.79,62,1179791,catalog
-Predator CS2,يوم واحد,,9,0.90,1.40,1.79,14.79,1179873,catalog
-Predator CS2,أسبوع,,21,2.10,3.26,3.79,32.79,1179874,catalog
-Predator CS2,شهر,,36,3.60,5.58,5.79,56.79,1179875,catalog
-Predator CS2,3 أشهر,,82,8.20,12.71,12.79,127.79,1179876,variant-override
-Arcane Dead By Daylight,يوم واحد,,20,2.00,3.10,3.79,31,1179806,catalog
-Arcane Dead By Daylight,أسبوع,,75,7.50,11.63,11.79,116.25,1179807,catalog
-Arcane Dead By Daylight,شهر,,150,15.00,23.25,23.79,232.5,1179808,catalog
-Vector Dead by Daylight,يوم واحد,,19,1.90,2.95,3.79,29.79,1179880,catalog
-Vector Dead by Daylight,أسبوع,,69,6.90,10.70,10.79,107.79,1179881,catalog
-Vector Dead by Daylight,شهر,,134,13.40,20.77,20.79,207.79,1179882,catalog
-Arcane Deadside,يوم واحد,,20,2.00,3.10,3.79,31,1179809,catalog
-Arcane Deadside,أسبوع,,60,6.00,9.30,9.79,93,1179810,catalog
-Arcane Deadside,شهر,,110,11.00,17.05,17.79,170.5,1179811,catalog
-Fellas GrayZone,يوم واحد,,30,3.00,4.65,4.79,46.79,1179856,catalog
-Fellas GrayZone,أسبوع,,90,9.00,13.95,14.79,139.79,1179857,catalog
-Fellas GrayZone,شهر,,240,24.00,37.20,37.79,372.79,1179858,catalog
-Ancient Hunt Showdown,يوم واحد,,30,3.00,4.65,4.79,46.5,1179762,catalog
-Ancient Hunt Showdown,أسبوع,,100,10.00,15.50,15.79,155,1179763,catalog
-Ancient Hunt Showdown,شهر,,200,20.00,31.00,31.79,310,1179764,catalog
-Gouda Spoofer,يوم واحد,,20,2.00,3.10,3.79,31.79,1179859,catalog
-Gouda Spoofer,أسبوع,,50,5.00,7.75,7.79,77.79,1179860,catalog
-Gouda Spoofer,شهر,,100,10.00,15.50,15.79,155.79,1179861,catalog
-Gouda Spoofer,سنة واحدة,,600,60.00,93.00,93.79,930.79,1179862,catalog
-Vector Spoofer,يوم واحد,,15,1.50,2.33,2.79,23.79,1179883,catalog
-Vector Spoofer,أسبوع,,65,6.50,10.08,10.79,100.79,1179884,catalog
-Vector Spoofer,شهر,,100,10.00,15.50,15.79,155.79,1179885,catalog
+titleEn,label,durationDays,keyhubCredits,costUsd,tierMult,minRetail,retail,oldPrice,delta,sellauthVariantId,source
+Ancient Apex,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179736,catalog
+Ancient Apex,أسبوع,7,75,7.5,1.87,14.03,14.79,14.79,0,1179737,catalog
+Ancient Apex,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179738,catalog
+Arcane Apex,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179774,catalog
+Arcane Apex,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179775,catalog
+Arcane Apex,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179776,catalog
+Ancient BF6,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179742,catalog
+Ancient BF6,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179743,catalog
+Ancient BF6,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179744,catalog
+Arcane BF6,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179786,catalog
+Arcane BF6,أسبوع,7,110,11,1.87,20.57,20.79,20.79,0,1179787,catalog
+Arcane BF6,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179788,catalog
+Ancient COD,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179745,catalog
+Ancient COD,أسبوع,7,65,6.5,1.87,12.16,12.79,12.79,0,1179747,catalog
+Ancient COD,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179748,catalog
+Labcore BO7 and Warzone DMA,يوم واحد,1,48,4.8,1.89,9.07,9.79,9.79,0,1179863,keyhub-api
+Labcore BO7 and Warzone DMA,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179864,keyhub-api
+Labcore BO7 and Warzone DMA,شهر,30,168,16.8,1.874,31.48,31.49,31.49,0,1179865,keyhub-api
+Labcore BO7 and Warzone DMA,3 أشهر,90,450,45,1.85,83.25,83.79,83.79,0,1179866,override
+Ancient EFT Chams,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179753,catalog
+Ancient EFT Chams,أسبوع,7,35,3.5,1.89,6.61,6.79,6.79,0,1179754,catalog
+Ancient EFT Chams,شهر,30,75,7.5,1.87,14.03,14.79,14.79,0,1179755,catalog
+Ancient EFT Full,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179756,catalog
+Ancient EFT Full,أسبوع,7,125,12.5,1.87,23.38,23.79,23.79,0,1179757,catalog
+Ancient EFT Full,شهر,30,250,25,1.874,46.85,47.49,47.49,0,1179758,catalog
+Ancient Fortnite,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179759,catalog
+Ancient Fortnite,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179760,catalog
+Ancient Fortnite,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179761,catalog
+Arcane Fortnite,يوم واحد,1,35,3.5,1.89,6.61,6.79,6.79,0,1179818,keyhub-api
+Arcane Fortnite,3 Days,3,80,8,1.87,14.96,15.79,15.79,0,1179819,keyhub-api
+Arcane Fortnite,أسبوع,7,175,17.5,1.874,32.8,33.49,33.49,0,1179820,keyhub-api
+Arcane Fortnite,شهر,30,300,30,1.874,56.22,56.49,56.49,0,1179821,keyhub-api
+Ancient Pubg,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179765,catalog
+Ancient Pubg,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179766,catalog
+Ancient Pubg,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179767,catalog
+Arcane Pubg,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179843,keyhub-api
+Arcane Pubg,أسبوع,7,110,11,1.87,20.57,20.79,20.79,0,1179844,keyhub-api
+Arcane Pubg,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179845,keyhub-api
+Ancient R6,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179768,catalog
+Ancient R6,أسبوع,7,75,7.5,1.87,14.03,14.79,14.79,0,1179769,catalog
+Ancient R6,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179770,catalog
+Ancient Rust,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179771,catalog
+Ancient Rust,أسبوع,7,125,12.5,1.87,23.38,23.79,23.79,0,1179772,catalog
+Ancient Rust,شهر,30,250,25,1.874,46.85,47.49,47.49,0,1179773,catalog
+Arcane Rust,يوم واحد,1,30,3,1.89,5.67,5.79,5.79,0,1179846,keyhub-api
+Arcane Rust,3 Days,3,75,7.5,1.87,14.03,14.79,14.79,0,1179847,keyhub-api
+Arcane Rust,أسبوع,7,150,15,1.874,28.11,28.49,28.49,0,1179848,keyhub-api
+Arcane Rust,شهر,30,300,30,1.874,56.22,56.49,56.49,0,1179849,keyhub-api
+MEMEZ Valorant ESP,يوم واحد,1,18,1.8,1.89,3.4,3.99,3.99,0,1179867,keyhub-api
+MEMEZ Valorant ESP,أسبوع,7,72,7.2,1.87,13.46,13.79,13.79,0,1179868,keyhub-api
+MEMEZ Valorant ESP,شهر,30,156,15.6,1.874,29.23,29.49,29.49,0,1179869,keyhub-api
+MEMEZ Valorant FULL,يوم واحد,1,30,3,1.89,5.67,5.79,5.79,0,1179870,keyhub-api
+MEMEZ Valorant FULL,أسبوع,7,96,9.6,1.87,17.95,18.79,18.79,0,1179871,keyhub-api
+MEMEZ Valorant FULL,شهر,30,192,19.2,1.874,35.98,36.49,36.49,0,1179872,keyhub-api
+Ancient Dayz,يوم واحد,1,30,3,1.89,5.67,5.79,5.79,0,1179750,catalog
+Ancient Dayz,أسبوع,7,150,15,1.874,28.11,28.49,28.49,0,1179751,catalog
+Ancient Dayz,شهر,30,300,30,1.874,56.22,56.49,56.49,0,1179752,catalog
+Arcane Dayz,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179803,catalog
+Arcane Dayz,أسبوع,7,60,6,1.87,11.22,11.79,11.79,0,1179804,catalog
+Arcane Dayz,شهر,30,130,13,1.87,24.31,24.79,24.79,0,1179805,catalog
+Arcane Marvel Rivals,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179834,keyhub-api
+Arcane Marvel Rivals,أسبوع,7,75,7.5,1.87,14.03,14.79,14.79,0,1179835,keyhub-api
+Arcane Marvel Rivals,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179836,keyhub-api
+Ancient Albion Online,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179733,catalog
+Ancient Albion Online,أسبوع,7,75,7.5,1.87,14.03,14.79,14.79,0,1179734,catalog
+Ancient Albion Online,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179735,catalog
+Ancient Arc Raiders,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179739,catalog
+Ancient Arc Raiders,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179740,catalog
+Ancient Arc Raiders,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179741,catalog
+Arcane Arc Raiders,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179777,catalog
+Arcane Arc Raiders,أسبوع,7,110,11,1.87,20.57,20.79,20.79,0,1179778,catalog
+Arcane Arc Raiders,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179779,catalog
+Ancient ABI Radar,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179730,catalog
+Ancient ABI Radar,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179731,catalog
+Ancient ABI Radar,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179732,catalog
+UnnamedTech Arena Breakout Infinite,يوم واحد,1,45,4.5,1.89,8.5,8.79,8.79,0,1179877,keyhub-api
+UnnamedTech Arena Breakout Infinite,أسبوع,7,165,16.5,1.874,30.92,31.49,31.49,0,1179878,keyhub-api
+UnnamedTech Arena Breakout Infinite,شهر,30,333,33.3,1.874,62.4,62.49,62.49,0,1179879,keyhub-api
+Arcane Ark Ascended,يوم واحد,1,30,3,1.89,5.67,5.79,5.79,0,1179780,catalog
+Arcane Ark Ascended,أسبوع,7,110,11,1.87,20.57,20.79,20.79,0,1179781,catalog
+Arcane Ark Ascended,شهر,30,240,24,1.874,44.98,45.49,45.49,0,1179782,catalog
+Arcane Dark and Darker,يوم واحد,1,13,1.3,1.89,2.46,2.99,2.99,0,1179792,catalog
+Arcane Dark and Darker,أسبوع,7,30,3,1.89,5.67,5.79,5.79,0,1179793,catalog
+Arcane Dark and Darker,شهر,30,60,6,1.87,11.22,11.79,11.79,0,1179794,catalog
+Arcane Arma Reforger,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179783,catalog
+Arcane Arma Reforger,أسبوع,7,110,11,1.87,20.57,20.79,20.79,0,1179784,catalog
+Arcane Arma Reforger,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179785,catalog
+Zcheats Arma Package,يوم واحد,1,42,4.2,1.89,7.94,8.79,8.79,0,1179890,keyhub-api
+Zcheats Arma Package,3 Days,3,90,9,1.87,16.83,17.79,17.79,0,1179891,keyhub-api
+Zcheats Arma Package,أسبوع,7,150,15,1.874,28.11,28.49,28.49,0,1179892,keyhub-api
+Zcheats Arma Package,شهر,30,360,36,1.874,67.46,67.49,67.49,0,1179893,keyhub-api
+Arcane CS2,يوم واحد,1,13,1.3,1.89,2.46,2.99,2.99,0,1179789,catalog
+Arcane CS2,أسبوع,7,25,2.5,1.89,4.72,4.79,4.79,0,1179790,catalog
+Arcane CS2,شهر,30,40,4,1.89,7.56,7.79,7.79,0,1179791,catalog
+Predator CS2,يوم واحد,1,9,0.9,2,1.8,1.99,1.99,0,1179873,catalog
+Predator CS2,أسبوع,7,21,2.1,1.89,3.97,4.79,4.79,0,1179874,catalog
+Predator CS2,شهر,30,36,3.6,1.89,6.8,7.79,7.79,0,1179875,catalog
+Predator CS2,3 أشهر,90,82,8.2,1.87,15.33,15.79,15.79,0,1179876,override
+Arcane Dead By Daylight,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179806,catalog
+Arcane Dead By Daylight,أسبوع,7,75,7.5,1.87,14.03,14.79,14.79,0,1179807,catalog
+Arcane Dead By Daylight,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179808,catalog
+Vector Dead by Daylight,يوم واحد,1,19,1.9,1.89,3.59,3.99,3.99,0,1179880,catalog
+Vector Dead by Daylight,أسبوع,7,69,6.9,1.87,12.9,13.79,13.79,0,1179881,catalog
+Vector Dead by Daylight,شهر,30,134,13.4,1.87,25.06,25.79,25.79,0,1179882,catalog
+Arcane Deadside,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179809,catalog
+Arcane Deadside,أسبوع,7,60,6,1.87,11.22,11.79,11.79,0,1179810,catalog
+Arcane Deadside,شهر,30,110,11,1.87,20.57,20.79,20.79,0,1179811,catalog
+Zcheats DeadSide,يوم واحد,1,30,3,1.89,5.67,5.79,5.79,0,1179894,keyhub-api
+Zcheats DeadSide,3 Days,3,60,6,1.87,11.22,11.79,11.79,0,1179895,keyhub-api
+Zcheats DeadSide,أسبوع,7,108,10.8,1.87,20.2,20.79,20.79,0,1179896,keyhub-api
+Zcheats DeadSide,شهر,30,210,21,1.874,39.35,39.49,39.49,0,1179897,keyhub-api
+Arcane Dune: Awakening,يوم واحد,1,25,2.5,1.89,4.72,4.79,4.79,0,1179812,keyhub-api
+Arcane Dune: Awakening,أسبوع,7,75,7.5,1.87,14.03,14.79,14.79,0,1179813,keyhub-api
+Arcane Dune: Awakening,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179814,keyhub-api
+Arcane Farlight 84,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179815,keyhub-api
+Arcane Farlight 84,أسبوع,7,30,3,1.89,5.67,5.79,5.79,0,1179816,keyhub-api
+Arcane Farlight 84,شهر,30,60,6,1.87,11.22,11.79,11.79,0,1179817,keyhub-api
+Fellas GrayZone,يوم واحد,1,30,3,1.89,5.67,5.79,5.79,0,1179856,catalog
+Fellas GrayZone,أسبوع,7,90,9,1.87,16.83,17.79,17.79,0,1179857,catalog
+Fellas GrayZone,شهر,30,240,24,1.874,44.98,45.49,45.49,0,1179858,catalog
+Arcane Hell Let Loose,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179822,keyhub-api
+Arcane Hell Let Loose,أسبوع,7,75,7.5,1.87,14.03,14.79,14.79,0,1179823,keyhub-api
+Arcane Hell Let Loose,شهر,30,150,15,1.874,28.11,28.49,28.49,0,1179824,keyhub-api
+Arcane HighGuard,يوم واحد,1,23,2.3,1.89,4.35,4.79,4.79,0,1179825,keyhub-api
+Arcane HighGuard,أسبوع,7,83,8.3,1.87,15.52,15.79,15.79,0,1179826,keyhub-api
+Arcane HighGuard,شهر,30,170,17,1.874,31.86,32.49,32.49,0,1179827,keyhub-api
+Arcane HumanitZ,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179828,keyhub-api
+Arcane HumanitZ,أسبوع,7,60,6,1.87,11.22,11.79,11.79,0,1179829,keyhub-api
+Arcane HumanitZ,شهر,30,110,11,1.87,20.57,20.79,20.79,0,1179830,keyhub-api
+Ancient Hunt Showdown,يوم واحد,1,30,3,1.89,5.67,5.79,5.79,0,1179762,catalog
+Ancient Hunt Showdown,أسبوع,7,100,10,1.87,18.7,18.79,18.79,0,1179763,catalog
+Ancient Hunt Showdown,شهر,30,200,20,1.874,37.48,37.49,37.49,0,1179764,catalog
+Arcane Hunt Showdown,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179831,keyhub-api
+Arcane Hunt Showdown,أسبوع,7,50,5,1.87,9.35,9.79,9.79,0,1179832,keyhub-api
+Arcane Hunt Showdown,شهر,30,100,10,1.87,18.7,18.79,18.79,0,1179833,keyhub-api
+Gouda Spoofer,يوم واحد,1,20,2,1.89,3.78,3.79,3.79,0,1179859,catalog
+Gouda Spoofer,أسبوع,7,50,5,1.87,9.35,9.79,9.79,0,1179860,catalog
+Gouda Spoofer,شهر,30,100,10,1.87,18.7,18.79,18.79,0,1179861,catalog
+Gouda Spoofer,سنة واحدة,365,600,60,1.75,105,105.79,105.79,0,1179862,catalog
+Vector Spoofer,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179883,catalog
+Vector Spoofer,أسبوع,7,65,6.5,1.87,12.16,12.79,12.79,0,1179884,catalog
+Vector Spoofer,شهر,30,100,10,1.87,18.7,18.79,18.79,0,1179885,catalog
+Arcane Off The Grid,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179837,keyhub-api
+Arcane Off The Grid,أسبوع,7,50,5,1.87,9.35,9.79,9.79,0,1179838,keyhub-api
+Arcane Off The Grid,شهر,30,100,10,1.87,18.7,18.79,18.79,0,1179839,keyhub-api
+Arcane PIONER,يوم واحد,1,15,1.5,1.89,2.84,2.99,2.99,0,1179840,keyhub-api
+Arcane PIONER,أسبوع,7,60,6,1.87,11.22,11.79,11.79,0,1179841,keyhub-api
+Arcane PIONER,شهر,30,110,11,1.87,20.57,20.79,20.79,0,1179842,keyhub-api

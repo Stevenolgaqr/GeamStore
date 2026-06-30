@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import { gameImages } from '@/data/cheats';
+import { gameImages } from '@/data/cheats-meta';
 import GameCatalogCard from '@/components/GameCatalogCard';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './StoreCatalogPanel.module.css';

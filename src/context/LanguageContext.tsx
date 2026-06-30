@@ -7,7 +7,7 @@ type Language = 'ar' | 'en';
 type LanguageContextType = {
   language: Language;
   toggleLanguage: () => void;
-  t: (key: string) => string;
+  t: (key: string, params?: Record<string, string | number>) => string;
 };
 
 const translations: Record<string, Record<Language, string>> = {
@@ -280,6 +280,74 @@ const translations: Record<string, Record<Language, string>> = {
   'legal.termsTitle': { en: 'Terms of Service', ar: 'شروط الخدمة' },
   'legal.privacyTitle': { en: 'Privacy Policy', ar: 'سياسة الخصوصية' },
   'legal.refundsTitle': { en: 'Refund Policy', ar: 'سياسة الاسترداد' },
+  'product.savePercent': { en: 'Save {percent}%', ar: 'وفر {percent}%' },
+  'product.perDay': { en: '/day', ar: '/يوم' },
+  'product.bestValue': { en: 'Best value', ar: 'أفضل قيمة' },
+  'product.customerReviews': { en: 'Customer reviews', ar: 'آراء العملاء' },
+  'product.allReviews': { en: 'All reviews', ar: 'جميع المراجعات' },
+  'product.upgradeHint': {
+    en: 'Save {save}% with the weekly plan — only ${price}',
+    ar: 'وفر {save}% مع الخطة الأسبوعية — ${price} فقط',
+  },
+  'product.switchToWeek': { en: 'Switch to weekly', ar: 'اختر الأسبوع' },
+  'product.trustedBy': {
+    en: '{count} verified reviews for this product',
+    ar: '{count} مراجعة موثّقة لهذا المنتج',
+  },
+  'product.relatedTitle': {
+    en: 'More programs for {game}',
+    ar: 'برامج أخرى لـ {game}',
+  },
+  'card.topRated': { en: 'Top rated', ar: 'الأعلى تقييماً' },
+  'trust.aria': { en: 'Purchase guarantees', ar: 'ضمانات الشراء' },
+  'trust.instantDelivery': { en: 'Instant key delivery', ar: 'تسليم فوري للمفتاح' },
+  'trust.refundPolicy': { en: 'Refund policy', ar: 'سياسة الاسترداد' },
+  'trust.liveStatus': { en: 'Live status', ar: 'الحالة المباشرة' },
+  'home.continueBrowsing': { en: 'Continue where you left off', ar: 'تابع من حيث توقفت' },
+  'success.youMightAlsoLike': { en: 'You might also like', ar: 'قد يعجبك أيضاً' },
+  'campaign.endsIn': { en: 'Ends in {time}', ar: 'ينتهي خلال {time}' },
+  'fomo.recentPurchase': {
+    en: 'Someone bought {product} {minutes} min ago',
+    ar: 'اشترى أحدهم {product} منذ {minutes} د',
+  },
+  'a11y.skipToContent': { en: 'Skip to main content', ar: 'تخطي إلى المحتوى الرئيسي' },
+  'cookie.message': {
+    en: 'We use analytics cookies to improve the store. You can accept or decline non-essential tracking.',
+    ar: 'نستخدم ملفات تحليلات لتحسين المتجر. يمكنك قبول أو رفض التتبع غير الضروري.',
+  },
+  'cookie.accept': { en: 'Accept', ar: 'قبول' },
+  'cookie.decline': { en: 'Decline', ar: 'رفض' },
+  'home.returningEyebrow': { en: 'Welcome back', ar: 'مرحباً بعودتك' },
+  'home.returningTitle1': { en: 'Pick up where', ar: 'تابع من حيث' },
+  'home.returningTitle2': { en: 'you left off', ar: 'توقفت' },
+  'home.returningSubtitle': {
+    en: 'Your recently viewed products are ready. Check live status before you buy.',
+    ar: 'منتجاتك التي شاهدتها جاهزة. تحقق من الحالة المباشرة قبل الشراء.',
+  },
+  'home.returningCta': { en: 'Continue shopping', ar: 'متابعة التسوق' },
+  'success.returnDiscount': {
+    en: 'Save on your next order with code {code} — valid for 7 days.',
+    ar: 'وفّر في طلبك القادم بالكود {code} — صالح لمدة 7 أيام.',
+  },
+  'referral.eyebrow': { en: 'Referral reward', ar: 'مكافأة الإحالة' },
+  'referral.title': { en: 'You unlocked a friend discount', ar: 'لقد حصلت على خصم صديق' },
+  'referral.desc': {
+    en: 'Enter code {code} at checkout for {percent}% off. We save it on this device so it applies automatically when you buy.',
+    ar: 'أدخل الكود {code} عند الدفع للحصول على خصم {percent}%. نحفظه على هذا الجهاز ليُطبَّق تلقائياً عند الشراء.',
+  },
+  'referral.cta': { en: 'Shop now', ar: 'تسوق الآن' },
+  'product.demoVideo': { en: 'Product demo', ar: 'عرض المنتج' },
+  'games.landingEyebrow': { en: 'Game catalog', ar: 'كتالوج اللعبة' },
+  'games.landingSubtitle': {
+    en: '{count} programs available · {safe} undetected now',
+    ar: '{count} برنامج متاح · {safe} آمن حالياً',
+  },
+  'games.browseAll': { en: 'Browse all programs', ar: 'تصفح كل البرامج' },
+  'games.availablePrograms': { en: 'Available programs', ar: 'البرامج المتاحة' },
+  'reviews.videoLabel': { en: 'Video proof', ar: 'شهادات فيديو' },
+  'reviews.videoTitle': { en: 'What customers say on camera', ar: 'ماذا يقول العملاء على الفيديو' },
+  'footer.about': { en: 'About', ar: 'من نحن' },
+  'footer.blog': { en: 'Blog', ar: 'المدونة' },
 };
 
 const LanguageContext = createContext<LanguageContextType>({
@@ -312,8 +380,14 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     document.documentElement.lang = newLang;
   };
 
-  const t = (key: string) => {
-    return translations[key]?.[language] || key;
+  const t = (key: string, params?: Record<string, string | number>) => {
+    let text = translations[key]?.[language] || key;
+    if (params) {
+      for (const [k, v] of Object.entries(params)) {
+        text = text.replace(new RegExp(`\\{${k}\\}`, 'g'), String(v));
+      }
+    }
+    return text;
   };
 
   return (

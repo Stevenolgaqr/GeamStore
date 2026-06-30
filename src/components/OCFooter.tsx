@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import { useLanguage } from '@/context/LanguageContext';
+import { SOCIAL_LINKS } from '@/lib/site';
 import styles from './OCFooter.module.css';
 
 export default function OCFooter() {
@@ -28,13 +29,24 @@ export default function OCFooter() {
             </Link>
             <p className={styles.desc}>{t('footer.desc')}</p>
             <a
-              href="https://discord.gg/novastore"
+              href={SOCIAL_LINKS.discord}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.discordBadge}
             >
               {t('footer.discord')}
             </a>
+            <div className={styles.socialRow}>
+              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                YouTube
+              </a>
+              <a href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" aria-label="X">
+                X
+              </a>
+              <a href={SOCIAL_LINKS.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                Telegram
+              </a>
+            </div>
           </div>
 
           <div>
@@ -43,6 +55,8 @@ export default function OCFooter() {
               <li><Link href="/" className={styles.link}>{t('footer.home')}</Link></li>
               <li><Link href="/store" className={styles.link}>{t('footer.store')}</Link></li>
               <li><Link href="/status" className={styles.link}>{t('footer.status')}</Link></li>
+              <li><Link href="/about" className={styles.link}>{t('footer.about')}</Link></li>
+              <li><Link href="/blog" className={styles.link}>{t('footer.blog')}</Link></li>
               <li><Link href="/reviews" className={styles.link}>{t('footer.reviews')}</Link></li>
               <li><Link href="/contact" className={styles.link}>{t('footer.contact')}</Link></li>
             </ul>

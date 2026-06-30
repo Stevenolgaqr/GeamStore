@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import OptimizedImage from '@/components/OptimizedImage';
@@ -13,6 +13,8 @@ export default function OCHeader() {
   const { language, toggleLanguage, t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLElement>(null);
 
   const navItems = [
     { label: t('nav.store'), href: '/store' },
@@ -31,6 +33,37 @@ export default function OCHeader() {
     return () => {
       document.body.style.overflow = '';
     };
+  }, [menuOpen]);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    menuToggleRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const menu = mobileMenuRef.current;
+    if (menu) {
+      (menu as HTMLElement & { inert?: boolean }).inert = false;
+      const firstLink = menu.querySelector<HTMLElement>('a');
+      firstLink?.focus();
+    }
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen, closeMenu]);
+
+  useEffect(() => {
+    const menu = mobileMenuRef.current;
+    if (!menu) return;
+    (menu as HTMLElement & { inert?: boolean }).inert = !menuOpen;
   }, [menuOpen]);
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
@@ -101,10 +134,12 @@ export default function OCHeader() {
             {t('nav.discord')}
           </a>
           <button
+            ref={menuToggleRef}
             type="button"
             className={styles.menuToggle}
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
+            aria-controls="mobile-nav-menu"
             aria-label={menuOpen ? t('header.menuClose') : t('header.menuOpen')}
           >
             <span className={styles.menuBar} />
@@ -136,9 +171,16 @@ export default function OCHeader() {
       </nav>
 
       {menuOpen && (
-        <div className={styles.mobileMenuBackdrop} onClick={() => setMenuOpen(false)} aria-hidden />
+        <div
+          className={styles.mobileMenuBackdrop}
+          onClick={closeMenu}
+          onKeyDown={(e) => e.key === 'Escape' && closeMenu()}
+          role="presentation"
+        />
       )}
       <nav
+        ref={mobileMenuRef}
+        id="mobile-nav-menu"
         className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}
         aria-label="Mobile"
         aria-hidden={!menuOpen}
@@ -151,7 +193,7 @@ export default function OCHeader() {
               key={item.href}
               href={item.href}
               className={`${styles.mobileNavLink} ${isActive ? styles.mobileNavLinkActive : ''}`}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
             >
               {item.label}
             </Link>

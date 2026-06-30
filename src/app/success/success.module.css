@@ -1,10 +1,16 @@
 .container {
-  min-height: 80vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   background: radial-gradient(circle at 50% 50%, rgba(20, 20, 25, 1) 0%, rgba(10, 10, 12, 1) 100%);
+}
+
+.page {
+  padding-top: 72px;
+  min-height: 100vh;
+  background: var(--bg-main);
 }
 
 .card {
@@ -49,7 +55,18 @@
   color: #a0a0a0;
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+}
+
+.discountBanner {
+  margin: 0 0 2rem;
+  padding: 0.875rem 1rem;
+  background: var(--primary-dim);
+  border: 1px solid var(--border-red);
+  border-radius: var(--border-radius-sm);
+  color: var(--primary-light);
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .actions {
@@ -112,5 +129,32 @@
   
   .homeBtn, .storeBtn {
     width: 100%;
+  }
+}
+
+.upsellSection {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+.upsellTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-main);
+  margin: 0 0 1.5rem;
+  text-align: center;
+  font-family: var(--font-ar);
+}
+
+.upsellGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .upsellSection {
+    padding: 1.5rem 1.25rem 3rem;
   }
 }

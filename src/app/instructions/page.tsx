@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { productInstructions, type ProductInstruction } from '@/data/instructions';
+import type { ProductInstruction } from '@/data/instructions';
 import { useLanguage } from '@/context/LanguageContext';
 import { markdownToHtml } from '@/lib/instructionsMarkdown';
 import styles from './instructions.module.css';
@@ -39,10 +39,17 @@ export default function InstructionsPage() {
   const [query, setQuery] = useState('');
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [mobileListOpen, setMobileListOpen] = useState(false);
+  const [productInstructions, setProductInstructions] = useState<ProductInstruction[]>([]);
+
+  useEffect(() => {
+    import('@/data/instructions').then((mod) => {
+      setProductInstructions(mod.productInstructions);
+    });
+  }, []);
 
   const sorted = useMemo(
     () => [...productInstructions].sort((a, b) => a.titleEn.localeCompare(b.titleEn)),
-    []
+    [productInstructions]
   );
 
   const filtered = useMemo(() => {

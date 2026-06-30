@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { reviewsData } from '@/data/cheats';
+import { reviewsData, videoTestimonials } from '@/data/reviews-data';
+import { isRealYoutubeId } from '@/lib/youtube';
 import { useLanguage } from '@/context/LanguageContext';
+import { SOCIAL_LINKS } from '@/lib/site';
 import styles from './page.module.css';
 
 const supportedGames = [
@@ -19,6 +21,7 @@ const supportedGames = [
 
 export default function ReviewsPage() {
   const { t } = useLanguage();
+  const videos = videoTestimonials.filter((v) => isRealYoutubeId(v.youtubeId));
 
   return (
     <div className={styles.page}>
@@ -47,6 +50,29 @@ export default function ReviewsPage() {
             </div>
           ))}
         </div>
+
+        {videos.length > 0 && (
+        <div className={styles.videoSection}>
+          <p className={styles.label}>{t('reviews.videoLabel')}</p>
+          <h2 className={styles.sectionTitle}>{t('reviews.videoTitle')}</h2>
+          <div className={styles.videoGrid}>
+            {videos.map((video) => (
+              <div key={video.id} className={styles.videoCard}>
+                <div className={styles.videoEmbed}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+                <p className={styles.videoCaption}>{video.game}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        )}
 
         <div className={styles.gamesSection}>
           <p className={styles.label}>{t('reviews.gamesLabel')}</p>
@@ -92,7 +118,7 @@ export default function ReviewsPage() {
             </Link>
 
             <a
-              href="https://youtube.com"
+              href={SOCIAL_LINKS.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.supportCard}

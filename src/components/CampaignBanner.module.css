@@ -1,0 +1,46 @@
+.banner {
+  background: linear-gradient(90deg, rgba(230, 0, 0, 0.15), rgba(230, 0, 0, 0.05));
+  border-bottom: 1px solid rgba(230, 0, 0, 0.25);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-family: var(--font-label);
+  color: var(--text-main);
+  position: sticky;
+  top: 72px;
+  z-index: 800;
+}
+
+.message {
+  font-weight: 600;
+}
+
+.countdown {
+  color: var(--primary-light);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.code {
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(230, 0, 0, 0.2);
+  border: 1px dashed rgba(230, 0, 0, 0.4);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .banner {
+    top: 60px;
+    font-size: 0.72rem;
+    padding: 0.45rem 0.75rem;
+  }
+}

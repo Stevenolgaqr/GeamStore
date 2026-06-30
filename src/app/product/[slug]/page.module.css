@@ -366,6 +366,76 @@
   white-space: nowrap;
 }
 
+.planBadgeValue {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+.planSavings {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #34d399;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.planPerDay {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.socialProof {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-label);
+  line-height: 1.4;
+}
+
+.upgradeHint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.65rem 0.85rem;
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-ar);
+}
+
+.upgradeBtn {
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: var(--border-radius-full);
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-ar);
+  min-height: 32px;
+}
+
+@media (hover: hover) {
+  .upgradeBtn:hover {
+    background: rgba(16, 185, 129, 0.25);
+  }
+}
+
+.upgradeBtn:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
 /* ── Buy Buttons ── */
 .deliveryNote {
   font-size: 0.78rem;
@@ -668,4 +738,28 @@
   .statusUpdating .statusDot {
     animation: none;
   }
+}
+
+.videoSection {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.videoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: #000;
+}
+
+.videoWrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }

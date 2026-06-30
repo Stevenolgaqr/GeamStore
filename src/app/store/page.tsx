@@ -2,13 +2,14 @@
 
 import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { cheats, storeCategoryOrder } from '@/data/cheats';
+import { cheatCatalog } from '@/data/cheats-catalog';
+import { storeCategoryOrder } from '@/data/cheats-meta';
 import OCProductCard from '@/components/OCProductCard';
 import StoreCatalogPanel, { type CatalogCategory } from '@/components/StoreCatalogPanel';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './page.module.css';
 
-function StorePageContent() {
+function StorePageContent({ initialCategory }: { initialCategory?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const productsContainerRef = useRef<HTMLDivElement>(null);
@@ -18,23 +19,23 @@ function StorePageContent() {
   const { t, language } = useLanguage();
 
   useEffect(() => {
-    const category = searchParams.get('category');
+    const category = searchParams.get('category') ?? initialCategory;
     const q = searchParams.get('q');
     if (q) {
       setSearchQuery(q);
       setCatalogViewMode('all');
     }
-    if (category && cheats.some((c) => c.category === category)) {
+    if (category && cheatCatalog.some((c) => c.category === category)) {
       setActiveFilter(category);
       setCatalogViewMode('all');
     } else if (!category) {
       setActiveFilter('all');
     }
-  }, [searchParams]);
+  }, [searchParams, initialCategory]);
 
   const categoriesMap = useMemo(() => {
     const map = new Map<string, { key: string; label: string }>();
-    cheats.forEach((cheat) => {
+    cheatCatalog.forEach((cheat) => {
       if (cheat.category && !map.has(cheat.category)) {
         map.set(cheat.category, {
           key: cheat.category,
@@ -47,7 +48,7 @@ function StorePageContent() {
 
   const categoryStats = useMemo(() => {
     const map = new Map<string, { total: number; safe: number }>();
-    cheats.forEach((cheat) => {
+    cheatCatalog.forEach((cheat) => {
       const current = map.get(cheat.category) ?? { total: 0, safe: 0 };
       current.total += 1;
       if (cheat.status === 'undetected') current.safe += 1;
@@ -94,9 +95,9 @@ function StorePageContent() {
 
   const displayProducts = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    let list = cheats;
+    let list = cheatCatalog;
     if (q) {
-      list = cheats.filter((c) => {
+      list = cheatCatalog.filter((c) => {
         const fields = [
           c.title,
           c.game,
@@ -110,7 +111,7 @@ function StorePageContent() {
         return fields.some((field) => field?.toLowerCase().includes(q));
       });
     } else if (activeFilter !== 'all') {
-      list = cheats.filter((c) => c.category === activeFilter);
+      list = cheatCatalog.filter((c) => c.category === activeFilter);
     }
     return [...list].sort((a, b) => {
       const pa = priorityIndex(a.category);
@@ -122,8 +123,8 @@ function StorePageContent() {
 
   const stats = useMemo(() => {
     const gameCount = sortedCategories.length;
-    const productCount = cheats.length;
-    const undetectedCount = cheats.filter((c) => c.status === 'undetected').length;
+    const productCount = cheatCatalog.length;
+    const undetectedCount = cheatCatalog.filter((c) => c.status === 'undetected').length;
     return { gameCount, productCount, undetectedCount };
   }, [sortedCategories.length]);
 
@@ -343,10 +344,12 @@ function StorePageFallback() {
   );
 }
 
-export default function StorePage() {
+export default function StorePage({ initialCategory }: { initialCategory?: string } = {}) {
   return (
     <Suspense fallback={<StorePageFallback />}>
-      <StorePageContent />
+      <StorePageContent initialCategory={initialCategory} />
     </Suspense>
   );
 }
+
+export { StorePageContent };

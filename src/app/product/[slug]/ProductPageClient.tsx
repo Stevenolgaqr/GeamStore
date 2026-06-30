@@ -2,20 +2,27 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { use } from 'react';
-import { cheats, gameImages } from '@/data/cheats';
+import type { Cheat } from '@/data/cheats';
+import { gameImages } from '@/data/cheats-meta';
 import { useLanguage } from '@/context/LanguageContext';
-import { useSellauthReady } from '@/hooks/useSellauthReady';
+import { useSellauthReady, canOpenCheckout } from '@/hooks/useSellauthReady';
 import { formatRetailPrice } from '@/lib/pricing';
+import { dailyRate, isBestValuePlan, savingsVsDaily } from '@/lib/planSavings';
 import { getPlanDisplayLabel, isPlanPopular } from '@/lib/productPlans';
 import { getDefaultPlanIndex, openSellauthCheckout } from '@/lib/sellauth';
+import { trackBeginCheckout, trackSelectPlan, trackViewItem } from '@/lib/analytics';
+import { getProductVideoId } from '@/data/product-videos';
+import { trackView } from '@/hooks/useRecentlyViewed';
 import ProductImageGallery from '@/components/ProductImageGallery';
-import { IconAlert, IconCheck, IconStarRating } from '@/components/icons/ProductIcons';
+import ProductReviews from '@/components/ProductReviews';
+import RelatedProducts from '@/components/RelatedProducts';
+import TrustStrip from '@/components/TrustStrip';
+import { IconCheck, IconStarRating } from '@/components/icons/ProductIcons';
 import styles from './page.module.css';
 
 const DESC_CLAMP_CHARS = 220;
 
-function buildProductImages(cheat: (typeof cheats)[number]): string[] {
+function buildProductImages(cheat: Cheat): string[] {
   const urls: string[] = [];
   if (cheat.image) urls.push(cheat.image);
   if (cheat.media?.length) {
@@ -35,9 +42,8 @@ function getStatusClass(status: string): string {
   return styles.statusDetected;
 }
 
-export default function ProductPageClient({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
-  const cheat = cheats.find((c) => c.slug === slug);
+export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
+  const slug = cheat.slug;
   const [selectedPlan, setSelectedPlan] = useState(() =>
     cheat ? getDefaultPlanIndex(cheat.plans) : 0
   );
@@ -45,13 +51,29 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
   const [featuresVisible, setFeaturesVisible] = useState(false);
   const featuresRef = useRef<HTMLDivElement>(null);
   const { language, t } = useLanguage();
-  const checkoutReady = useSellauthReady();
+  const checkoutState = useSellauthReady();
+  const checkoutAvailable = canOpenCheckout(checkoutState);
 
   useEffect(() => {
     if (cheat) {
       setSelectedPlan(getDefaultPlanIndex(cheat.plans));
     }
   }, [cheat?.slug]);
+
+  useEffect(() => {
+    if (slug) trackView(slug);
+  }, [slug]);
+
+  useEffect(() => {
+    trackViewItem(cheat);
+  }, [cheat.slug]);
+
+  useEffect(() => {
+    const plan = cheat.plans[selectedPlan];
+    if (plan) {
+      trackSelectPlan(cheat, selectedPlan, plan.price);
+    }
+  }, [cheat, selectedPlan]);
 
   useEffect(() => {
     const el = featuresRef.current;
@@ -79,6 +101,7 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
 
       if (isAvailable) {
         e.preventDefault();
+        trackBeginCheckout(cheat, plan.price);
         openSellauthCheckout(e.currentTarget, plan);
       } else {
         e.preventDefault();
@@ -88,42 +111,7 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
     [cheat, selectedPlan]
   );
 
-  if (!cheat) {
-    return (
-      <div className={styles.page}>
-        <div className={styles.notFound}>
-          <IconAlert size={32} />
-          <p>{t('product.notFound')}</p>
-          <Link href="/store" className={styles.notFoundLink}>
-            {t('product.backToStore')}
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   const statusClass = getStatusClass(cheat.status);
-
-  const jsonLd = {
-    '@context': 'https://schema.org/',
-    '@type': 'SoftwareApplication',
-    name: cheat.title,
-    description: cheat.description,
-    applicationCategory: 'GameApplication',
-    operatingSystem: 'Windows 10, Windows 11',
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'USD',
-      lowPrice: Math.min(...cheat.plans.map((p) => p.price)),
-      highPrice: Math.max(...cheat.plans.map((p) => p.price)),
-      offerCount: cheat.plans.length,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: cheat.rating,
-      reviewCount: cheat.reviews,
-    },
-  };
 
   const displayTitle = language === 'en' && cheat.titleEn ? cheat.titleEn : cheat.title;
   const displayGame = language === 'en' && cheat.gameEn ? cheat.gameEn : cheat.game;
@@ -141,13 +129,11 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
       ? displayDesc
       : `${displayDesc.slice(0, DESC_CLAMP_CHARS).trim()}…`;
 
+  const weekSavings = cheat.plans[1] ? savingsVsDaily(cheat.plans, 1) : null;
+  const videoId = getProductVideoId(cheat.slug);
+
   return (
     <div className={styles.page}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <div className={styles.productHero}>
         <div className={styles.imageCol}>
           <ProductImageGallery
@@ -199,6 +185,9 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
               <span className={styles.statusDot} />
               {statusLabel}
             </span>
+            <span className={styles.socialProof}>
+              {t('product.trustedBy', { count: cheat.reviews })}
+            </span>
           </div>
 
           <div
@@ -235,6 +224,9 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
               const displayDuration = getPlanDisplayLabel(plan, language, t);
               const isSelected = selectedPlan === i;
               const showPopular = isPlanPopular(plan, i);
+              const savings = savingsVsDaily(cheat.plans, i);
+              const perDay = dailyRate(plan);
+              const bestValue = isBestValuePlan(cheat.plans, i);
               return (
                 <button
                   type="button"
@@ -245,8 +237,22 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
                   onClick={() => setSelectedPlan(i)}
                 >
                   {showPopular && <div className={styles.planBadge}>{t('product.popular')}</div>}
+                  {bestValue && !showPopular && (
+                    <div className={`${styles.planBadge} ${styles.planBadgeValue}`}>
+                      {t('product.bestValue')}
+                    </div>
+                  )}
                   <div className={styles.planDuration}>{displayDuration}</div>
                   <div className={styles.planPrice}>${formatRetailPrice(plan.price)}</div>
+                  {savings !== null && savings > 0 && (
+                    <span className={styles.planSavings}>
+                      {t('product.savePercent', { percent: savings })}
+                    </span>
+                  )}
+                  <span className={styles.planPerDay}>
+                    ${perDay.toFixed(2)}
+                    {t('product.perDay')}
+                  </span>
                   <span className={styles.planCurrency}>USD / {getPlanDisplayLabel(plan, language, t)}</span>
                 </button>
               );
@@ -260,30 +266,59 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
             {t('product.deliveryNote')}
           </p>
 
+          {selectedPlan === 0 && cheat.plans[1] && weekSavings !== null && weekSavings > 0 && (
+            <p
+              className={`${styles.upgradeHint} ${styles.infoStagger}`}
+              style={{ '--stagger': 7 } as React.CSSProperties}
+              role="status"
+            >
+              <span>
+                {t('product.upgradeHint', {
+                  price: formatRetailPrice(cheat.plans[1].price),
+                  save: weekSavings,
+                })}
+              </span>
+              <button
+                type="button"
+                className={styles.upgradeBtn}
+                onClick={() => setSelectedPlan(1)}
+              >
+                {t('product.switchToWeek')}
+              </button>
+            </p>
+          )}
+
           <div
             className={`${styles.buyActions} ${styles.infoStagger}`}
             style={{ '--stagger': 8 } as React.CSSProperties}
           >
             <button
               type="button"
-              className={`${styles.buyNow} ${!isCheckoutAvailable ? styles.buyNowUnavailable : ''} ${!checkoutReady && isCheckoutAvailable ? styles.buyNowLoading : ''}`}
+              className={`${styles.buyNow} ${!isCheckoutAvailable ? styles.buyNowUnavailable : ''} ${!checkoutAvailable && isCheckoutAvailable ? styles.buyNowLoading : ''}`}
               onClick={handleCheckout}
-              disabled={isCheckoutAvailable && !checkoutReady}
-              aria-busy={isCheckoutAvailable && !checkoutReady}
+              disabled={isCheckoutAvailable && !checkoutAvailable}
+              aria-busy={isCheckoutAvailable && !checkoutAvailable}
             >
               <span className={styles.buyNowLabel}>
                 {isCheckoutAvailable
-                  ? checkoutReady
+                  ? checkoutAvailable
                     ? t('product.buyNow')
                     : t('product.loadingCheckout')
                   : t('product.buyDiscord')}
               </span>
-              {isCheckoutAvailable && selectedPlanData && checkoutReady && (
+              {isCheckoutAvailable && selectedPlanData && checkoutAvailable && (
                 <span className={styles.buyNowPrice}>
                   ${formatRetailPrice(selectedPlanData.price)}
                 </span>
               )}
             </button>
+          </div>
+
+          <div
+            className={`${styles.infoStagger}`}
+            style={{ '--stagger': 9 } as React.CSSProperties}
+          >
+            <TrustStrip />
           </div>
 
           <Link
@@ -319,6 +354,26 @@ export default function ProductPageClient({ params }: { params: Promise<{ slug: 
           ))}
         </ul>
       </section>
+
+      {videoId && (
+        <section className={styles.videoSection} aria-labelledby="product-video-title">
+          <h2 id="product-video-title" className={styles.featTitle}>
+            {t('product.demoVideo')}
+          </h2>
+          <div className={styles.videoWrap}>
+            <iframe
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title={`${displayTitle} demo`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </section>
+      )}
+
+      <ProductReviews game={cheat.game} gameEn={cheat.gameEn} />
+      <RelatedProducts cheat={cheat} />
     </div>
   );
 }

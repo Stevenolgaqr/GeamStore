@@ -3,9 +3,9 @@
 import React, { useCallback } from 'react';
 import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
-import { gameImages } from '@/data/cheats';
+import { gameImages } from '@/data/cheats-meta';
 import { useLanguage } from '@/context/LanguageContext';
-import { useSellauthReady } from '@/hooks/useSellauthReady';
+import { useSellauthReady, canOpenCheckout } from '@/hooks/useSellauthReady';
 import { formatRetailPrice } from '@/lib/pricing';
 import { getDefaultPlan, openSellauthCheckout } from '@/lib/sellauth';
 import OptimizedImage from '@/components/OptimizedImage';
@@ -18,7 +18,8 @@ interface Props {
 
 export default function OCProductCard({ cheat }: Props) {
   const { language, t } = useLanguage();
-  const checkoutReady = useSellauthReady();
+  const checkoutState = useSellauthReady();
+  const checkoutAvailable = canOpenCheckout(checkoutState);
   const defaultPlan = getDefaultPlan(cheat.plans);
   const canQuickBuy = !!defaultPlan?.sellauthProductId;
 
@@ -70,7 +71,14 @@ export default function OCProductCard({ cheat }: Props) {
           {statusLabel}
         </div>
 
-        {cheat.tag && <div className={styles.tag}>{cheat.tag}</div>}
+        {cheat.tag ? (
+          <div className={styles.tag}>{cheat.tag}</div>
+        ) : (
+          cheat.reviews >= 40 &&
+          cheat.rating >= 4.8 && (
+            <div className={styles.tag}>{t('card.topRated')}</div>
+          )
+        )}
       </div>
 
       <div className={styles.content}>
@@ -97,10 +105,10 @@ export default function OCProductCard({ cheat }: Props) {
             type="button"
             className={styles.buyBtn}
             onClick={handleQuickBuy}
-            disabled={!checkoutReady}
-            aria-busy={!checkoutReady}
+            disabled={!checkoutAvailable}
+            aria-busy={!checkoutAvailable}
           >
-            {checkoutReady ? t('card.quickBuy') : t('product.loadingCheckout')}
+            {checkoutAvailable ? t('card.quickBuy') : t('product.loadingCheckout')}
           </button>
         ) : (
           <Link href={`/product/${cheat.slug}`} className={styles.buyBtn}>

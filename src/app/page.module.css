@@ -310,6 +310,36 @@
   }
 }
 
+/* ── Recently viewed ── */
+.recentSection {
+  max-width: var(--content-width, var(--max-width));
+  margin: 0 auto;
+  padding: 2rem 28px 1rem;
+}
+
+.recentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .recentGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .recentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .recentSection {
+    padding-inline: 1rem;
+  }
+}
+
 /* ── Popular ── */
 .popularSection {
   max-width: var(--content-width, var(--max-width));

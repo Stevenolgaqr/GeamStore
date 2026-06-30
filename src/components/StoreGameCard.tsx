@@ -41,7 +41,7 @@ export default function StoreGameCard({
   const body = (
     <>
       {imageUrl ? (
-        <OptimizedImage src={imageUrl} alt="" className={styles.image} fill sizes="(max-width: 768px) 50vw, 25vw" />
+        <OptimizedImage src={imageUrl} alt={label} className={styles.image} fill sizes="(max-width: 768px) 50vw, 25vw" />
       ) : (
         <div className={styles.placeholder} aria-hidden />
       )}
