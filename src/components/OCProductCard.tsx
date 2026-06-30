@@ -43,7 +43,7 @@ export default function OCProductCard({ cheat }: Props) {
     (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!defaultPlan?.sellauthProductId) return;
       e.preventDefault();
-      void openSellauthCheckout(defaultPlan);
+      void openSellauthCheckout(e.currentTarget, defaultPlan);
     },
     [defaultPlan]
   );
