@@ -102,7 +102,7 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
       if (isAvailable) {
         e.preventDefault();
         trackBeginCheckout(cheat, plan.price);
-        openSellauthCheckout(e.currentTarget, plan);
+        void openSellauthCheckout(plan);
       } else {
         e.preventDefault();
         window.open('https://discord.gg/novastore', '_blank');
