@@ -5,8 +5,9 @@ import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats-meta';
 import { useLanguage } from '@/context/LanguageContext';
+import { useSellAuthCheckout } from '@/components/SellAuthCheckoutProvider';
 import { formatRetailPrice } from '@/lib/pricing';
-import { getDefaultPlan, openSellauthCheckout } from '@/lib/sellauth';
+import { getDefaultPlan } from '@/lib/sellauth';
 import OptimizedImage from '@/components/OptimizedImage';
 import { IconStarRating } from '@/components/icons/ProductIcons';
 import styles from './OCProductCard.module.css';
@@ -17,6 +18,7 @@ interface Props {
 
 export default function OCProductCard({ cheat }: Props) {
   const { language, t } = useLanguage();
+  const { startCheckout, isLoading: isCheckoutLoading } = useSellAuthCheckout();
   const defaultPlan = getDefaultPlan(cheat.plans);
   const canQuickBuy = !!defaultPlan?.sellauthProductId;
 
@@ -40,9 +42,9 @@ export default function OCProductCard({ cheat }: Props) {
     (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!defaultPlan?.sellauthProductId) return;
       e.preventDefault();
-      openSellauthCheckout(defaultPlan);
+      void startCheckout(defaultPlan);
     },
-    [defaultPlan]
+    [defaultPlan, startCheckout]
   );
 
   return (
@@ -98,8 +100,14 @@ export default function OCProductCard({ cheat }: Props) {
 
       <div className={styles.cta}>
         {canQuickBuy ? (
-          <button type="button" className={styles.buyBtn} onClick={handleQuickBuy}>
-            {t('card.quickBuy')}
+          <button
+            type="button"
+            className={styles.buyBtn}
+            onClick={handleQuickBuy}
+            disabled={isCheckoutLoading}
+            aria-busy={isCheckoutLoading}
+          >
+            {isCheckoutLoading ? t('product.loadingCheckout') : t('card.quickBuy')}
           </button>
         ) : (
           <Link href={`/product/${cheat.slug}`} className={styles.buyBtn}>

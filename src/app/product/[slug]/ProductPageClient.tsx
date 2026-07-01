@@ -5,7 +5,8 @@ import Link from 'next/link';
 import type { Cheat } from '@/data/cheats';
 import { gameImages } from '@/data/cheats-meta';
 import { useLanguage } from '@/context/LanguageContext';
-import { getDefaultPlanIndex, openSellauthCheckout } from '@/lib/sellauth';
+import { useSellAuthCheckout } from '@/components/SellAuthCheckoutProvider';
+import { getDefaultPlanIndex } from '@/lib/sellauth';
 import { formatRetailPrice } from '@/lib/pricing';
 import { dailyRate, isBestValuePlan, savingsVsDaily } from '@/lib/planSavings';
 import { getPlanDisplayLabel, isPlanPopular } from '@/lib/productPlans';
@@ -50,6 +51,7 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
   const [featuresVisible, setFeaturesVisible] = useState(false);
   const featuresRef = useRef<HTMLDivElement>(null);
   const { language, t } = useLanguage();
+  const { startCheckout, isLoading: isCheckoutLoading } = useSellAuthCheckout();
 
   useEffect(() => {
     if (cheat) {
@@ -99,12 +101,12 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
       e.preventDefault();
       if (isAvailable) {
         trackBeginCheckout(cheat, plan.price);
-        openSellauthCheckout(plan);
+        void startCheckout(plan);
       } else {
         window.open('https://discord.gg/novastore', '_blank');
       }
     },
-    [cheat, selectedPlan]
+    [cheat, selectedPlan, startCheckout]
   );
 
   const statusClass = getStatusClass(cheat.status);
@@ -290,13 +292,19 @@ export default function ProductPageClient({ cheat }: { cheat: Cheat }) {
           >
             <button
               type="button"
-              className={`${styles.buyNow} ${!isCheckoutAvailable ? styles.buyNowUnavailable : ''}`}
+              className={`${styles.buyNow} ${!isCheckoutAvailable ? styles.buyNowUnavailable : ''} ${isCheckoutLoading && isCheckoutAvailable ? styles.buyNowLoading : ''}`}
               onClick={handleCheckout}
+              disabled={isCheckoutAvailable && isCheckoutLoading}
+              aria-busy={isCheckoutAvailable && isCheckoutLoading}
             >
               <span className={styles.buyNowLabel}>
-                {isCheckoutAvailable ? t('product.buyNow') : t('product.buyDiscord')}
+                {isCheckoutAvailable
+                  ? isCheckoutLoading
+                    ? t('product.loadingCheckout')
+                    : t('product.buyNow')
+                  : t('product.buyDiscord')}
               </span>
-              {isCheckoutAvailable && selectedPlanData && (
+              {isCheckoutAvailable && selectedPlanData && !isCheckoutLoading && (
                 <span className={styles.buyNowPrice}>
                   ${formatRetailPrice(selectedPlanData.price)}
                 </span>

@@ -8,6 +8,11 @@ export function isWebhookEnabled(): boolean {
   return !!process.env.SELLAUTH_WEBHOOK_SECRET;
 }
 
+/** True when server-side SellAuth checkout API key is configured. */
+export function isSellauthCheckoutEnabled(): boolean {
+  return !!process.env.SELLAUTH_API_KEY;
+}
+
 /** True when post-purchase email can be sent via Resend. */
 export function isEmailEnabled(): boolean {
   return !!process.env.RESEND_API_KEY;
